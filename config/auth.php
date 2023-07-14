@@ -63,6 +63,13 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+            'table' => 'users',
+            'name' => 'user_name',
+             'nom'=>'nom',
+             'prenom'=>'prenom',                       // Nom d'utilisateur personnalisé
+            'role' => 'role', // Rôle personnalisé
+            'email' => 'email',
+            'password' => 'password',
         ],
 
         // 'users' => [
