@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ClientController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ApplicationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,14 @@ Route::post('/clients', [ClientController::class, 'store'])->name('clients.store
 Route::get('/clients/{client}/edit', [ClientController::class, 'edit'])->name('clients.edit');
 Route::put('/clients/{client}', [ClientController::class, 'update'])->name('clients.update');
 Route::delete('/clients/{client}', [ClientController::class, 'destroy'])->name('clients.destroy');
+
+Route::get('/Applications', [ApplicationController::class, 'showApplications'])->name('Applications.index');
+Route::get('/Applications/create', [ApplicationController::class, 'create'])->name('Applications.create');
+Route::post('/Applications', [ApplicationController::class, 'store'])->name('Applications.store');
+Route::get('/Applications/{Application}/edit', [ApplicationController::class, 'edit'])->name('Applications.edit');
+Route::put('/Applications/{Application}', [ApplicationController::class, 'update'])->name('Applications.update');
+Route::delete('/Applications/{Application}', [ApplicationController::class, 'destroy'])->name('Applications.destroy');
+
 
 Route::get('/Admin', function () {
     return view('layouts.dashboard_Admin');

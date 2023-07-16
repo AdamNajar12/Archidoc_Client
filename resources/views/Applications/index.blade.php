@@ -4,11 +4,11 @@
 											<!--begin::Header-->
 											<div class="card-header border-0 pt-5">
 												<h3 class="card-title align-items-start flex-column">
-													<span class="card-label fw-bolder fs-3 mb-1">Clients</span>
+													<span class="card-label fw-bolder fs-3 mb-1">Applications</span>
 													
 												</h3>
 												<div class="card-toolbar"  title="Click to add a user">
-													<a href="/clients/create" class="btn btn-sm btn-light btn-active-primary" >Nouveau Client </a>
+													<a href="/Applications/create" class="btn btn-sm btn-light btn-active-primary" >Nouvelle Application </a>
 												</div>
 											</div>
 											<!--end::Header-->
@@ -26,11 +26,7 @@
 																		<input class="form-check-input" type="checkbox" value="1" data-kt-check="true" data-kt-check-target=".widget-9-check" />
 																	</div>
 																</th>
-																<th class="min-w-150px">Code Client</th>
-																<th class="min-w-140px">Raison Sociale</th>
-																<th class="min-w-120px">Telephone </th>
-                                                                <th class="min-w-120px">Adresse</th>
-                                                                <th class="min-w-120px">localisation</th>
+																<th class="min-w-150px">libelle</th>
                                                                 <th class="min-w-120px">Modificateur</th>
 																<th class="min-w-100px text-end">Actions</th>
 															</tr>
@@ -38,7 +34,7 @@
 														<!--end::Table head-->
 														<!--begin::Table body-->
 														<tbody>
-															@foreach ($clients as $client)
+															@foreach ($Applications as $Application)
                                                                 
                                                            
                                                             <tr>
@@ -51,51 +47,17 @@
 																	<div class="d-flex align-items-center">
 																
 																		<div class="d-flex justify-content-start flex-column">
-																			<a href="#" class="text-dark fw-bolder text-hover-primary fs-6">{{ $client->code_client }}</a>
+																			<a href="#" class="text-dark fw-bolder text-hover-primary fs-6">{{ $Application->libelle }}</a>
 																			
 																		</div>
 																	</div>
 																</td>
-																<td>
-                                                                <div class="d-flex align-items-center">
 																
-																		<div class="d-flex justify-content-start flex-column">
-																	<a href="#" class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $client->raison_sociale }}</a>
-															</div>
-																	</div>
-																</td>
-																<td >
-																		<div class="d-flex align-items-center">
-																
-																		<div class="d-flex justify-content-start flex-column">
-																			<a href="#" class="text-dark fw-bolder text-hover-primary fs-6">{{ $client->telephone }}</a>
-																			
-																		</div>
-																	</div>
-																</td>
-                                                                	<td >
-																		<div class="d-flex align-items-center">
-																
-																		<div class="d-flex justify-content-start flex-column">
-																			<a href="#" class="text-dark fw-bolder text-hover-primary fs-6">{{ $client->Adresse }}</a>
-																			
-																		</div>
-																	</div>
-																</td>
                                                                 <td >
 																		<div class="d-flex align-items-center">
 																
 																		<div class="d-flex justify-content-start flex-column">
-																			<a href="#" class="text-dark fw-bolder text-hover-primary fs-6">{{ $client->localisation }}</a>
-																			
-																		</div>
-																	</div>
-																</td>
-                                                                <td >
-																		<div class="d-flex align-items-center">
-																
-																		<div class="d-flex justify-content-start flex-column">
-																			<a href="#" class="text-dark fw-bolder text-hover-primary fs-6">{{ $client->user_name }}</a>
+																			<a href="#" class="text-dark fw-bolder text-hover-primary fs-6">{{ $Application->user_name }}</a>
 																			
 																		</div>
 																	</div>
@@ -103,7 +65,7 @@
 																<td>
 																	<div class="d-flex justify-content-end flex-shrink-0">
 																		
-																		<a href="{{ route('clients.edit', $client->id) }}" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+																		<a href="{{ route('Applications.edit', $Application->id) }}" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
 																			<!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
 																			<span class="svg-icon svg-icon-3">
 																				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -113,9 +75,9 @@
 																			</span>
 																			<!--end::Svg Icon-->
 																		</a>
-																		<a href="#" onclick="event.preventDefault(); if(confirm('Êtes-vous sûr de vouloir supprimer ce client ?')) document.getElementById('delete-form-{{ $client->id }}').submit();"  class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+																		<a href="#" onclick="event.preventDefault(); if(confirm('Êtes-vous sûr de vouloir supprimer cette Application ?')) document.getElementById('delete-form-{{ $Application->id }}').submit();"  class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
 																			<!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
-																			<form id="delete-form-{{ $client->id }}" action="{{ route('clients.destroy', $client->id) }}" method="POST" style="display: none;">
+																			<form id="delete-form-{{ $Application->id }}" action="{{ route('Applications.destroy', $Application->id) }}" method="POST" style="display: none;">
     @csrf
     @method('DELETE')
 </form>

@@ -8,7 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Client_Application extends Model
 {
     use HasFactory;
-    protected $table = 'client__applications';
+    protected $fillable = [
+        'client_id',
+        'application_id'
+        // Ajoutez les autres colonnes qui sont autorisées à être assignées en masse
+    ];
     
     public function ticket()
     {

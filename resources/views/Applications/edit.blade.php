@@ -4,12 +4,13 @@
 										<!--begin::Modal content-->
 										<div class="modal-content">
 											<!--begin::Form-->
-											<form class="form" action="{{ route('clients.store') }}" method="POST" >
+											<form class="form" action="{{ route('clients.update', $client->id) }}" method="POST"  >
 												    @csrf
+                                                   @method('PUT')
                                                 <!--begin::Modal header-->
 												<div class="modal-header" id="kt_modal_add_customer_header">
 													<!--begin::Modal title-->
-													<h2 class="fw-bolder">Ajouter Client </h2>
+													<h2 class="fw-bolder">Modifier Client</h2>
 													<!--end::Modal title-->
 													<!--begin::Close-->
 													<div id="kt_modal_add_customer_close" class="btn btn-icon btn-sm btn-active-icon-primary">
@@ -35,7 +36,7 @@
 															<label class="required fs-6 fw-bold mb-2">code client</label>
 															<!--end::Label-->
 															<!--begin::Input-->
-															<input type="text" class="form-control form-control-solid" placeholder="" name="code_client" id="code_client" />
+															<input type="text" class="form-control form-control-solid" placeholder="" name="code_client" id="code_client" value="{{ $client->code_client }}" />
 															<!--end::Input-->
 														</div>
 														<!--end::Input group-->
@@ -48,7 +49,7 @@
 															</label>
 															<!--end::Label-->
 															<!--begin::Input-->
-															<input type="text" class="form-control form-control-solid" placeholder="" name="raison_sociale" id="raison_sociale" />
+															<input type="text" class="form-control form-control-solid" placeholder="" name="raison_sociale" id="raison_sociale" value="{{ $client->raison_sociale }}"/>
 															<!--end::Input-->
 														</div>
 														<!--end::Input group-->
@@ -58,7 +59,7 @@
 															<label class="fs-6 fw-bold mb-2">Telephone </label>
 															<!--end::Label-->
 															<!--begin::Input-->
-															<input type="tel" class="form-control form-control-solid" placeholder="" name="telephone" id="telephone" />
+															<input type="tel" class="form-control form-control-solid" placeholder="" name="telephone" id="telephone" value="{{ $client->telephone }}"/>
 															<!--end::Input-->
 														</div>
                                                         <div class="fv-row mb-15">
@@ -66,7 +67,7 @@
 															<label class="fs-6 fw-bold mb-2">Adresse </label>
 															<!--end::Label-->
 															<!--begin::Input-->
-															<input type="tel" class="form-control form-control-solid" placeholder="" name="Adresse" id="Adresse" />
+															<input type="tel" class="form-control form-control-solid" placeholder="" name="Adresse" id="Adresse" value="{{ $client->Adresse }}" />
 															<!--end::Input-->
 														</div>
                                                         <div class="fv-row mb-15">
@@ -74,31 +75,17 @@
 															<label class="fs-6 fw-bold mb-2">localisation </label>
 															<!--end::Label-->
 															<!--begin::Input-->
-															<input type="tel" class="form-control form-control-solid" placeholder="" name="localisation" id="localisation" />
+															<input type="tel" class="form-control form-control-solid" placeholder="" name="localisation" id="localisation" value="{{ $client ->localisation }}"/>
 															<!--end::Input-->
 														</div>
-                                                        	<div class="d-flex flex-column mb-7 fv-row">
-																<!--begin::Label-->
-																<label class="fs-6 fw-bold mb-2">
-																	<span class="required">Country</span>
-																	<i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Country of origination"></i>
-																</label>
-                                                          	<select name="application_id" class="form-select form-select-solid fw-bolder">
-																  @foreach ($Applications as $Application)
-            <option value="{{ $Application->id }}">{{ $Application->libelle }}</option>
-        @endforeach	
-                                                            </select>
-                                                             </div>   
 														<!--end::Input group-->
 														<!--begin::Billing toggle-->
-																									<div class="modal-footer flex-center">
-													<!--begin::Button-->
-												<a href="/clients"class="btn btn-light me-3"id="kt_modal_add_customer_cancel">	cancel
+																										<!--end::Button-->
+                                                                                                        <a href="/clients"class="btn btn-light me-3"id="kt_modal_add_customer_cancel">	cancel
 													</a>
-                                                    <!--end::Button-->
 													<!--begin::Button-->
 													<button type="submit" id="kt_modal_add_customer_submit" class="btn btn-primary">
-														<span class="indicator-label">Creer</span>
+														<span class="indicator-label">Modifier</span>
 													</button>
 													<!--end::Button-->
 												</div>

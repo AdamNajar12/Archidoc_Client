@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Client_Application_Controller;
 use Illuminate\Http\Request;
 use App\Models\client;
-
+use App\Models\Application;
+use App\Models\Client_Application;
 class ClientController extends Controller
 {
     public function showClients()
@@ -18,8 +20,8 @@ class ClientController extends Controller
     }
     public function create()
     {
-      
-        return view('clients.create');
+        $Applications = Application::all();
+        return view('clients.create',compact('Applications'));
        
     }
     
@@ -32,11 +34,15 @@ class ClientController extends Controller
         'Adresse' => 'required',
         'localisation' => 'required',
     ]);
-
+   
     $validatedData['user_id'] = auth()->user()->id;
-
+    $applicationID = $request->input('application_id'); 
     $client = client::create($validatedData);
-
+    $clientID = $client->id;
+    Client_Application::create([
+        'client_id' => $clientID,
+        'application_id'=> $applicationID  ,
+    ]);
     return redirect()->route('clients.index');
 }
     
