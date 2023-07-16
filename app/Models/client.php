@@ -22,6 +22,7 @@ class client extends Model
     {
         return $this->belongsTo(User::class);
     }
+    
     public function applications()
     {
         return $this->belongsToMany(Application::class, 'client_application');

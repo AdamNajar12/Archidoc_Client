@@ -10,14 +10,16 @@ class ClientController extends Controller
 {
     public function showClients()
     {
-            $clients = client::all();
-        
-        return view('Clients.index', compact('clients'));
+
+           $clients = Client::join('users', 'clients.user_id', '=', 'users.id')
+    ->select('clients.*', 'users.prenom as user_name')
+    ->get();
+        return view('clients.index', compact('clients'));
     }
     public function create()
     {
       
-        return view('Clients.create');
+        return view('clients.create');
        
     }
     
@@ -45,31 +47,35 @@ class ClientController extends Controller
      
         
         
-        return view('client.edit', compact('client'));
+        return view('clients.edit', compact('client'));
     }
     
     public function update(Request $request,  $id)
     {
-        $client = client::findOrFail($id);
+        $client = Client::findOrFail($id);
 
-        $data = $request->only(['code_client', 'raison_sociale', 'telephone','Adresse','localisation']);
+        $validatedData = $request->validate([
+            'code_client' => 'required',
+            'raison_sociale' => 'required',
+            'telephone' => 'required',
+            'Adresse' => 'required',
+            'localisation' => 'required'
+        ]);
     
-        
-        $article->update($data);
+        $data = $request->only(['code_client', 'raison_sociale', 'telephone', 'Adresse', 'localisation']);
+        $data['user_id'] = auth()->user()->id;
     
+        $client->update($data);
     
-        
-    
-        $article->update($request->all());
-        return redirect()->route('client.index');
+        return redirect()->route('clients.index');
     }
     
     
     
     public function destroy(client $client)
     {
-        $article->delete();
-        return redirect()->route('client.index');
+        $client->delete();
+        return redirect()->route('clients.index');
     }
     
 
