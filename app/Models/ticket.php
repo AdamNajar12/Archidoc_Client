@@ -14,8 +14,8 @@ class ticket extends Model
         'date_demande',
         'description',
         'vis_a_vis',
-          'client_id' ,     
-        'user_id'
+        'client_id' ,     
+        'user_id',
     ];
     
     public function user()

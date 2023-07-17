@@ -4,12 +4,12 @@
 										<!--begin::Modal content-->
 										<div class="modal-content">
 											<!--begin::Form-->
-											<form class="form" action="{{ route('clients.store') }}" method="POST" >
+											<form class="form" action="{{ route('tickets.store') }}" method="POST" >
 												    @csrf
                                                 <!--begin::Modal header-->
 												<div class="modal-header" id="kt_modal_add_customer_header">
 													<!--begin::Modal title-->
-													<h2 class="fw-bolder">Ajouter Client </h2>
+													<h2 class="fw-bolder">Traiter Ticket </h2>
 													<!--end::Modal title-->
 													<!--begin::Close-->
 													<div id="kt_modal_add_customer_close" class="btn btn-icon btn-sm btn-active-icon-primary">
@@ -32,63 +32,72 @@
 														<!--begin::Input group-->
 														<div class="fv-row mb-7">
 															<!--begin::Label-->
-															<label class="required fs-6 fw-bold mb-2">code client</label>
+															<label class="required fs-6 fw-bold mb-2">Type d intervention </label>
 															<!--end::Label-->
 															<!--begin::Input-->
-															<input type="text" class="form-control form-control-solid" placeholder="" name="code_client" id="code_client" required="required" />
-															<!--end::Input-->
+															<select  class="form-control form-control-solid" name="type_intervention" id="type_intervention" required="required" >
+															<option value ="Bug">Bug</option>
+															<option value ="Maj">Maj</option>
+															<option value ="Amelioration">Amelioration</option>
+															
+															</select>
+
 														</div>
 														<!--end::Input group-->
 														<!--begin::Input group-->
 														<div class="fv-row mb-7">
 															<!--begin::Label-->
 															<label class="fs-6 fw-bold mb-2">
-																<span class="required">raison Sociale</span>
+																<span class="required">statut</span>
 																<i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="raison sociale"></i>
 															</label>
 															<!--end::Label-->
 															<!--begin::Input-->
-															<input type="text" class="form-control form-control-solid" placeholder="" name="raison_sociale" id="raison_sociale"required="required" />
-															<!--end::Input-->
-														</div>
+															<select  class="form-control form-control-solid" placeholder="" name="statut" id="statut"required="required" >
+															<option value="en atente">en attente </option>
+															<option value="en cours">en cours </option>
+															<option value="Resolue ">Resolue </option>
+																<option value="Ferme">Ferme </option>
+	                                                     </select>
+															</div>
+	
 														<!--end::Input group-->
 														<!--begin::Input group-->
 														
                                                         <div class="fv-row mb-15">
 															<!--begin::Label-->
-															<label class="fs-6 fw-bold mb-2">Telephone </label>
+															<label class="fs-6 fw-bold mb-2">date de demande  </label>
 															<!--end::Label-->
 															<!--begin::Input-->
-															<input type="tel" class="form-control form-control-solid" placeholder="" name="telephone" id="telephone" required="required"/>
-															 @if ($errors->has('telephone'))
-                                                              {{ $errors->first('telephone') }}
+															<input type="date" class="form-control form-control-solid" placeholder="" name="date_demande" id="date_demande" required="required"/>
+															 
 														</div>
-                                                        @endif
+                                                     
                                                         <div class="fv-row mb-15">
 															<!--begin::Label-->
-															<label class="fs-6 fw-bold mb-2">Adresse </label>
+															<label class="fs-6 fw-bold mb-2">description </label>
 															<!--end::Label-->
 															<!--begin::Input-->
-															<input type="tel" class="form-control form-control-solid" placeholder="" name="Adresse" id="Adresse" required="required" />
+															<textarea  class="form-control form-control-solid" placeholder="" name="description" id="description" required="required" ></textarea>
 															<!--end::Input-->
 														</div>
                                                         <div class="fv-row mb-15">
 															<!--begin::Label-->
-															<label class="fs-6 fw-bold mb-2">localisation </label>
+															<label class="fs-6 fw-bold mb-2">vis à vis </label>
 															<!--end::Label-->
 															<!--begin::Input-->
-															<input type="tel" class="form-control form-control-solid" placeholder="" name="localisation" id="localisation" required="required"/>
+															<input type="text" class="form-control form-control-solid" placeholder="" name="vis_a_vis" id="vis_a_vis" required="required"/>
 															<!--end::Input-->
 														</div>
                                                         	<div class="d-flex flex-column mb-7 fv-row">
 																<!--begin::Label-->
 																<label class="fs-6 fw-bold mb-2">
-																	<span class="required">Application</span>
+																	<span class="required">code client</span>
 																	<i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Application utilisée"></i>
 																</label>
-                                                          	<select name="application_id" class="form-select form-select-solid fw-bolder">
-																  @foreach ($Applications as $Application)
-            <option value="{{ $Application->id }}">{{ $Application->libelle }}</option>
+                                                          	<select name="client_id" class="form-select form-select-solid fw-bolder">
+																  @foreach ($clients as $client)
+            <option value="{{ $client->id }}">{{ $client->code_client }}</option>
         @endforeach	
                                                             </select>
                                                              </div>   

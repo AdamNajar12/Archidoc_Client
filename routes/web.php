@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ClientController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApplicationController;
-
+use App\Http\Controllers\TicketController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,6 +34,12 @@ Route::get('/Applications/{Application}/edit', [ApplicationController::class, 'e
 Route::put('/Applications/{Application}', [ApplicationController::class, 'update'])->name('Applications.update');
 Route::delete('/Applications/{Application}', [ApplicationController::class, 'destroy'])->name('Applications.destroy');
 
+Route::get('/tickets', [TicketController::class, 'showTickets'])->name('ticket.index');
+Route::get('/tickets/create', [TicketController::class, 'create'])->name('ticket.create');
+Route::post('/tickets', [TicketController::class, 'store'])->name('ticket.store');
+Route::get('/tickets/{ticket}/edit', [TicketController::class, 'edit'])->name('ticket.edit');
+Route::put('/tickets/{ticket}', [TicketController::class, 'update'])->name('ticket.update');
+Route::delete('/tickets/{ticket}', [TicketController::class, 'destroy'])->name('ticket.destroy');
 
 Route::get('/Admin', function () {
     return view('layouts.dashboard_Admin');

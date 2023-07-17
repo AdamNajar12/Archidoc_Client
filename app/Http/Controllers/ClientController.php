@@ -30,7 +30,7 @@ class ClientController extends Controller
     $validatedData = $request->validate([
         'code_client' => 'required',
         'raison_sociale' => 'required',
-        'telephone' => 'required',
+        'telephone' =>  'required|digits:8',
         'Adresse' => 'required',
         'localisation' => 'required',
     ]);

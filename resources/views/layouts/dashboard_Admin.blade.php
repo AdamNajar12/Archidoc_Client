@@ -1728,7 +1728,11 @@ License: For each use you must have a valid license purchased only from above li
 													<span class="menu-title">Applications</span>
 												</a>
 											</div>
-											
+											 <div class="menu-item me-lg-1">
+												<a class="menu-link active py-3" href="/tickets">
+													<span class="menu-title">Tickets</span>
+												</a>
+											</div>
 											
 										</div>
 										<!--end::Menu-->
