@@ -50,7 +50,7 @@ class ticketController extends Controller
         $clients = client::pluck('code_client', 'id');
         
         
-        return view('ticket.edit', compact('ticket'));
+        return view('ticket.edit', compact('ticket','clients'));
     }
     
     public function update(Request $request,  $id)
@@ -60,6 +60,7 @@ class ticketController extends Controller
         $validatedData = $request->validate([
             'type_intervention' => 'required',
             'statut' => 'required',
+            'date_demande' => 'required|date',
             'description' =>  'required',
             'vis_a_vis' => 'required',
             'client_id' => 'required|exists:clients,id',
@@ -75,9 +76,9 @@ class ticketController extends Controller
     
     
     
-    public function destroy(client $client)
+    public function destroy(ticket $ticket)
     {
-        $client->delete();
+        $ticket->delete();
         return redirect()->route('ticket.index');
     }
     

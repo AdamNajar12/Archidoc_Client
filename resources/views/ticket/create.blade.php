@@ -4,7 +4,7 @@
 										<!--begin::Modal content-->
 										<div class="modal-content">
 											<!--begin::Form-->
-											<form class="form" action="{{ route('tickets.store') }}" method="POST" >
+											<form class="form" action="{{ route('ticket.store') }}" method="POST" >
 												    @csrf
                                                 <!--begin::Modal header-->
 												<div class="modal-header" id="kt_modal_add_customer_header">
@@ -105,7 +105,7 @@
 														<!--begin::Billing toggle-->
 																									<div class="modal-footer flex-center">
 													<!--begin::Button-->
-												<a href="/clients"class="btn btn-light me-3"id="kt_modal_add_customer_cancel">	cancel
+												<a href="/tickets"class="btn btn-light me-3"id="kt_modal_add_customer_cancel">	cancel
 													</a>
                                                     <!--end::Button-->
 													<!--begin::Button-->
