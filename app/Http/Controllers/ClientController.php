@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\client;
 use App\Models\Application;
 use App\Models\Client_Application;
+use Illuminate\Support\Facades\DB;
+
 class ClientController extends Controller
 {
     public function showClients()
@@ -25,25 +27,68 @@ class ClientController extends Controller
        
     }
     
-    public function store(Request $request)
+    public function store(Request $request,client $client)
 {
+ /*   $validatedData = $request->validate([
+        'code_client' => 'required',
+        'raison_sociale' => 'required',
+        'telephone' =>  'required|digits:8',
+        'Adresse' => 'required',
+        'localisation' => 'required',
+        
+    ]);
+   
+    $validatedData['user_id'] = auth()->user()->id;
+   
+    
+     $validatedApplicationData = $request->validate([
+        'application_id' => 'required|exists:applications,id',
+    ]);
+
+    $applicationID = $validatedApplicationData['application_id'];
+    $clientID = $client->id;
+    Client_Application::create([
+        'client_id' => $clientID,
+        'application_id'=> $applicationID  ,
+    ]);
+    $client = client::create($validatedData);
+    return redirect()->route('clients.index');*/
     $validatedData = $request->validate([
         'code_client' => 'required',
         'raison_sociale' => 'required',
         'telephone' =>  'required|digits:8',
         'Adresse' => 'required',
         'localisation' => 'required',
+        'application_id' => 'required|exists:applications,id',
     ]);
-   
+
     $validatedData['user_id'] = auth()->user()->id;
-    $applicationID = $request->input('application_id'); 
-    $client = client::create($validatedData);
-    $clientID = $client->id;
-    Client_Application::create([
-        'client_id' => $clientID,
-        'application_id'=> $applicationID  ,
-    ]);
-    return redirect()->route('clients.index');
+
+    try {
+        // Commencer la transaction
+        DB::beginTransaction();
+
+        // Créer le nouvel enregistrement client
+        $client = Client::create($validatedData);
+
+        // Créer l'enregistrement dans la table client_Application avec l'ID du client nouvellement créé
+        Client_Application::create([
+            'client_id' => $client->id,
+            'application_id' => $validatedData['application_id'],
+        ]);
+
+        // Valider la transaction
+        DB::commit();
+
+        return redirect()->route('clients.index');
+    } catch (\Exception $e) {
+        // En cas d'erreur, annuler la transaction
+        DB::rollback();
+
+        // Gérer l'erreur comme vous le souhaitez
+        // Par exemple, rediriger vers une page d'erreur ou afficher un message d'erreur
+        return back()->withErrors(['error' => 'Une erreur s\'est produite lors de la création du client et de l\'application. Veuillez réessayer.']);
+    }
 }
     
     public function edit($id)

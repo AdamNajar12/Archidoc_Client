@@ -4,16 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\statut;
 class StatutController extends Controller
 {
     public function showStatuts()
     {
 
-           $Statuts = Statuts::join('users', 'statuts.user_id', '=', 'users.id')
+           $Statuts = statut::join('users', 'statuts.user_id', '=', 'users.id')
     ->select('statuts.*', 'users.prenom as user_name','users.nom as second_name')
     ->get();
-        return view('statuts.index', compact('statuts'));
+        return view('statuts.index', compact('Statuts'));
     }
     public function create()
     {
@@ -39,11 +39,11 @@ class StatutController extends Controller
     public function edit($id)
     {
        
-        $statuts = statut::findOrFail($id);
+        $statut = statut::findOrFail($id);
      
         
         
-        return view('statuts.edit', compact('statuts '));
+        return view('statuts.edit', compact('statut'));
     }
     
     public function update(Request $request,  $id)

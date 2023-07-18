@@ -5,6 +5,8 @@ use App\Http\Controllers\ClientController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\StatutController;
+use App\Http\Controllers\Type_interventions;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,9 +43,27 @@ Route::get('/tickets/{ticket}/edit', [TicketController::class, 'edit'])->name('t
 Route::put('/tickets/{ticket}', [TicketController::class, 'update'])->name('ticket.update');
 Route::delete('/tickets/{ticket}', [TicketController::class, 'destroy'])->name('ticket.destroy');
 
+Route::get('/statuts', [StatutController::class, 'showStatuts'])->name('statuts.index');
+Route::get('/statuts/create', [StatutController::class, 'create'])->name('statuts.create');
+Route::post('/statuts', [StatutController::class, 'store'])->name('statuts.store');
+Route::get('/statuts/{statut}/edit', [StatutController::class, 'edit'])->name('statuts.edit');
+Route::put('/statuts/{statut}', [StatutController::class, 'update'])->name('statuts.update');
+Route::delete('/statuts/{statut}', [StatutController::class, 'destroy'])->name('statuts.destroy');
+
+Route::get('/type_interventions', [Type_interventions ::class, 'showType_d_interventions'])->name('type_intervention.index');
+Route::get('/type_interventions/create', [Type_interventions ::class, 'create'])->name('type_intervention.create');
+Route::post('/type_interventions', [Type_interventions ::class, 'store'])->name('type_intervention.store');
+Route::get('/type_interventions/{type_intervention}/edit', [Type_interventions::class, 'edit'])->name('type_intervention.edit');
+Route::put('/type_interventions/{type_intervention}', [Type_interventions::class, 'update'])->name('type_intervention.update');
+Route::delete('/type_interventions/{type_intervention}', [Type_interventions::class, 'destroy'])->name('type_intervention.destroy');
+
+
+
+
+
 Route::get('/Admin', function () {
     return view('layouts.dashboard_Admin');
-})->middleware(['auth', 'verified'])->name('Admin   ');
+})->middleware(['auth', 'verified'])->name('Admin');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -53,4 +73,5 @@ Route::middleware('auth')->group(function () {
 Route::get('/Admin', function () {
     return view('layouts.dashboard_Admin');
 });
+
 require __DIR__.'/auth.php';

@@ -4,11 +4,11 @@
 											<!--begin::Header-->
 											<div class="card-header border-0 pt-5">
 												<h3 class="card-title align-items-start flex-column">
-													<span class="card-label fw-bolder fs-3 mb-1">Applications</span>
+													<span class="card-label fw-bolder fs-3 mb-1">les types d interventions </span>
 													
 												</h3>
 												<div class="card-toolbar"  title="Click to add a user">
-													<a href="/Applications/create" class="btn btn-sm btn-light btn-active-primary" >Nouvelle Application </a>
+													<a href="/type_interventions/create" class="btn btn-sm btn-light btn-active-primary" >Nouvelle type d'intervention </a>
 												</div>
 											</div>
 											<!--end::Header-->
@@ -34,7 +34,7 @@
 														<!--end::Table head-->
 														<!--begin::Table body-->
 														<tbody>
-															@foreach ($Applications as $Application)
+															@foreach ($type_interventions as $type_intervention)
                                                                 
                                                            
                                                             <tr>
@@ -47,7 +47,7 @@
 																	<div class="d-flex align-items-center">
 																
 																		<div class="d-flex justify-content-start flex-column">
-																			<a href="#" class="text-dark fw-bolder text-hover-primary fs-6">{{ $Application->libelle }}</a>
+																			<a href="#" class="text-dark fw-bolder text-hover-primary fs-6">{{ $type_intervention->libelle }}</a>
 																			
 																		</div>
 																	</div>
@@ -57,7 +57,7 @@
 																		<div class="d-flex align-items-center">
 																
 																		<div class="d-flex justify-content-start flex-column">
-																			<a href="#" class="text-dark fw-bolder text-hover-primary fs-6">{{ $Application->user_name }} {{ $Application->second_name }}</a>
+																			<a href="#" class="text-dark fw-bolder text-hover-primary fs-6">{{ $type_intervention->user_name }} {{ $type_intervention->second_name }}</a>
 																			
 																		</div>
 																	</div>
@@ -65,7 +65,7 @@
 																<td>
 																	<div class="d-flex justify-content-end flex-shrink-0">
 																		
-																		<a href="{{ route('Applications.edit', $Application->id) }}" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+																		<a href="{{ route('type_intervention.edit', $type_intervention->id) }}" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
 																			<!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
 																			<span class="svg-icon svg-icon-3">
 																				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -75,9 +75,9 @@
 																			</span>
 																			<!--end::Svg Icon-->
 																		</a>
-																		<a href="#" onclick="event.preventDefault(); if(confirm('Êtes-vous sûr de vouloir supprimer cette Application ?')) document.getElementById('delete-form-{{ $Application->id }}').submit();"  class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+																		<a href="#" onclick="event.preventDefault(); if(confirm('Êtes-vous sûr de vouloir supprimer ce type d intervention ?')) document.getElementById('delete-form-{{ $type_intervention->id }}').submit();"  class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
 																			<!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
-																			<form id="delete-form-{{ $Application->id }}" action="{{ route('Applications.destroy', $Application->id) }}" method="POST" style="display: none;">
+																			<form id="delete-form-{{ $type_intervention->id }}" action="{{ route('type_intervention.destroy', $type_intervention->id) }}" method="POST" style="display: none;">
     @csrf
     @method('DELETE')
 </form>

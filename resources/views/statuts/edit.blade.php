@@ -4,12 +4,13 @@
 										<!--begin::Modal content-->
 										<div class="modal-content">
 											<!--begin::Form-->
-											<form class="form" action="{{ route('Applications.store') }}" method="POST" >
+											<form class="form" action="{{ route('statuts.update', $statut->id) }}" method="POST"  >
 												    @csrf
+                                                   @method('PUT')
                                                 <!--begin::Modal header-->
 												<div class="modal-header" id="kt_modal_add_customer_header">
 													<!--begin::Modal title-->
-													<h2 class="fw-bolder">Ajouter Applications</h2>
+													<h2 class="fw-bolder">Modifier statut</h2>
 													<!--end::Modal title-->
 													<!--begin::Close-->
 													<div id="kt_modal_add_customer_close" class="btn btn-icon btn-sm btn-active-icon-primary">
@@ -35,7 +36,7 @@
 															<label class="required fs-6 fw-bold mb-2">libelle</label>
 															<!--end::Label-->
 															<!--begin::Input-->
-															<input type="text" class="form-control form-control-solid" placeholder="" name="libelle" id="libelle" />
+															<input type="text" class="form-control form-control-solid" placeholder="" name="libelle" id="libelle" value="{{ $statut->libelle }}" />
 															<!--end::Input-->
 														</div>
 														<!--end::Input group-->
@@ -43,14 +44,12 @@
 														
 														<!--end::Input group-->
 														<!--begin::Billing toggle-->
-																									<div class="modal-footer flex-center">
-													<!--begin::Button-->
-												<a href="/Applications"class="btn btn-light me-3"id="kt_modal_add_customer_cancel">	cancel
+																										<!--end::Button-->
+                                                                                                        <a href="/statuts"class="btn btn-light me-3"id="kt_modal_add_customer_cancel">	cancel
 													</a>
-                                                    <!--end::Button-->
 													<!--begin::Button-->
 													<button type="submit" id="kt_modal_add_customer_submit" class="btn btn-primary">
-														<span class="indicator-label">Creer</span>
+														<span class="indicator-label">Modifier</span>
 													</button>
 													<!--end::Button-->
 												</div>
