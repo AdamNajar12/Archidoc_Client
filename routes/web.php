@@ -7,6 +7,7 @@ use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\StatutController;
 use App\Http\Controllers\Type_interventions;
+use App\Http\Controllers\UtilisateurController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -56,6 +57,14 @@ Route::post('/type_interventions', [Type_interventions ::class, 'store'])->name(
 Route::get('/type_interventions/{type_intervention}/edit', [Type_interventions::class, 'edit'])->name('type_intervention.edit');
 Route::put('/type_interventions/{type_intervention}', [Type_interventions::class, 'update'])->name('type_intervention.update');
 Route::delete('/type_interventions/{type_intervention}', [Type_interventions::class, 'destroy'])->name('type_intervention.destroy');
+
+Route::get('/users', [UtilisateurController ::class, 'showUsers'])->name('users.index');
+Route::get('/users/create', [UtilisateurController ::class, 'create'])->name('users.create');
+Route::post('/users', [UtilisateurController ::class, 'store'])->name('users.store');
+Route::get('/users/{user}/edit', [UtilisateurController::class, 'edit'])->name('users.edit');
+Route::put('/users/{user}', [UtilisateurController::class, 'update'])->name('users.update');
+Route::delete('/users/{user}', [UtilisateurController::class, 'destroy'])->name('users.destroy');
+
 
 
 
