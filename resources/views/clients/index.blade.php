@@ -95,7 +95,7 @@
 																		<div class="d-flex align-items-center">
 																
 																		<div class="d-flex justify-content-start flex-column">
-																			<a href="#" class="text-dark fw-bolder text-hover-primary fs-6">{{ $client->user_name }}</a>
+																			<a href="#" class="text-dark fw-bolder text-hover-primary fs-6">{{ $client->user_name }}  {{ $client->second_name }}</a>
 																			
 																		</div>
 																	</div>

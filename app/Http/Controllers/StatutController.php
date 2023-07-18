@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Application;
-class ApplicationController extends Controller
+
+class StatutController extends Controller
 {
-    public function showApplications()
+    public function showStatus()
     {
 
-           $Applications = Application::join('users', 'Applications.user_id', '=', 'users.id')
-    ->select('Applications.*', 'users.prenom as user_name','users.nom as second_name')
+           $Statuts = Statut::join('users', 'Applications.user_id', '=', 'users.id')
+    ->select('Statuts.*', 'users.prenom as user_name','users.nom as second_name')
     ->get();
         return view('Applications.index', compact('Applications'));
     }
@@ -70,6 +70,4 @@ class ApplicationController extends Controller
         $Application->delete();
         return redirect()->route('Applications.index');
     }
-    
-
 }

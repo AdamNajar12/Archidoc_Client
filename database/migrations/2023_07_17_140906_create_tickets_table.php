@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
-            $table->string('type_intervention');
-            $table->string('statut');
+            $table->unsignedBigInteger('type_intervention');
+            $table->unsignedBigInteger('statut');
             $table->date('date_demande');
             $table->text('description');
             $table->text('vis_a_vis');
@@ -22,6 +22,8 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('type_intervention')->references('id')->on('type_interventions')->onDelete('cascade');
+            $table->foreign('statut')->references('id')->on('statuts')->onDelete('cascade');
             $table->timestamps();
         });
     }

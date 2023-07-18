@@ -26,9 +26,9 @@
 																		<input class="form-check-input" type="checkbox" value="1" data-kt-check="true" data-kt-check-target=".widget-9-check" />
 																	</div>
 																</th>
-																<th class="min-w-150px">type_intervention </th>
+																<th class="min-w-150px">type d'intervention </th>
 																<th class="min-w-140px">statut</th>
-																<th class="min-w-120px">date_demande</th>
+																<th class="min-w-120px">date demandé</th>
                                                                 <th class="min-w-120px">description</th>
                                                                 <th class="min-w-120px">vis à vis </th>
 																<th class="min-w-120px">code client </th>
@@ -105,7 +105,7 @@
 																		<div class="d-flex align-items-center">
 																
 																		<div class="d-flex justify-content-start flex-column">
-																			<a href="#" class="text-dark fw-bolder text-hover-primary fs-6">{{ $ticket->user_name }}</a>
+																			<a href="#" class="text-dark fw-bolder text-hover-primary fs-6">{{ $ticket->user_name }} {{ $ticket->second_name }}</a>
 																			
 																		</div>
 																	</div>

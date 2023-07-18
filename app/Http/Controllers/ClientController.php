@@ -14,7 +14,7 @@ class ClientController extends Controller
     {
 
            $clients = Client::join('users', 'clients.user_id', '=', 'users.id')
-    ->select('clients.*', 'users.prenom as user_name')
+    ->select('clients.*', 'users.prenom as user_name','users.nom as second_name')
     ->get();
         return view('clients.index', compact('clients'));
     }

@@ -13,7 +13,7 @@ class ticketController extends Controller
 
         $tickets = ticket::join('users', 'tickets.user_id', '=', 'users.id')
         ->join('clients', 'tickets.client_id', '=', 'clients.id')
-        ->select('tickets.*', 'users.prenom as user_name', 'clients.code_client')
+        ->select('tickets.*', 'users.prenom as user_name', 'clients.code_client','users.nom as second_name')
         ->get();
     
         return view('ticket.index', compact('tickets'));
@@ -37,10 +37,19 @@ class ticketController extends Controller
     ]);
    
     $validatedData['user_id'] = auth()->user()->id;
-     
+    $applicationID = $request->input('application_id'); 
+    $client = client::create($validatedData);
+    $clientID = $ticket->client_id;
+    $statut = $ticket->statut;
+  /*  Traitement::create([
+        'date_traitement'=> ,
+        'statut' => $statut  ,
+        'client' => $clientID,
+        'application_id'=> $applicationID  ,
+    ]);
     $ticket = ticket::create($validatedData);
     
-    return redirect()->route('ticket.index');
+    return redirect()->route('ticket.index');*/
 }
     
     public function edit($id)
