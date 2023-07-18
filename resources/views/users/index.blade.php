@@ -8,7 +8,7 @@
 													
 												</h3>
 												<div class="card-toolbar"  title="Click to add a user">
-													<a href="/clients/create" class="btn btn-sm btn-light btn-active-primary" >Nouveau Client </a>
+													<a href="/users/create" class="btn btn-sm btn-light btn-active-primary" >Nouveau Utilisateur </a>
 												</div>
 											</div>
 											<!--end::Header-->
@@ -27,7 +27,7 @@
 																	</div>
 																</th>
 																<th class="min-w-150px">Nom</th>
-																<th class="min-w-140px">¨Prenom</th>
+																<th class="min-w-140px">Prenom</th>
 																<th class="min-w-120px">Nom Utilisateur </th>
                                                                 <th class="min-w-120px">Adresse email </th>
                                                                 <th class="min-w-120px">role</th>

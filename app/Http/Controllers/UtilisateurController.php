@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Validation\Rules;
 class UtilisateurController extends Controller
 {
 
@@ -24,7 +27,25 @@ class UtilisateurController extends Controller
     
     public function store(Request $request)
 {
- 
+    $request->validate([
+        'nom' => ['required', 'string', 'max:255'],
+        'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+        'password' => ['required', 'confirmed', Rules\Password::defaults()],
+    ]);
+    $user = User::create([
+        'nom' => $request->nom,
+        'prenom' => $request->prenom,
+        'user_name' => $request->username,
+        'role' => $request->role,
+        'email' => $request->email,
+        'password' => Hash::make($request->password),
+    ]);
+    
+
+    event(new Registered($user));
+
+    Auth::login($user);
+    return redirect()->route('users.index');
 }
     
     public function edit($id)
