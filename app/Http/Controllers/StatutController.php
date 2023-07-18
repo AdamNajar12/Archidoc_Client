@@ -7,18 +7,18 @@ use Illuminate\Http\Request;
 
 class StatutController extends Controller
 {
-    public function showStatus()
+    public function showStatuts()
     {
 
-           $Statuts = Statut::join('users', 'Applications.user_id', '=', 'users.id')
-    ->select('Statuts.*', 'users.prenom as user_name','users.nom as second_name')
+           $Statuts = Statuts::join('users', 'statuts.user_id', '=', 'users.id')
+    ->select('statuts.*', 'users.prenom as user_name','users.nom as second_name')
     ->get();
-        return view('Applications.index', compact('Applications'));
+        return view('statuts.index', compact('statuts'));
     }
     public function create()
     {
       
-        return view('Applications.create');
+        return view('statuts.create');
        
     }
     
@@ -31,24 +31,24 @@ class StatutController extends Controller
 
     $validatedData['user_id'] = auth()->user()->id;
 
-    $Application = Application::create($validatedData);
+    $Statut = statut::create($validatedData);
 
-    return redirect()->route('Applications.index');
+    return redirect()->route('statuts.index');
 }
     
     public function edit($id)
     {
        
-        $Application = Application::findOrFail($id);
+        $statuts = statut::findOrFail($id);
      
         
         
-        return view('Applications.edit', compact('Application'));
+        return view('statuts.edit', compact('statuts '));
     }
     
     public function update(Request $request,  $id)
     {
-        $Application = Application::findOrFail($id);
+        $statuts = statut::findOrFail($id);
 
         $validatedData = $request->validate([
             'libelle' => 'required',
@@ -60,14 +60,15 @@ class StatutController extends Controller
     
         $Application->update($data);
     
-        return redirect()->route('Applications.index');
+        return redirect()->route('statuts.index');
     }
     
     
     
-    public function destroy(Application $Application)
+    public function destroy(statut $statut)
     {
-        $Application->delete();
-        return redirect()->route('Applications.index');
+        $statut->delete();
+        return redirect()->route('statuts.index');
     }
+    
 }

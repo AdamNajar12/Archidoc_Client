@@ -7,18 +7,18 @@ use Illuminate\Http\Request;
 
 class Type_intervention extends Controller
 {
-    public function showStatuts()
+    public function showType_d_interventions()
     {
 
-           $Statuts = Statuts::join('users', 'statuts.user_id', '=', 'users.id')
-    ->select('statuts.*', 'users.prenom as user_name','users.nom as second_name')
+           $type_interventions = type_intervention::join('users', 'type_interventions.user_id', '=', 'users.id')
+    ->select('type_interventions.*', 'users.prenom as user_name','users.nom as second_name')
     ->get();
-        return view('statuts.index', compact('statuts'));
+        return view('type_interventions.index', compact('statuts'));
     }
     public function create()
     {
       
-        return view('statuts.create');
+        return view('type_interventions.create');
        
     }
     
@@ -31,24 +31,24 @@ class Type_intervention extends Controller
 
     $validatedData['user_id'] = auth()->user()->id;
 
-    $Statut = statut::create($validatedData);
+    $type_intervention = type_intervention::create($validatedData);
 
-    return redirect()->route('statuts.index');
+    return redirect()->route('type_interventions.index');
 }
     
     public function edit($id)
     {
        
-        $statuts = statut::findOrFail($id);
+        $type_interventions = type_intervention::findOrFail($id);
      
         
         
-        return view('statuts.edit', compact('statuts '));
+        return view('type_interventions.edit', compact('type_interventions'));
     }
     
     public function update(Request $request,  $id)
     {
-        $statuts = statut::findOrFail($id);
+        $type_interventions = type_intervention::findOrFail($id);
 
         $validatedData = $request->validate([
             'libelle' => 'required',
@@ -58,17 +58,17 @@ class Type_intervention extends Controller
         $data = $request->only(['libelle']);
         $data['user_id'] = auth()->user()->id;
     
-        $Application->update($data);
+        $type_intervention->update($data);
     
-        return redirect()->route('statuts.index');
+        return redirect()->route('type_interventions.index');
     }
     
     
     
-    public function destroy(statut $staut)
+    public function destroy(type_intervention $type_intervention)
     {
-        $statut->delete();
-        return redirect()->route('statuts.index');
+        $type_intervention->delete();
+        return redirect()->route('type_interventions.index');
     }
     
 
