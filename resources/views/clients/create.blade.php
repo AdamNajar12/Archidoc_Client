@@ -36,6 +36,9 @@
 															<!--end::Label-->
 															<!--begin::Input-->
 															<input type="text" class="form-control form-control-solid" placeholder="" name="code_client" id="code_client" required="required" />
+																 @if ($errors->has('code_client'))
+                                                              {{ $errors->first('code_client') }}
+															  @endif
 															<!--end::Input-->
 														</div>
 														<!--end::Input group-->
@@ -49,6 +52,9 @@
 															<!--end::Label-->
 															<!--begin::Input-->
 															<input type="text" class="form-control form-control-solid" placeholder="" name="raison_sociale" id="raison_sociale"required="required" />
+																 @if ($errors->has('raison_sociale'))
+                                                              {{ $errors->first('raison_sociale') }}
+															  @endif
 															<!--end::Input-->
 														</div>
 														<!--end::Input group-->
@@ -78,20 +84,26 @@
 															<!--end::Label-->
 															<!--begin::Input-->
 															<input type="tel" class="form-control form-control-solid" placeholder="" name="localisation" id="localisation" required="required"/>
+																 @if ($errors->has('localisation'))
+                                                              {{ $errors->first('localisation') }}
+															  @endif
 															<!--end::Input-->
 														</div>
-                                                        	<div class="d-flex flex-column mb-7 fv-row">
-																<!--begin::Label-->
-																<label class="fs-6 fw-bold mb-2">
-																	<span class="required">Application</span>
-																	<i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Application utilisée"></i>
-																</label>
-                                                          	<select name="application_id" class="form-select form-select-solid fw-bolder">
-																  @foreach ($Applications as $Application)
-            <option value="{{ $Application->id }}">{{ $Application->libelle }}</option>
-        @endforeach	
-                                                            </select>
-                                                             </div>   
+                                                        	  <div id="applications-container">
+        <div class="d-flex flex-column mb-7 fv-row">
+            <label class="fs-6 fw-bold mb-2">
+                <span class="required">Application</span>
+                <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Application utilisée"></i>
+            </label>
+            <select name="applications[]" class="form-select form-select-solid fw-bolder">
+                @foreach ($Applications as $Application)
+                    <option value="{{ $Application->id }}">{{ $Application->libelle }}</option>
+                @endforeach
+            </select>
+			<button type="button" id="add-application-btn" class="btn btn-primary">Ajouter une application</button>
+
+        </div>
+    </div>
 														<!--end::Input group-->
 														<!--begin::Billing toggle-->
 																									<div class="modal-footer flex-center">
@@ -111,6 +123,23 @@
 										</div>
 									</div>
 								</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Écouteur d'événement pour le clic sur le bouton "Ajouter une application"
+        $('#add-application-btn').on('click', function () {
+            // Cloner le dernier champ d'application
+            var lastInput = $('#applications-container').children().last();
+            var clonedInput = lastInput.clone();
+
+            // Effacer la valeur du champ cloné
+            clonedInput.find('select').val('');
+
+            // Ajouter le champ cloné au conteneur des applications
+            $('#applications-container').append(clonedInput);
+        });
+    });
+</script>
 
 
 

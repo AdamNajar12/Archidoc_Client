@@ -54,12 +54,22 @@ class ClientController extends Controller
     $client = client::create($validatedData);
     return redirect()->route('clients.index');*/
     $validatedData = $request->validate([
-        'code_client' => 'required',
+        'code_client' => 'required|unique:clients',
         'raison_sociale' => 'required',
         'telephone' =>  'required|digits:8',
         'Adresse' => 'required',
         'localisation' => 'required',
-        'application_id' => 'required|exists:applications,id',
+        'applications' => 'required|array|exists:applications,id',
+    ], [
+        'code_client.required' => 'Le code client est obligatoire.',
+        'code_client.unique' => 'Ce code client est déjà utilisé. Veuillez en choisir un autre.',
+        'raison_sociale.required' => 'La raison sociale est obligatoire.',
+        'telephone.required' => 'Le numéro de téléphone est obligatoire.',
+        'telephone.digits' => 'Le numéro de téléphone doit contenir 8 chiffres.',
+        'Adresse.required' => 'L\'adresse est obligatoire.',
+        'localisation.required' => 'La localisation est obligatoire.',
+        'application_id.required' => 'Veuillez sélectionner une application.',
+        'application_id.exists' => 'L\'application sélectionnée est invalide.',
     ]);
 
     $validatedData['user_id'] = auth()->user()->id;
@@ -70,12 +80,18 @@ class ClientController extends Controller
 
         // Créer le nouvel enregistrement client
         $client = Client::create($validatedData);
+        $applicationIds = $request->input('applications');
 
-        // Créer l'enregistrement dans la table client_Application avec l'ID du client nouvellement créé
-        Client_Application::create([
-            'client_id' => $client->id,
-            'application_id' => $validatedData['application_id'],
-        ]);
+        // Créer les enregistrements dans la table client_Application avec l'ID du client nouvellement créé
+        $clientApplications = [];
+        foreach ($applicationIds as $applicationId) {
+            $clientApplications[] = [
+                'client_id' => $client->id,
+                'application_id' => $applicationId,
+            ];
+        }
+        Client_Application::insert($clientApplications);
+
 
         // Valider la transaction
         DB::commit();
@@ -123,9 +139,10 @@ class ClientController extends Controller
     
     
     
-    public function destroy(client $client)
+    public function destroy(client $client,Client_Application $client_Application)
     {
         $client->delete();
+        $client_Application->delete();
         return redirect()->route('clients.index');
     }
     

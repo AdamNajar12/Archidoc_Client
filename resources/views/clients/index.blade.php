@@ -52,7 +52,6 @@
 																
 																		<div class="d-flex justify-content-start flex-column">
 																			<a href="#" class="text-dark fw-bolder text-hover-primary fs-6">{{ $client->code_client }}</a>
-																			
 																		</div>
 																	</div>
 																</td>
