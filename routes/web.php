@@ -29,6 +29,8 @@ Route::post('/clients', [ClientController::class, 'store'])->name('clients.store
 Route::get('/clients/{client}/edit', [ClientController::class, 'edit'])->name('clients.edit');
 Route::put('/clients/{client}', [ClientController::class, 'update'])->name('clients.update');
 Route::delete('/clients/{client}', [ClientController::class, 'destroy'])->name('clients.destroy');
+Route::get('/clients/{client}/applications', [ClientController::class, 'ShowApplications_for_Clients'])->name('clients.applications');
+
 
 Route::get('/Applications', [ApplicationController::class, 'showApplications'])->name('Applications.index');
 Route::get('/Applications/create', [ApplicationController::class, 'create'])->name('Applications.create');
@@ -36,6 +38,7 @@ Route::post('/Applications', [ApplicationController::class, 'store'])->name('App
 Route::get('/Applications/{Application}/edit', [ApplicationController::class, 'edit'])->name('Applications.edit');
 Route::put('/Applications/{Application}', [ApplicationController::class, 'update'])->name('Applications.update');
 Route::delete('/Applications/{Application}', [ApplicationController::class, 'destroy'])->name('Applications.destroy');
+
 
 Route::get('/tickets', [TicketController::class, 'showTickets'])->name('ticket.index');
 Route::get('/tickets/create', [TicketController::class, 'create'])->name('ticket.create');

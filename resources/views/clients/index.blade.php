@@ -101,6 +101,7 @@
 																</td>
 																<td>
 																	<div class="d-flex justify-content-end flex-shrink-0">
+																			<a href="{{ route('clients.applications', $client->id) }}" class="btn btn-sm btn-light btn-active-primary" >voir les applications</a>
 																		
 																		<a href="{{ route('clients.edit', $client->id) }}" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
 																			<!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->

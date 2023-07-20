@@ -145,6 +145,12 @@ class ClientController extends Controller
         $client_Application->delete();
         return redirect()->route('clients.index');
     }
-    
+    public function ShowApplications_for_Clients($id)
+    {
+        $client = Client::findOrFail($id);
+        $applications = $client->applications;
+        return view('clients.applications', compact('client', 'applications'));
+
+    }
 
 }
