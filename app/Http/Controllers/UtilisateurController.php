@@ -55,27 +55,27 @@ class UtilisateurController extends Controller
      
         
         
-        return view('users.edit');
+        return view('users.edit',compact('user'));
     }
     
     public function update(Request $request,  $id)
     {
-        $users = User::findOrFail($id);
+        $user = User::findOrFail($id);
 
         $validatedData = $request->validate([
-            'code_client' => 'required',
-            'raison_sociale' => 'required',
-            'telephone' => 'required',
-            'Adresse' => 'required',
-            'localisation' => 'required'
+            'nom' => 'required',
+            'prenom' => 'required',
+            'user_name' => 'required',
+            'role' => 'required',
+            'email' => 'required'
         ]);
     
-        $data = $request->only(['code_client', 'raison_sociale', 'telephone', 'Adresse', 'localisation']);
-        $data['user_id'] = auth()->user()->id;
+        $data = $request->only(['nom', 'prenom', 'user_name', 'role', 'email']);
+        
     
-        $client->update($data);
+        $user->update($data);
     
-        return redirect()->route('clients.index');
+        return redirect()->route('users.index');
     }
     
     

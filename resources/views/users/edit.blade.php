@@ -10,7 +10,7 @@
                                                 <!--begin::Modal header-->
 												<div class="modal-header" id="kt_modal_add_customer_header">
 													<!--begin::Modal title-->
-													<h2 class="fw-bolder">Modifier Utili</h2>
+													<h2 class="fw-bolder">Modifier Utilisateur</h2>
 													<!--end::Modal title-->
 													<!--begin::Close-->
 													<div id="kt_modal_add_customer_close" class="btn btn-icon btn-sm btn-active-icon-primary">
@@ -33,10 +33,10 @@
 														<!--begin::Input group-->
 														<div class="fv-row mb-7">
 															<!--begin::Label-->
-															<label class="required fs-6 fw-bold mb-2">code client</label>
+															<label class="required fs-6 fw-bold mb-2">nom</label>
 															<!--end::Label-->
 															<!--begin::Input-->
-															<input type="text" class="form-control form-control-solid" placeholder="" name="code_client" id="code_client" value="{{ $client->code_client }}" />
+															<input type="text" class="form-control form-control-solid" placeholder="" name="nom" id="nom" value="{{ $user->nom }}" />
 															<!--end::Input-->
 														</div>
 														<!--end::Input group-->
@@ -44,44 +44,44 @@
 														<div class="fv-row mb-7">
 															<!--begin::Label-->
 															<label class="fs-6 fw-bold mb-2">
-																<span class="required">raison Sociale</span>
+																<span class="required">prenom</span>
 																<i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Email address must be active"></i>
 															</label>
 															<!--end::Label-->
 															<!--begin::Input-->
-															<input type="text" class="form-control form-control-solid" placeholder="" name="raison_sociale" id="raison_sociale" value="{{ $client->raison_sociale }}"/>
+															<input type="text" class="form-control form-control-solid" placeholder="" name="prenom" id="prenom" value="{{ $user->prenom }}"/>
 															<!--end::Input-->
 														</div>
 														<!--end::Input group-->
 														<!--begin::Input group-->
 														<div class="fv-row mb-15">
 															<!--begin::Label-->
-															<label class="fs-6 fw-bold mb-2">Telephone </label>
+															<label class="fs-6 fw-bold mb-2">Nom utilisateur </label>
 															<!--end::Label-->
 															<!--begin::Input-->
-															<input type="tel" class="form-control form-control-solid" placeholder="" name="telephone" id="telephone" value="{{ $client->telephone }}"/>
+															<input type="tel" class="form-control form-control-solid" placeholder="" name="user_name" id="user_name" value="{{ $user->user_name }}"/>
 															<!--end::Input-->
 														</div>
                                                         <div class="fv-row mb-15">
 															<!--begin::Label-->
-															<label class="fs-6 fw-bold mb-2">Adresse </label>
+															<label class="fs-6 fw-bold mb-2">role </label>
 															<!--end::Label-->
 															<!--begin::Input-->
-															<input type="tel" class="form-control form-control-solid" placeholder="" name="Adresse" id="Adresse" value="{{ $client->Adresse }}" />
+															<input type="tel" class="form-control form-control-solid" placeholder="" name="role" id="role" value="{{ $user->role }}" />
 															<!--end::Input-->
 														</div>
                                                         <div class="fv-row mb-15">
 															<!--begin::Label-->
-															<label class="fs-6 fw-bold mb-2">localisation </label>
+															<label class="fs-6 fw-bold mb-2">email</label>
 															<!--end::Label-->
 															<!--begin::Input-->
-															<input type="tel" class="form-control form-control-solid" placeholder="" name="localisation" id="localisation" value="{{ $client ->localisation }}"/>
+															<input type="tel" class="form-control form-control-solid" placeholder="" name="email" id="email" value="{{ $user->email }}"/>
 															<!--end::Input-->
 														</div>
 														<!--end::Input group-->
 														<!--begin::Billing toggle-->
 																										<!--end::Button-->
-                                                                                                        <a href="/clients"class="btn btn-light me-3"id="kt_modal_add_customer_cancel">	cancel
+                                                                                                        <a href="/users"class="btn btn-light me-3"id="kt_modal_add_customer_cancel">	cancel
 													</a>
 													<!--begin::Button-->
 													<button type="submit" id="kt_modal_add_customer_submit" class="btn btn-primary">
