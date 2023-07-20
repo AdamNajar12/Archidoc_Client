@@ -14,13 +14,14 @@ class Client_Application extends Model
         // Ajoutez les autres colonnes qui sont autorisées à être assignées en masse
     ];
     
-    public function ticket()
+    public function client()
     {
-        return $this->belongsTo(ticket::class);
+        return $this->belongsTo(Client::class);
     }
 
     public function application()
     {
         return $this->belongsTo(Application::class);
     }
+
 }

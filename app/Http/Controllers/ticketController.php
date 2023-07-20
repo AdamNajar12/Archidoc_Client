@@ -6,6 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ticket;
 use App\Models\client;
+use App\Models\Application;
+use App\Models\type_intervention;
+use App\Models\statut;
+use App\Models\Ticket_Application;
+
 class ticketController extends Controller
 {
     public function showTickets()
@@ -13,23 +18,34 @@ class ticketController extends Controller
 
         $tickets = ticket::join('users', 'tickets.user_id', '=', 'users.id')
         ->join('clients', 'tickets.client_id', '=', 'clients.id')
-        ->select('tickets.*', 'users.prenom as user_name', 'clients.code_client','users.nom as second_name')
+        ->join('type_interventions','tickets.type_intervention','=','type_interventions.id')
+        ->join('statuts','tickets.statut','=','statuts.id')
+        ->select('tickets.*', 'users.prenom as user_name', 'clients.code_client','users.nom as second_name','type_interventions.libelle as type_intervention','statuts.libelle as statut')
         ->get();
     
         return view('ticket.index', compact('tickets'));
     }
     public function create()
-    {
-        $clients = client::all();
-        return view('ticket.create',compact('clients'));
-       
-    }
+{
+    $clients = Client::all();
+    $applications = collect(); // Créez une collection vide pour les applications
+
+    // Vérifiez si un client est sélectionné dans la requête
+    // Si oui, récupérez les applications associées à ce client
+  
+
+    $type_interventions = type_intervention::all();
+    $statuts = statut::all();
+
+    return view('ticket.create', compact('clients', 'applications', 'type_interventions', 'statuts'));
+}
+
     
     public function store(Request $request)
 {
     $validatedData = $request->validate([
         'type_intervention' => 'required',
-        'statut' => 'required',
+        'statut' => 'required|exists:statuts,id',
         'date_demande' => 'required|date',
         'description' =>  'required',
         'vis_a_vis' => 'required',
@@ -38,18 +54,38 @@ class ticketController extends Controller
    
     $validatedData['user_id'] = auth()->user()->id;
     $applicationID = $request->input('application_id'); 
-    $client = client::create($validatedData);
-    $clientID = $ticket->client_id;
-    $statut = $ticket->statut;
+
+    
+    $ticket = ticket::create($validatedData);
+    $ticketID = $ticket->id;
+    $validatedApplicationData = $request->validate([
+        'application_id' => 'required|exists:applications,id',
+    ]);
+
+    $applicationID = $validatedApplicationData['application_id'];
+    
+    Ticket_Application::create([
+        'ticket_id' => $ticketID,
+        'application_id'=> $applicationID  ,
+    ]);
+
+
+
+
+
+
+
+
+
+
+    return redirect()->route('ticket.index');
   /*  Traitement::create([
         'date_traitement'=> ,
         'statut' => $statut  ,
         'client' => $clientID,
         'application_id'=> $applicationID  ,
     ]);
-    $ticket = ticket::create($validatedData);
-    
-    return redirect()->route('ticket.index');*/
+    */
 }
     
     public function edit($id)
@@ -90,6 +126,19 @@ class ticketController extends Controller
         $ticket->delete();
         return redirect()->route('ticket.index');
     }
-    
+    public function getApplicationsForClient($id)
+{
+    // Récupérer le client à partir de l'ID
+    $client = Client::find($id);
+
+    // Si le client est trouvé, renvoyer les applications associées en tant que réponse JSON
+    if ($client) {
+        $applications = $client->applications;
+        return response()->json($applications);
+    }
+
+    // En cas d'erreur ou de client introuvable, renvoyer une réponse JSON vide
+    return response()->json([]);
+}
     
 }
