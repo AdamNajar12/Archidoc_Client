@@ -30,7 +30,7 @@ Route::get('/clients/{client}/edit', [ClientController::class, 'edit'])->name('c
 Route::put('/clients/{client}', [ClientController::class, 'update'])->name('clients.update');
 Route::delete('/clients/{client}', [ClientController::class, 'destroy'])->name('clients.destroy');
 Route::get('/clients/{client}/applications', [ClientController::class, 'ShowApplications_for_Clients'])->name('clients.applications');
-
+Route::get('/clients/{client}/details', [ClientController::class, 'ShowDetails'])->name('clients.details');
 
 Route::get('/Applications', [ApplicationController::class, 'showApplications'])->name('Applications.index');
 Route::get('/Applications/create', [ApplicationController::class, 'create'])->name('Applications.create');

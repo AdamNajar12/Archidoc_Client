@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\client;
 use App\Models\Application;
 use App\Models\Client_Application;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class ClientController extends Controller
@@ -19,6 +20,18 @@ class ClientController extends Controller
     ->select('clients.*', 'users.prenom as user_name','users.nom as second_name')
     ->get();
         return view('clients.index', compact('clients'));
+    }
+    public function showDetails($id)
+    {
+        $client = client::findOrFail($id);
+        $user = User::join('clients', 'users.id', '=', 'clients.user_id')
+        ->where('clients.id', $id)
+        ->select('users.prenom as user_prenom', 'users.nom as user_nom')
+        ->first();
+        return view('clients.Details', compact('client','user'));
+
+
+
     }
     public function create()
     {
@@ -111,7 +124,7 @@ class ClientController extends Controller
     {
        
         $client = client::findOrFail($id);
-     
+  
         
         
         return view('clients.edit', compact('client'));
