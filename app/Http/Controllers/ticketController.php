@@ -10,7 +10,8 @@ use App\Models\Application;
 use App\Models\type_intervention;
 use App\Models\statut;
 use App\Models\Ticket_Application;
-
+use Carbon\Carbon; 
+use App\Models\Traitement;
 class ticketController extends Controller
 {
     public function showTickets()
@@ -68,27 +69,21 @@ class ticketController extends Controller
         'ticket_id' => $ticketID,
         'application_id'=> $applicationID  ,
     ]);
-
-
-
-
-
-
-
-
-
-
-    return redirect()->route('ticket.index');
-  /*  Traitement::create([
-        'date_traitement'=> ,
+    $dateTraitement = Carbon::now();
+    $statut = $ticket->statut;
+    $client_id=$ticket->client_id;
+  Traitement::create([
+        'date_traitement'=>$dateTraitement ,
         'statut' => $statut  ,
-        'client' => $clientID,
-        'application_id'=> $applicationID  ,
+        'client' => $client_id,
+        'ticket_id'=> $ticketID  ,
+        'user_id' => auth()->user()->id,
     ]);
-    */
+    return redirect()->route('ticket.index');
 }
     
-    public function edit($id)
+  
+public function edit($id)
     {
        
         $ticket = ticket::findOrFail($id);
@@ -98,6 +93,7 @@ class ticketController extends Controller
         return view('ticket.edit', compact('ticket','clients'));
     }
     
+
     public function update(Request $request,  $id)
     {
         $ticket = ticket::findOrFail($id);
