@@ -95,12 +95,12 @@
                 <span class="required">Application</span>
                 <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Application utilisée"></i>
             </label>
-            <select name="applications[]" class="form-select form-select-solid fw-bolder">
+            <select name="applications[]" class="form-select form-select-solid fw-bolder" multiple>
                 @foreach ($Applications as $Application)
                     <option value="{{ $Application->id }}">{{ $Application->libelle }}</option>
                 @endforeach
             </select>
-			<button type="button" id="add-application-btn" class="btn btn-primary">Ajouter une application</button>
+			
 
         </div>
     </div>
@@ -123,23 +123,7 @@
 										</div>
 									</div>
 								</div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function () {
-        // Écouteur d'événement pour le clic sur le bouton "Ajouter une application"
-        $('#add-application-btn').on('click', function () {
-            // Cloner le dernier champ d'application
-            var lastInput = $('#applications-container').children().last();
-            var clonedInput = lastInput.clone();
 
-            // Effacer la valeur du champ cloné
-            clonedInput.find('select').val('');
-
-            // Ajouter le champ cloné au conteneur des applications
-            $('#applications-container').append(clonedInput);
-        });
-    });
-</script>
 
 
 
