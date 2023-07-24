@@ -62,7 +62,7 @@ class ticketController extends Controller
     // Vérifiez si un client est sélectionné dans la requête
     // Si oui, récupérez les applications associées à ce client
   
-
+     
     $type_interventions = type_intervention::all();
     $statuts = statut::all();
 
@@ -102,7 +102,7 @@ class ticketController extends Controller
     $client_id=$ticket->client_id;
   Traitement::create([
         'date_traitement'=>$dateTraitement ,
-        'statut' => $statut  ,
+        'statut_id' => $statut  ,
         'client' => $client_id,
         'ticket_id'=> $ticketID  ,
         'user_id' => auth()->user()->id,
@@ -115,10 +115,11 @@ public function edit($id)
     {
        
         $ticket = ticket::findOrFail($id);
-        $clients = client::pluck('code_client', 'id');
-        
-        
-        return view('ticket.edit', compact('ticket','clients'));
+      
+        $type_intervention=type_intervention::pluck('libelle','id');
+        $statut=statut::pluck('libelle','id');
+      
+        return view('ticket.edit', compact('statut','type_intervention','ticket'));
     }
     
 
@@ -129,17 +130,19 @@ public function edit($id)
         $validatedData = $request->validate([
             'type_intervention' => 'required',
             'statut' => 'required',
-            'date_demande' => 'required|date',
-            'description' =>  'required',
-            'vis_a_vis' => 'required',
-            'client_id' => 'required|exists:clients,id',
+          
         ]);
     
-        $data = $request->only(['type_intervention', 'statut', 'description', 'vis_a_vis', 'clinet_id']);
+        $data = $request->only(['type_intervention', 'statut']);
         $data['user_id'] = auth()->user()->id;
     
         $ticket->update($data);
-    
+
+      $traitement = Traitement::where('ticket_id', $ticket->id)->first();
+    if ($traitement) {
+        // Mettre à jour le statut du traitement en fonction du nouveau statut du ticket
+        $traitement->update(['statut_id' => $ticket->statut]);
+    }
         return redirect()->route('ticket.index');
     }
     

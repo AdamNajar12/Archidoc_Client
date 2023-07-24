@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('traitements', function (Blueprint $table) {
             $table->id();
             $table->date('date_traitement');
-            $table->string('statut');
+            $table->unsignedBigInteger('statut_id');
             $table->unsignedBigInteger('ticket_id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('ticket_id')->references('id')->on('tickets')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('statut_id')->references('id')->on('statuts')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -10,7 +10,7 @@ class Traitement extends Model
     use HasFactory;
     protected $fillable = [
         'date_traitement',
-        'statut',
+        'statut_id',
         'ticket_id',
         'user_id'
       
@@ -23,5 +23,9 @@ class Traitement extends Model
     {
         return $this->belongsTo(ticket::class);
     }
+public function statuts()
+{
+return $this->belongsTo(statut::class);
 
+}
 }
