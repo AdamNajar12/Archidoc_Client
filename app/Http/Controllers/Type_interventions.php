@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\type_intervention;
+use App\Models\User;
 
 class Type_interventions extends Controller
 {
@@ -23,6 +24,26 @@ class Type_interventions extends Controller
        
     }
     
+
+    public function showDetails($id)
+    {
+        $type_intervention = type_intervention::findOrFail($id);
+        $user = User::join('type_interventions', 'users.id', '=', 'type_interventions.user_id')
+        ->where('type_interventions.id', $id)
+        ->select('users.prenom as user_prenom', 'users.nom as user_nom')
+        ->first();
+        return view('type_intervention.Details', compact('type_intervention','user'));
+
+
+
+    }
+
+
+
+
+
+
+
     public function store(Request $request)
 {
     $validatedData = $request->validate([

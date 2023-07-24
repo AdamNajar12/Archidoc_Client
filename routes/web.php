@@ -63,6 +63,8 @@ Route::post('/type_interventions', [Type_interventions ::class, 'store'])->name(
 Route::get('/type_interventions/{type_intervention}/edit', [Type_interventions::class, 'edit'])->name('type_intervention.edit');
 Route::put('/type_interventions/{type_intervention}', [Type_interventions::class, 'update'])->name('type_intervention.update');
 Route::delete('/type_interventions/{type_intervention}', [Type_interventions::class, 'destroy'])->name('type_intervention.destroy');
+Route::get('/type_interventions/{type_intervention}/details', [Type_interventions::class, 'showDetails'])->name('type_intervention.details');
+
 
 Route::get('/users', [UtilisateurController ::class, 'showUsers'])->name('users.index');
 Route::get('/users/create', [UtilisateurController ::class, 'create'])->name('users.create');
