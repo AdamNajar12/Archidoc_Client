@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Application;
+use App\Models\User;
 class ApplicationController extends Controller
 {
     public function showApplications()
@@ -22,6 +23,21 @@ class ApplicationController extends Controller
        
     }
     
+
+    public function showDetails($id)
+    {
+        $Application = Application::findOrFail($id);
+        $user = User::join('applications', 'users.id', '=', 'applications.user_id')
+        ->where('applications.id', $id)
+        ->select('users.prenom as user_prenom', 'users.nom as user_nom')
+        ->first();
+        return view('Applications.Details', compact('Application','user'));
+
+
+
+    }
+
+
     public function store(Request $request)
 {
     $validatedData = $request->validate([
