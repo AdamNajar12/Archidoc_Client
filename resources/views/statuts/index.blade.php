@@ -27,7 +27,7 @@
 																	</div>
 																</th>
 																<th class="min-w-150px">libelle</th>
-                                                                <th class="min-w-120px">Modificateur</th>
+                                                               
 																<th class="min-w-100px text-end">Actions</th>
 															</tr>
 														</thead>
@@ -53,18 +53,10 @@
 																	</div>
 																</td>
 																
-                                                                <td >
-																		<div class="d-flex align-items-center">
-																
-																		<div class="d-flex justify-content-start flex-column">
-																			<a href="#" class="text-dark fw-bolder text-hover-primary fs-6">{{ $statut->user_name }} {{ $statut->second_name }}</a>
-																			
-																		</div>
-																	</div>
-																</td>
+                                                             
 																<td>
 																	<div class="d-flex justify-content-end flex-shrink-0">
-																		
+																		<a href="{{ route('statuts.details', $statut->id) }}" class="btn btn-sm btn-light btn-active-primary me-2">Details</a>
 																		<a href="{{ route('statuts.edit', $statut->id) }}" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
 																			<!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
 																			<span class="svg-icon svg-icon-3">

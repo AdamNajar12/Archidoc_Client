@@ -56,6 +56,10 @@ Route::post('/statuts', [StatutController::class, 'store'])->name('statuts.store
 Route::get('/statuts/{statut}/edit', [StatutController::class, 'edit'])->name('statuts.edit');
 Route::put('/statuts/{statut}', [StatutController::class, 'update'])->name('statuts.update');
 Route::delete('/statuts/{statut}', [StatutController::class, 'destroy'])->name('statuts.destroy');
+Route::get('/statuts/{statut}/details', [StatutController::class, 'showDetails'])->name('statuts.details');
+
+
+
 
 Route::get('/type_interventions', [Type_interventions ::class, 'showType_d_interventions'])->name('type_intervention.index');
 Route::get('/type_interventions/create', [Type_interventions ::class, 'create'])->name('type_intervention.create');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\statut;
+use App\Models\User;
 class StatutController extends Controller
 {
     public function showStatuts()
@@ -15,6 +16,26 @@ class StatutController extends Controller
     ->get();
         return view('statuts.index', compact('Statuts'));
     }
+
+    public function showDetails($id)
+    {
+        $statut= statut::findOrFail($id);
+        $user = User::join('statuts', 'users.id', '=', 'statuts.user_id')
+        ->where('statuts.id', $id)
+        ->select('users.prenom as user_prenom', 'users.nom as user_nom')
+        ->first();
+        return view('statuts.Details', compact('statut','user'));
+
+
+
+    }
+
+
+
+
+
+
+
     public function create()
     {
       
