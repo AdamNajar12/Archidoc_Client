@@ -11,6 +11,7 @@ use App\Models\type_intervention;
 use App\Models\statut;
 use App\Models\Ticket_Application;
 use Carbon\Carbon; 
+use App\Models\User;
 use App\Models\Traitement;
 class ticketController extends Controller
 {
@@ -26,6 +27,33 @@ class ticketController extends Controller
     
         return view('ticket.index', compact('tickets'));
     }
+    public function showDetails($id)
+    {
+        $ticket= Ticket::findOrFail($id);
+   
+        $user = User::join('tickets', 'users.id', '=', 'tickets.user_id')
+        ->where('tickets.id', $id)
+        ->select('users.prenom as user_prenom', 'users.nom as user_nom')
+        ->first();
+        $client=client::join('tickets','clients.id','=','tickets.client_id')
+        ->where('tickets.id',$id)
+        ->select('clients.code_client as code_client')
+        ->first();
+        $statut=statut::join('tickets','statuts.id','=','tickets.statut')
+        ->where('tickets.id',$id)
+        ->select('statuts.libelle as statut')
+        ->first();
+        $type_intervention=type_intervention::join('tickets','type_interventions.id','=','tickets.type_intervention')
+        ->where('tickets.id',$id)
+        ->select('type_interventions.libelle as type_intervention')
+        ->first();
+        return view('ticket.details', compact('statut','type_intervention','ticket','user','client'));
+
+
+
+    }
+   
+   
     public function create()
 {
     $clients = Client::all();

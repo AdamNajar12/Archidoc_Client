@@ -47,6 +47,8 @@ Route::get('/tickets/{ticket}/edit', [TicketController::class, 'edit'])->name('t
 Route::put('/tickets/{ticket}', [TicketController::class, 'update'])->name('ticket.update');
 Route::delete('/tickets/{ticket}', [TicketController::class, 'destroy'])->name('ticket.destroy');
 Route::get('/get-applications/{client}', [TicketController::class, 'getApplicationsForClient']);
+Route::get('/tickets/{ticket}/details', [TicketController::class, 'showDetails'])->name('tickets.details');
+
 
 Route::get('/statuts', [StatutController::class, 'showStatuts'])->name('statuts.index');
 Route::get('/statuts/create', [StatutController::class, 'create'])->name('statuts.create');

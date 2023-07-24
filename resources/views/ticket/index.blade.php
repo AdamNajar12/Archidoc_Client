@@ -29,11 +29,8 @@
 																<th class="min-w-150px">type d'intervention </th>
 																<th class="min-w-140px">statut</th>
 																<th class="min-w-120px">date demandé</th>
-                                                                <th class="min-w-120px">description</th>
-                                                                <th class="min-w-120px">vis à vis </th>
-																<th class="min-w-120px">code client </th>
-                                                                <th class="min-w-120px">Modificateur</th>
-																<th class="min-w-100px text-end">Actions</th>
+                                                                <th class="min-w-120px">code client </th>
+                                                                <th class="min-w-100px text-end">Actions</th>
 															</tr>
 														</thead>
 														<!--end::Table head-->
@@ -74,24 +71,8 @@
 																		</div>
 																	</div>
 																</td>
-                                                                	<td >
-																		<div class="d-flex align-items-center">
-																
-																		<div class="d-flex justify-content-start flex-column">
-																			<a href="#" class="text-dark fw-bolder text-hover-primary fs-6">{{ $ticket->description }}</a>
-																			
-																		</div>
-																	</div>
-																</td>
-                                                                <td >
-																		<div class="d-flex align-items-center">
-																
-																		<div class="d-flex justify-content-start flex-column">
-																			<a href="#" class="text-dark fw-bolder text-hover-primary fs-6">{{ $ticket->vis_a_vis }}</a>
-																			
-																		</div>
-																	</div>
-																</td>
+                                                                
+                                                                
                                                                 <td >
 																		<div class="d-flex align-items-center">
 																
@@ -101,18 +82,10 @@
 																		</div>
 																	</div>
 																</td>
-															    <td >
-																		<div class="d-flex align-items-center">
-																
-																		<div class="d-flex justify-content-start flex-column">
-																			<a href="#" class="text-dark fw-bolder text-hover-primary fs-6">{{ $ticket->user_name }} {{ $ticket->second_name }}</a>
-																			
-																		</div>
-																	</div>
-																</td>
+															   
 																<td>
 																	<div class="d-flex justify-content-end flex-shrink-0">
-																		
+																			<a href="{{ route('tickets.details', $ticket->id) }}" class="btn btn-sm btn-light btn-active-primary me-2">Details</a>
 																		<a href="{{ route('ticket.edit', $ticket->id) }}" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
 																			<!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
 																			<span class="svg-icon svg-icon-3">
