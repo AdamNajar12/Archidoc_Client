@@ -18,6 +18,15 @@ class UtilisateurController extends Controller
            $users = User::all();
         return view('users.index', compact('users'));
     }
+    public function showDetails($id)
+    {
+        $user = User::findOrFail($id);
+               return view('users.Details', compact('user'));
+
+
+
+    }
+
     public function create()
     {
         

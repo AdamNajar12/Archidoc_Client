@@ -76,7 +76,7 @@ Route::post('/users', [UtilisateurController ::class, 'store'])->name('users.sto
 Route::get('/users/{user}/edit', [UtilisateurController::class, 'edit'])->name('users.edit');
 Route::put('/users/{user}', [UtilisateurController::class, 'update'])->name('users.update');
 Route::delete('/users/{user}', [UtilisateurController::class, 'destroy'])->name('users.destroy');
-
+Route::get('/users/{user}/details', [UtilisateurController::class, 'showDetails'])->name('users.details');
 
 
 
