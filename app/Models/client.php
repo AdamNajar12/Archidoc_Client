@@ -27,5 +27,8 @@ class client extends Model
     {
         return $this->belongsToMany(Application::class, 'client__applications');
     }
-    
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
+    }
 }
