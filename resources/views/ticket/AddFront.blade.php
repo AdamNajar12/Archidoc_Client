@@ -76,6 +76,7 @@
                                                             </select>
                
 														</div>
+                                                        <br>
                                                           <div class="col-md-6 fv-row">
                                                         <button type="submit" id="kt_modal_add_customer_submit" class="btn btn-primary">
 														<span class="indicator-label">Creer</span>
@@ -88,7 +89,8 @@
 											<!--begin::Col-->
 											<div class="col-md-6 ps-lg-10">
 												<!--begin::Map-->
-												<div id="kt_contact_map" class="w-100 rounded mb-2 mb-lg-0 mt-2" style="height: 486px"></div>
+												<div id="map" style="height: 800px;"  class="w-100 rounded mb-2 mb-lg-0 mt-2" ></div>
+
 												<!--end::Map-->
 											</div>
 											<!--end::Col-->
@@ -213,6 +215,23 @@
             });
         });
     });
+</script>
+<script>
+      var latitude = 36.8985088;
+        var longitude = 10.1918423;
+
+        // Initialiser la carte
+        var map = L.map('map').setView([latitude, longitude], 15);
+
+        // Ajouter une couche de tuiles OpenStreetMap avec attribution
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Ajouter un marqueur personnalisé
+        L.marker([latitude, longitude]).addTo(map)
+            .bindPopup('Votre emplacement personnalisé !')
+            .openPopup();
 </script>
 
 @endsection

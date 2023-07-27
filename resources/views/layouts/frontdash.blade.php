@@ -13,7 +13,7 @@ License: For each use you must have a valid license purchased only from above li
 <html lang="en">
 	<!--begin::Head-->
 	<head><base href="">
-		<title>Metronic - the world's #1 selling Bootstrap Admin Theme Ecosystem for HTML, Vue, React, Angular &amp; Laravel by Keenthemes</title>
+		<title>Archidoc Client </title>
 		<meta name="description" content="The most advanced Bootstrap Admin Theme on Themeforest trusted by 94,000 beginners and professionals. Multi-demo, Dark Mode, RTL support and complete React, Angular, Vue &amp; Laravel versions. Grab your copy now and get life-time updates for free." />
 		<meta name="keywords" content="Metronic, bootstrap, bootstrap 5, Angular, VueJs, React, Laravel, admin themes, web design, figma, web development, free templates, free admin themes, bootstrap theme, bootstrap template, bootstrap dashboard, bootstrap dak mode, bootstrap button, bootstrap datepicker, bootstrap timepicker, fullcalendar, datatables, flaticon" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -35,6 +35,9 @@ License: For each use you must have a valid license purchased only from above li
 		<link href="{{asset('frontend/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
 		<link href="{{asset('frontend/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
 		<!--end::Global Stylesheets Bundle-->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
 	  <style>
 	.logo-large {
     height: 40px; /* Ajustez la taille selon vos préférences */
@@ -1936,8 +1939,13 @@ License: For each use you must have a valid license purchased only from above li
 								
 		<!--end::Scrolltop-->
 		<!--end::Main-->
-		<script>var hostUrl = "assets/";</script>
-		<!--begin::Javascript-->
+	<script>
+    var hostUrl = "{{ asset('frontend') }}/"; // Modifiez le chemin en conséquence
+</script>
+
+        <!--begin::Javascript-->
+
+
 		<!--begin::Global Javascript Bundle(used by all pages)-->
 		<script src="{{asset('frontend/plugins/global/plugins.bundle.js')}}"></script>
 		<script src="{{asset('frontend/js/scripts.bundle.js')}}"></script>
