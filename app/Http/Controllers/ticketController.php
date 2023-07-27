@@ -167,5 +167,68 @@ public function edit($id)
     // En cas d'erreur ou de client introuvable, renvoyer une réponse JSON vide
     return response()->json([]);
 }
+
+public function storefront(Request $request)
+{
+
+
+    $validatedData = $request->validate([
+        'type_intervention' => 'required',
+        'statut' => 'required|exists:statuts,id',
+        'date_demande' => 'required|date',
+        'description' =>  'required',
+        'vis_a_vis' => 'required',
+        'client_id' => 'required|exists:clients,id',
+    ]);
+   
+    $validatedData['user_id'] = auth()->user()->id;
+    $applicationID = $request->input('application_id'); 
+
     
+    $ticket = ticket::create($validatedData);
+    $ticketID = $ticket->id;
+    $validatedApplicationData = $request->validate([
+        'application_id' => 'required|exists:applications,id',
+    ]);
+
+    $applicationID = $validatedApplicationData['application_id'];
+    
+    Ticket_Application::create([
+        'ticket_id' => $ticketID,
+        'application_id'=> $applicationID  ,
+    ]);
+    $dateTraitement = Carbon::now();
+    $statut = $ticket->statut;
+    $client_id=$ticket->client_id;
+  Traitement::create([
+        'date_traitement'=>$dateTraitement ,
+        'statut_id' => $statut  ,
+        'client' => $client_id,
+        'ticket_id'=> $ticketID  ,
+        'user_id' => auth()->user()->id,
+    ]);
+    return redirect()->route('ticket.addFront');
+
+
+
+
+}
+
+public function AddTicketFront()
+{
+
+    $clients = Client::all();
+    $applications = collect(); // Créez une collection vide pour les applications
+
+    // Vérifiez si un client est sélectionné dans la requête
+    // Si oui, récupérez les applications associées à ce client
+  
+     
+    $type_interventions = type_intervention::all();
+    $statuts = statut::all();
+
+    return view('ticket.AddFront', compact('clients', 'applications', 'type_interventions', 'statuts'));
+
+}
+
 }

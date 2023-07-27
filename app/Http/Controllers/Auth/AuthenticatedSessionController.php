@@ -17,6 +17,9 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
+        
+        
+        
         return view('auth.login');
     }
 
@@ -29,7 +32,20 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended('/Admin');
+        $user = Auth::user();
+
+        // Vérifiez le rôle de l'utilisateur et redirigez-le en conséquence
+        if ($user->role === 'intervenant') {
+            return redirect('/tickets/AddFront');
+        } elseif ($user->role === 'admin') {
+            return redirect('/clients');
+        } elseif ($user->role === 'super_admin') {
+            // Vous pouvez personnaliser la redirection pour les super administrateurs
+            return redirect('/front-page');
+        }
+    
+        // Redirection par défaut si le rôle n'est pas reconnu
+        return redirect('/');
     }
 
     /**
@@ -43,6 +59,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/login');
     }
 }
