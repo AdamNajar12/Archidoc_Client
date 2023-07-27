@@ -13,6 +13,7 @@ use App\Models\Ticket_Application;
 use Carbon\Carbon; 
 use App\Models\User;
 use App\Models\Traitement;
+use App\Models\fichier;
 class ticketController extends Controller
 {
     public function showTickets()
@@ -207,6 +208,19 @@ public function storefront(Request $request)
         'ticket_id'=> $ticketID  ,
         'user_id' => auth()->user()->id,
     ]);
+ 
+    foreach ($request->file('nom_fichier') as $file) {
+        $fileName = $file->getClientOriginalName();
+        $file->storeAs('public', $fileName);
+
+        Fichier::create([
+            'nom_fichier' => $fileName,
+            'ticket_id' => $ticketID,
+            'user_id' => auth()->user()->id,
+        ]);
+    }
+    
+
     return redirect()->route('ticket.addFront');
 
 

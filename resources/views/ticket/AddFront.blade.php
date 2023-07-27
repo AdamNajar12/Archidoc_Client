@@ -8,7 +8,7 @@
 											<!--begin::Col-->
 											<div class="col-md-6 pe-lg-10">
 												<!--begin::Form-->
-												<form action="{{ route('ticket.storefront') }}" class="form" method="POST" >
+												<form action="{{ route('ticket.storefront') }}" class="form" method="POST" enctype="multipart/form-data">
 												    @csrf
                                                 	<h1 class="fw-bolder text-dark mb-9">Traiter Ticket</h1>
 													<!--begin::Input group-->
@@ -78,6 +78,11 @@
 														</div>
                                                         <br>
                                                           <div class="col-md-6 fv-row">
+                                                         <label class="fs-5 fw-bold mb-2">Fichier    </label>
+                                                             <input type="file" name="nom_fichier[]" id="nom_fichier" class="form-control form-control-solid" multiple />
+                                                          </div>
+                                                        <br>
+                                                          <div class="col-md-6 fv-row">
                                                         <button type="submit" id="kt_modal_add_customer_submit" class="btn btn-primary">
 														<span class="indicator-label">Creer</span>
 													</button>
@@ -109,7 +114,7 @@
 													<h1 class="text-dark fw-bolder my-5">Let’s Speak</h1>
 													<!--end::Subtitle-->
 													<!--begin::Number-->
-													<div class="text-gray-700 fw-bold fs-2">1 (833) 597-7538</div>
+													<div class="text-gray-700 fw-bold fs-2">+216 70687109</div>
 													<!--end::Number-->
 												</div>
 												<!--end::Phone-->
@@ -133,7 +138,7 @@
 													<h1 class="text-dark fw-bolder my-5">Our Head Office</h1>
 													<!--end::Subtitle-->
 													<!--begin::Description-->
-													<div class="text-gray-700 fs-3 fw-bold">Churchill-laan 16 II, 1052 CD, Amsterdam</div>
+													<div class="text-gray-700 fs-3 fw-bold">V5XR+FPJ، Zone Industrielle Chotrana II - Cité El Ghazala Ariana, Cebalat</div>
 													<!--end::Description-->
 												</div>
 												<!--end::Address-->
