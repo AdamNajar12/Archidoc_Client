@@ -24,7 +24,7 @@ License: For each use you must have a valid license purchased only from above li
 		<meta property="og:url" content="https://keenthemes.com/metronic" />
 		<meta property="og:site_name" content="Keenthemes | Metronic" />
 		<link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
-		<link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+			<link rel="shortcut icon" href="{{asset('frontend/media/logos/logo2.png')}}" />
 		<!--begin::Fonts-->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 		<!--end::Fonts-->
@@ -35,7 +35,12 @@ License: For each use you must have a valid license purchased only from above li
 		<link href="{{asset('frontend/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
 		<link href="{{asset('frontend/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
 		<!--end::Global Stylesheets Bundle-->
-	</head>
+	  <style>
+	.logo-large {
+    height: 40px; /* Ajustez la taille selon vos préférences */
+    width: auto; /* Pour conserver le rapport hauteur/largeur du logo original */
+}
+	</style>
 	<!--end::Head-->
 	<!--begin::Body-->
 	<body id="kt_body" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed aside-enabled aside-fixed" style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px">
@@ -50,7 +55,7 @@ License: For each use you must have a valid license purchased only from above li
 					<div class="aside-logo flex-column-auto" id="kt_aside_logo">
 						<!--begin::Logo-->
 						<a href="../../demo1/dist/index.html">
-							<img alt="Logo" src="assets/media/logos/logo-1-dark.svg" class="h-25px logo" />
+							<img alt="Logo" src="{{asset('frontend/media/logos/logo4.png')}}" class="logo-large" />
 						</a>
 						<!--end::Logo-->
 						<!--begin::Aside toggler-->
@@ -1604,15 +1609,17 @@ License: For each use you must have a valid license purchased only from above li
 													<div class="menu-content d-flex align-items-center px-3">
 														<!--begin::Avatar-->
 														<div class="symbol symbol-50px me-5">
-															<img alt="Logo" src="assets/media/avatars/150-26.jpg" />
+															<!--img alt="Logo" src="assets/media/avatars/150-26.jpg" ---->
 														</div>
 														<!--end::Avatar-->
 														<!--begin::Username-->
+                                                            @auth
 														<div class="d-flex flex-column">
-															<div class="fw-bolder d-flex align-items-center fs-5">Max Smith
-															<span class="badge badge-light-success fw-bolder fs-8 px-2 py-1 ms-2">Pro</span></div>
-															<a href="#" class="fw-bold text-muted text-hover-primary fs-7">max@kt.com</a>
+															<div class="fw-bolder d-flex align-items-center fs-5">{{ auth()->user()->prenom }}{{ auth()->user()->nom }}
+															<span class="badge badge-light-success fw-bolder fs-8 px-2 py-1 ms-2">{{ auth()->user()->role }}</span></div>
+															<a href="#" class="fw-bold text-muted text-hover-primary fs-7">{{ auth()->user()->email }}</a>
 														</div>
+                                                          @endauth
 														<!--end::Username-->
 													</div>
 												</div>
