@@ -48,7 +48,11 @@ class ticketController extends Controller
         ->where('tickets.id',$id)
         ->select('type_interventions.libelle as type_intervention')
         ->first();
-        return view('ticket.details', compact('statut','type_intervention','ticket','user','client'));
+        $fichier=fichier::join('tickets','fichiers.ticket_id','=','tickets.id')
+        ->where('tickets.id',$id)
+        ->select('fichiers.nom_fichier as nomFichier')
+        ->first();
+        return view('ticket.details', compact('statut','type_intervention','ticket','user','client','fichier'));
 
 
 

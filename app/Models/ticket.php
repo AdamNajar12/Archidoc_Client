@@ -27,4 +27,8 @@ class ticket extends Model
     {
         return $this->belongsTo(Statut::class, 'statuts');
     }
+    public function fichiers()
+{
+    return $this->hasMany(Fichier::class);
+}
 }

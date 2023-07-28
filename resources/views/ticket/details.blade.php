@@ -158,9 +158,29 @@
 														
 													</div>
 													<!--end::Progress-->
-											</div>
+											    </div>
 												<!--end::Col-->
 											</div>
+                                   <div class="row mb-8">
+    <!--begin::Col-->
+    <div class="col-xl-3">
+        <div class="fs-6 fw-bold mt-2 mb-3">Fichier</div>
+    </div>
+    <!--end::Col-->
+    <!--begin::Col-->
+    <div class="col-xl-9">
+        <!--begin::Progress-->
+        <div class="d-flex flex-column">
+            <div class="d-flex flex-wrap mb-3">
+                @foreach ($ticket->fichiers as $fichier)
+                    <a href="{{ asset('storage/' . $fichier->nom_fichier) }}" target="_blank" class="badge badge-secondary mb-2">{{ $fichier->nom_fichier }}</a>
+                @endforeach
+            </div>
+        </div>
+        <!--end::Progress-->
+    </div>
+    <!--end::Col-->
+</div>
                                           <div class="row mb-8">
 												<!--begin::Col-->
 												<div class="col-xl-3">
