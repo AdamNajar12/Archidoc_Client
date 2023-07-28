@@ -57,7 +57,7 @@ License: For each use you must have a valid license purchased only from above li
 					<!--begin::Brand-->
 					<div class="aside-logo flex-column-auto" id="kt_aside_logo">
 						<!--begin::Logo-->
-						<a href="../../demo1/dist/index.html">
+						<a href=".https://www.archidoc.tn/">
 							<img alt="Logo" src="{{asset('frontend/media/logos/logo4.png')}}" class="logo-large" />
 						</a>
 						<!--end::Logo-->

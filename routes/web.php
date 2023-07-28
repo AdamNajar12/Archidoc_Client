@@ -8,6 +8,7 @@ use App\Http\Controllers\TicketController;
 use App\Http\Controllers\StatutController;
 use App\Http\Controllers\Type_interventions;
 use App\Http\Controllers\UtilisateurController;
+use App\Http\Controllers\Traitement_Controller ;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -79,7 +80,8 @@ Route::put('/users/{user}', [UtilisateurController::class, 'update'])->name('use
 Route::delete('/users/{user}', [UtilisateurController::class, 'destroy'])->name('users.destroy');
 Route::get('/users/{user}/details', [UtilisateurController::class, 'showDetails'])->name('users.details');
 
-
+Route::get('/traitements', [Traitement_Controller::class, 'ShowListTraitements'])->name('traitement.index');
+Route::get('/traitements/{traitement}/details', [Traitement_Controller::class, 'ShowDetails'])->name('traitement.details');
 
 
 

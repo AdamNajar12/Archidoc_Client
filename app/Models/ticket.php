@@ -31,4 +31,8 @@ class ticket extends Model
 {
     return $this->hasMany(Fichier::class);
 }
+public function client()
+{
+    return $this->belongsTo(Client::class, 'client_id');
+}
 }
