@@ -20,6 +20,9 @@ class Application extends Model
         {
             return $this->belongsToMany(Client::class, 'client__applications');
         }
-
+        public function tickets()
+        {
+            return $this->belongsToMany(Ticket::class, 'ticket__applications', 'application_id', 'ticket_id');
+        }
 
     }

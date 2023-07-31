@@ -35,4 +35,8 @@ public function client()
 {
     return $this->belongsTo(Client::class, 'client_id');
 }
+public function applications()
+{
+    return $this->belongsToMany(Application::class, 'ticket__applications', 'ticket_id', 'application_id');
+}
 }

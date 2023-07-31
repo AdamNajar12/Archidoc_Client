@@ -4,12 +4,12 @@
 										<!--begin::Modal content-->
 										<div class="modal-content">
 											<!--begin::Form-->
-											<form class="form" action="{{ route('ticket.store') }}" method="POST" >
+											<form class="form" action="{{ route('ticket.store') }}" method="POST"  enctype="multipart/form-data" >
 												    @csrf
                                                 <!--begin::Modal header-->
 												<div class="modal-header" id="kt_modal_add_customer_header">
 													<!--begin::Modal title-->
-													<h2 class="fw-bolder">Traiter Ticket </h2>
+													<h2 class="fw-bolder">Ajouter Ticket </h2>
 													<!--end::Modal title-->
 													<!--begin::Close-->
 													<div id="kt_modal_add_customer_close" class="btn btn-icon btn-sm btn-active-icon-primary">
@@ -100,7 +100,20 @@
         @endforeach	
                                                             </select>
                                                              </div>
-															 <div class="d-flex flex-column mb-7 fv-row">
+															
+															  <div class="d-flex flex-column mb-7 fv-row">
+            <label class="fs-6 fw-bold mb-2">
+                <span class="required">Utilisateur Assigné</span>
+                <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Application utilisée"></i>
+            </label>
+            <select name="users[]" class="form-select form-select-solid fw-bolder" multiple>
+                @foreach ($users as $user)
+                    <option value="{{ $user->id }}">{{ $user->prenom }}</option>
+                @endforeach
+            </select>
+			
+
+        </div>  <div class="d-flex flex-column mb-7 fv-row">
 																<!--begin::Label-->
 																<label class="fs-6 fw-bold mb-2">
 																	<span class="required">Application</span>
@@ -111,7 +124,15 @@
             <option value="{{ $application->id }}">{{ $application->libelle }}</option>
         @endforeach	
                                                             </select>
-                                                             </div>   
+                                                             </div>  
+															    </div>  <div class="d-flex flex-column mb-7 fv-row">
+																<!--begin::Label-->
+																<label class="fs-6 fw-bold mb-2">
+																	<span class="required">Fichier</span>
+																	<i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Application utilisée"></i>
+																</label>
+                                                              <input type="file" name="nom_fichier[]" id="nom_fichier" class="form-control form-control-solid" multiple />
+                                                             </div> 
 														<!--end::Input group-->
 														<!--begin::Billing toggle-->
 																									<div class="modal-footer flex-center">

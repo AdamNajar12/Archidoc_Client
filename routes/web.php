@@ -50,7 +50,7 @@ Route::delete('/tickets/{ticket}', [TicketController::class, 'destroy'])->name('
 Route::get('/get-applications/{client}', [TicketController::class, 'getApplicationsForClient']);
 Route::get('/tickets/{ticket}/details', [TicketController::class, 'showDetails'])->name('tickets.details');
 Route::get('/tickets/AddFront', [TicketController::class, 'AddTicketFront'])->name('ticket.addFront');
-Route::post('/tickets', [TicketController::class, 'storefront'])->name('ticket.storefront');
+Route::post('/tickets/storefront', [TicketController::class, 'storefront'])->name('ticket.storefront');
 
 Route::get('/statuts', [StatutController::class, 'showStatuts'])->name('statuts.index');
 Route::get('/statuts/create', [StatutController::class, 'create'])->name('statuts.create');

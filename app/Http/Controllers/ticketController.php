@@ -14,6 +14,7 @@ use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Traitement;
 use App\Models\fichier;
+use App\Models\Ticket_Utilisateur;
 class ticketController extends Controller
 {
     public function showTickets()
@@ -70,8 +71,9 @@ class ticketController extends Controller
      
     $type_interventions = type_intervention::all();
     $statuts = statut::all();
+    $users=User::all();
 
-    return view('ticket.create', compact('clients', 'applications', 'type_interventions', 'statuts'));
+    return view('ticket.create', compact('clients', 'applications', 'type_interventions', 'statuts','users'));
 }
 
     
@@ -102,6 +104,20 @@ class ticketController extends Controller
         'ticket_id' => $ticketID,
         'application_id'=> $applicationID  ,
     ]);
+    $ticketUsers=[];
+    $usersIds=$request->input('users');
+    foreach($usersIds as $userId){
+        $ticketUsers[]=[
+    'ticket_id'=>$ticketID,
+    'user_id' =>$userId,
+
+   ];
+ 
+}
+Ticket_Utilisateur::insert($ticketUsers);
+
+
+
     $dateTraitement = Carbon::now();
     $statut = $ticket->statut;
     $client_id=$ticket->client_id;
@@ -112,6 +128,16 @@ class ticketController extends Controller
         'ticket_id'=> $ticketID  ,
         'user_id' => auth()->user()->id,
     ]);
+    foreach ($request->file('nom_fichier') as $file) {
+        $fileName = $file->getClientOriginalName();
+        $file->storeAs('public', $fileName);
+
+        Fichier::create([
+            'nom_fichier' => $fileName,
+            'ticket_id' => $ticketID,
+            'user_id' => auth()->user()->id,
+        ]);
+    }
     return redirect()->route('ticket.index');
 }
     
@@ -123,33 +149,59 @@ public function edit($id)
       
         $type_intervention=type_intervention::pluck('libelle','id');
         $statut=statut::pluck('libelle','id');
-      
-        return view('ticket.edit', compact('statut','type_intervention','ticket'));
+        $client=client::join('tickets','clients.id','=','tickets.client_id')
+        ->where('tickets.id',$id)
+        ->select('clients.code_client as code_client')
+        ->first();
+        $applications = $ticket->applications;
+        return view('ticket.edit', compact('statut','type_intervention','ticket','applications','client'));
     }
     
 
-    public function update(Request $request,  $id)
+    public function update(Request $request, $id)
     {
-        $ticket = ticket::findOrFail($id);
-
+        $ticket = Ticket::findOrFail($id);
+    
         $validatedData = $request->validate([
             'type_intervention' => 'required',
             'statut' => 'required',
-          
+            'date_demande' => 'required|date',
+            'description' => 'required',
+            'vis_a_vis' => 'required',
         ]);
     
-        $data = $request->only(['type_intervention', 'statut']);
-        $data['user_id'] = auth()->user()->id;
+        $ticket->update($validatedData);
     
-        $ticket->update($data);
-
-      $traitement = Traitement::where('ticket_id', $ticket->id)->first();
-    if ($traitement) {
-        // Mettre à jour le statut du traitement en fonction du nouveau statut du ticket
-        $traitement->update(['statut_id' => $ticket->statut]);
-    }
+        $dateTraitement = Carbon::now();
+        $traitement = Traitement::where('ticket_id', $id)->first();
+        $observation = $request->input('Observation');
+        if ($traitement) {
+            // Mettre à jour le statut du traitement en fonction du nouveau statut du ticket
+            $traitement->update([
+                'date_traitement' => $dateTraitement,
+                'statut_id' => $ticket->statut,
+                'Observation' =>   $observation, // Remplacez 'valeur_de_l_observation' par la valeur que vous souhaitez mettre à jour
+                'ticket_id' => $ticket->id,
+                'user_id' => auth()->user()->id,
+            ]);
+        }
+    
+        if ($request->hasFile('nom_fichier')) {
+            foreach ($request->file('nom_fichier') as $file) {
+                $fileName = $file->getClientOriginalName();
+                $file->storeAs('public', $fileName);
+    
+                Fichier::create([
+                    'nom_fichier' => $fileName,
+                    'ticket_id' => $ticket->id,
+                    'user_id' => auth()->user()->id,
+                ]);
+            }
+        }
+    
         return redirect()->route('ticket.index');
     }
+    
     
     
     

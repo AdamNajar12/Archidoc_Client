@@ -8,7 +8,7 @@
 													
 												</h3>
 												<div class="card-toolbar"  title="Click to add a user">
-													<a href="/tickets/create" class="btn btn-sm btn-light btn-active-primary" >Traiter ticket </a>
+													<a href="/tickets/create" class="btn btn-sm btn-light btn-active-primary" >Ajouter  ticket </a>
 												</div>
 											</div>
 											<!--end::Header-->

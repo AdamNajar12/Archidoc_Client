@@ -5,28 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Traitement extends Model
+class Ticket_Utilisateur extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'date_traitement',
-        'statut_id',
-        'Observation',
         'ticket_id',
         'user_id'
-      
+        // Ajoutez les autres colonnes qui sont autorisées à être assignées en masse
     ];
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+    
     public function ticket()
     {
         return $this->belongsTo(ticket::class);
     }
-public function statuts()
-{
-return $this->belongsTo(statut::class);
 
-}
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    
 }
