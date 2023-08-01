@@ -49,4 +49,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Client::class);
     }
+    public function tickets()
+    {
+        return $this->belongsToMany(Ticket::class, 'ticket__utilisateurs', 'user_id', 'ticket_id');
+    }
 }
