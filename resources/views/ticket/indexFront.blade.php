@@ -85,7 +85,7 @@
 															   
 																<td>
 																	<div class="d-flex justify-content-end flex-shrink-0">
-																			<a href="" class="btn btn-sm btn-light btn-active-primary me-2">Traiter Ticket</a>
+																			<a href="{{ route('ticket.traiter', $ticket->id) }}" class="btn btn-sm btn-light btn-active-primary me-2">Traiter Ticket</a>
 																		
 																		
 																</td>

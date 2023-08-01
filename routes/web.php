@@ -52,8 +52,8 @@ Route::get('/tickets/{ticket}/details', [TicketController::class, 'showDetails']
 Route::get('/tickets/AddFront', [TicketController::class, 'AddTicketFront'])->name('ticket.addFront');
 Route::post('/tickets/storefront', [TicketController::class, 'storefront'])->name('ticket.storefront');
 Route::get('/tickets/indexFront', [TicketController::class, 'showFrontTicket'])->name('ticket.showFront');
-
-
+Route::put('/tickets/traiterTicket/{ticket}', [TicketController::class, 'TraiterTicketFront'])->name('ticket.traiterFront');
+Route::get('/tickets/{ticket}/traiter', [TicketController::class, 'TraiterFront'])->name('ticket.traiter');
 
 Route::get('/statuts', [StatutController::class, 'showStatuts'])->name('statuts.index');
 Route::get('/statuts/create', [StatutController::class, 'create'])->name('statuts.create');

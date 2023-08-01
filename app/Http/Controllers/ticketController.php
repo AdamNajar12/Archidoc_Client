@@ -331,5 +331,73 @@ public function showFrontTicket()
     return view('ticket.indexFront', compact('tickets'));
 
 }
+public function TraiterTicketFront(Request $request, $id)
+{
+    $ticket = Ticket::findOrFail($id);
+    
+    $validatedData = $request->validate([
+        'type_intervention' => 'required',
+        'statut' => 'required',
+        'date_demande' => 'required|date',
+        'description' => 'required',
+        'vis_a_vis' => 'required',
+    ]);
+
+    $ticket->update($validatedData);
+
+    $dateTraitement = Carbon::now();
+    $traitement = Traitement::where('ticket_id', $id)->first();
+    $observation = $request->input('Observation');
+    if ($traitement) {
+        // Mettre à jour le statut du traitement en fonction du nouveau statut du ticket
+        $traitement->update([
+            'date_traitement' => $dateTraitement,
+            'statut_id' => $ticket->statut,
+            'Observation' =>   $observation, // Remplacez 'valeur_de_l_observation' par la valeur que vous souhaitez mettre à jour
+            'ticket_id' => $ticket->id,
+            'user_id' => auth()->user()->id,
+        ]);
+    }
+
+    if ($request->hasFile('nom_fichier')) {
+        foreach ($request->file('nom_fichier') as $file) {
+            $fileName = $file->getClientOriginalName();
+            $file->storeAs('public', $fileName);
+
+            Fichier::create([
+                'nom_fichier' => $fileName,
+                'ticket_id' => $ticket->id,
+                'user_id' => auth()->user()->id,
+            ]);
+        }
+    }
+
+    return redirect()->route('ticket.showFront');
+
+
+
+
+
+
+}
+public function TraiterFront($id)
+{
+    $ticket = ticket::findOrFail($id);
+      
+    $type_intervention=type_intervention::pluck('libelle','id');
+    $statut=statut::pluck('libelle','id');
+    $client=client::join('tickets','clients.id','=','tickets.client_id')
+    ->where('tickets.id',$id)
+    ->select('clients.code_client as code_client')
+    ->first();
+    $applications = $ticket->applications;
+    return view('ticket.traiterTicket', compact('statut','type_intervention','ticket','applications','client'));
+
+
+
+
+
+
+}
 
 }
