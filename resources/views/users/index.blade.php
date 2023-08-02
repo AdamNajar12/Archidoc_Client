@@ -94,6 +94,15 @@
 																</td>
 																<td>
 																	<div class="d-flex justify-content-end flex-shrink-0">
+																				  @if($user->trashed())
+    <form id="restore-form-{{ $user->id }}" action="{{ route('users.restore', $user->id) }}" method="POST" >
+        @csrf
+        @method('PUT') <!-- Change the method to PUT -->
+    </form>
+    <a href="#" onclick="event.preventDefault(); if(confirm('Êtes-vous sûr de vouloir restaurer cet utilisateur ?')) document.getElementById('restore-form-{{ $user->id }}').submit();"class="btn btn-sm btn-light btn-active-primary me-2">
+       Restaurer
+    </a>
+@else
 																																			<a href="{{ route('users.details', $user->id) }}" class="btn btn-sm btn-light btn-active-primary me-2">Details</a>
 																		<a href="{{ route('users.edit', $user->id) }}" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
 																			<!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
@@ -120,6 +129,7 @@
 																			</span>
 																			<!--end::Svg Icon-->
 																		</a>
+																		@endif
 																	</div>
 																</td>
 															</tr>

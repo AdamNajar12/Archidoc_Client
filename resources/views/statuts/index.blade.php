@@ -56,6 +56,15 @@
                                                              
 																<td>
 																	<div class="d-flex justify-content-end flex-shrink-0">
+																				  @if($statut->trashed())
+    <form id="restore-form-{{ $statut->id }}" action="{{ route('statuts.restore', $statut->id) }}" method="POST" >
+        @csrf
+        @method('PUT') <!-- Change the method to PUT -->
+    </form>
+    <a href="#" onclick="event.preventDefault(); if(confirm('Êtes-vous sûr de vouloir restaurer cette statut ?')) document.getElementById('restore-form-{{ $statut->id }}').submit();"class="btn btn-sm btn-light btn-active-primary me-2">
+       Restaurer
+    </a>
+@else
 																		<a href="{{ route('statuts.details', $statut->id) }}" class="btn btn-sm btn-light btn-active-primary me-2">Details</a>
 																		<a href="{{ route('statuts.edit', $statut->id) }}" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
 																			<!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
@@ -82,6 +91,7 @@
 																			</span>
 																			<!--end::Svg Icon-->
 																		</a>
+																		@endif
 																	</div>
 																</td>
 															</tr>

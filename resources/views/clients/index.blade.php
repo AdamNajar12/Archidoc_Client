@@ -73,6 +73,15 @@
                                                               
 																<td>
 																	<div class="d-flex justify-content-end flex-shrink-0">
+																			  @if($client->trashed())
+    <form id="restore-form-{{ $client->id }}" action="{{ route('clients.restore', $client->id) }}" method="POST" >
+        @csrf
+        @method('PUT') <!-- Change the method to PUT -->
+    </form>
+    <a href="#" onclick="event.preventDefault(); if(confirm('Êtes-vous sûr de vouloir restaurer cette client ?')) document.getElementById('restore-form-{{ $client->id }}').submit();"class="btn btn-sm btn-light btn-active-primary me-2">
+       Restaurer
+    </a>
+@else
 																				<a href="{{ route('clients.details', $client->id) }}" class="btn btn-sm btn-light btn-active-primary me-2">Details</a>
                  <a href="{{ route('clients.applications', $client->id) }}" class="btn btn-sm btn-light btn-active-primary me-2">Voir les applications</a>
 
@@ -87,7 +96,7 @@
     <!--end::Svg Icon-->
 </a>
 
-																	 @if(!$client->tickets()->count())
+																	
     <a href="#" onclick="event.preventDefault(); if(confirm('Êtes-vous sûr de vouloir supprimer ce client ?')) document.getElementById('delete-form-{{ $client->id }}').submit();" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
         <!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
         <span class="svg-icon svg-icon-3">

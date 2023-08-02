@@ -134,7 +134,7 @@
 															</label>
 															<!--end::Label-->
 															<!--begin::Input-->
-															<textarea type="text" class="form-control form-control-solid" placeholder="" name="Observation" id="Observation"  ></textarea>
+															 <textarea class="form-control form-control-solid" placeholder="" name="Observation" id="Observation">{{ $ticket->traitement->Observation }}</textarea>
 												
 															</div>
 													     </div>

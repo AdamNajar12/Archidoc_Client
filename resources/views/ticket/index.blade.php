@@ -85,6 +85,15 @@
 															   
 																<td>
 																	<div class="d-flex justify-content-end flex-shrink-0">
+																																		  @if($ticket->trashed())
+    <form id="restore-form-{{ $ticket->id }}" action="{{ route('ticket.restore', $ticket->id) }}" method="POST" >
+        @csrf
+        @method('PUT') <!-- Change the method to PUT -->
+    </form>
+    <a href="#" onclick="event.preventDefault(); if(confirm('Êtes-vous sûr de vouloir restaurer cette type d intervention ?')) document.getElementById('restore-form-{{ $ticket->id }}').submit();"class="btn btn-sm btn-light btn-active-primary me-2">
+       Restaurer
+    </a>
+@else
 																			<a href="{{ route('tickets.details', $ticket->id) }}" class="btn btn-sm btn-light btn-active-primary me-2">Details</a>
 																		<a href="{{ route('ticket.edit', $ticket->id) }}" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
 																			<!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
@@ -111,6 +120,7 @@
 																			</span>
 																			<!--end::Svg Icon-->
 																		</a>
+																		@endif
 																	</div>
 																</td>
 															</tr>

@@ -25,6 +25,7 @@ class ticketController extends Controller
         ->join('type_interventions','tickets.type_intervention','=','type_interventions.id')
         ->join('statuts','tickets.statut','=','statuts.id')
         ->select('tickets.*', 'users.prenom as user_name', 'clients.code_client','users.nom as second_name','type_interventions.libelle as type_intervention','statuts.libelle as statut')
+        ->withTrashed()
         ->get();
     
         return view('ticket.index', compact('tickets'));
@@ -145,8 +146,8 @@ Ticket_Utilisateur::insert($ticketUsers);
 public function edit($id)
     {
        
-        $ticket = ticket::findOrFail($id);
-      
+        
+        $ticket = Ticket::with('traitement')->findOrFail($id);
         $type_intervention=type_intervention::pluck('libelle','id');
         $statut=statut::pluck('libelle','id');
         $client=client::join('tickets','clients.id','=','tickets.client_id')
@@ -399,5 +400,12 @@ public function TraiterFront($id)
 
 
 }
+public function restore($id)
+{
+    // Restaurer l'élément supprimé
+    ticket::withTrashed()->where('id', $id)->restore();
 
+    // Rediriger vers la page d'index des Applications
+    return redirect()->route('ticket.index')->with('success', 'ticket restaurée avec succès !');
+}
 }

@@ -16,9 +16,7 @@ class ClientController extends Controller
     public function showClients()
     {
 
-           $clients = Client::join('users', 'clients.user_id', '=', 'users.id')
-    ->select('clients.*', 'users.prenom as user_name','users.nom as second_name')
-    ->get();
+           $clients = Client::withTrashed()->get();
         return view('clients.index', compact('clients'));
     }
     public function showDetails($id)
@@ -165,5 +163,24 @@ class ClientController extends Controller
         return view('clients.applications', compact('client', 'applications'));
 
     }
+    public function restore($id)
+    {
+        // Restaurer l'élément supprimé
+        Client::withTrashed()->where('id', $id)->restore();
+    
+        // Rediriger vers la page d'index des Applications
+        return redirect()->route('clients.index')->with('success', 'client restaurée avec succès !');
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 }

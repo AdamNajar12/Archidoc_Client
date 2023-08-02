@@ -15,7 +15,7 @@ class UtilisateurController extends Controller
     public function showUsers()
     {
 
-           $users = User::all();
+           $users = User::withTrashed()->get();
         return view('users.index', compact('users'));
     }
     public function showDetails($id)
@@ -94,7 +94,14 @@ class UtilisateurController extends Controller
         $user->delete();
         return redirect()->route('users.index');
     }
-
+    public function restore($id)
+    {
+        // Restaurer l'élément supprimé
+        User::withTrashed()->where('id', $id)->restore();
+    
+        // Rediriger vers la page d'index des Applications
+        return redirect()->route('users.index')->with('success', 'user restaurée avec succès !');
+    }
 
 
 

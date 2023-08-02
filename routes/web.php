@@ -32,6 +32,8 @@ Route::put('/clients/{client}', [ClientController::class, 'update'])->name('clie
 Route::delete('/clients/{client}', [ClientController::class, 'destroy'])->name('clients.destroy');
 Route::get('/clients/{client}/applications', [ClientController::class, 'ShowApplications_for_Clients'])->name('clients.applications');
 Route::get('/clients/{client}/details', [ClientController::class, 'ShowDetails'])->name('clients.details');
+Route::put('/clients/{client}/restore', [ClientController::class, 'restore'])->name('clients.restore');
+
 
 Route::get('/Applications', [ApplicationController::class, 'showApplications'])->name('Applications.index');
 Route::get('/Applications/create', [ApplicationController::class, 'create'])->name('Applications.create');
@@ -58,6 +60,7 @@ Route::post('/tickets/storefront', [TicketController::class, 'storefront'])->nam
 Route::get('/tickets/indexFront', [TicketController::class, 'showFrontTicket'])->name('ticket.showFront');
 Route::put('/tickets/traiterTicket/{ticket}', [TicketController::class, 'TraiterTicketFront'])->name('ticket.traiterFront');
 Route::get('/tickets/{ticket}/traiter', [TicketController::class, 'TraiterFront'])->name('ticket.traiter');
+Route::put('/tickets/{ticket}/restore', [TicketController::class, 'restore'])->name('ticket.restore');
 
 Route::get('/statuts', [StatutController::class, 'showStatuts'])->name('statuts.index');
 Route::get('/statuts/create', [StatutController::class, 'create'])->name('statuts.create');
@@ -66,7 +69,7 @@ Route::get('/statuts/{statut}/edit', [StatutController::class, 'edit'])->name('s
 Route::put('/statuts/{statut}', [StatutController::class, 'update'])->name('statuts.update');
 Route::delete('/statuts/{statut}', [StatutController::class, 'destroy'])->name('statuts.destroy');
 Route::get('/statuts/{statut}/details', [StatutController::class, 'showDetails'])->name('statuts.details');
-
+Route::put('/statuts/{statut}/restore', [StatutController::class, 'restore'])->name('statuts.restore');
 
 
 
@@ -77,7 +80,7 @@ Route::get('/type_interventions/{type_intervention}/edit', [Type_interventions::
 Route::put('/type_interventions/{type_intervention}', [Type_interventions::class, 'update'])->name('type_intervention.update');
 Route::delete('/type_interventions/{type_intervention}', [Type_interventions::class, 'destroy'])->name('type_intervention.destroy');
 Route::get('/type_interventions/{type_intervention}/details', [Type_interventions::class, 'showDetails'])->name('type_intervention.details');
-
+Route::put('/type_interventions/{type_intervention}/restore', [Type_interventions::class, 'restore'])->name('type_intervention.restore');
 
 Route::get('/users', [UtilisateurController ::class, 'showUsers'])->name('users.index');
 Route::get('/users/create', [UtilisateurController ::class, 'create'])->name('users.create');
@@ -86,6 +89,8 @@ Route::get('/users/{user}/edit', [UtilisateurController::class, 'edit'])->name('
 Route::put('/users/{user}', [UtilisateurController::class, 'update'])->name('users.update');
 Route::delete('/users/{user}', [UtilisateurController::class, 'destroy'])->name('users.destroy');
 Route::get('/users/{user}/details', [UtilisateurController::class, 'showDetails'])->name('users.details');
+Route::put('/users/{user}/restore', [UtilisateurController::class, 'restore'])->name('users.restore');
+
 
 Route::get('/traitements', [Traitement_Controller::class, 'ShowListTraitements'])->name('traitement.index');
 Route::get('/traitements/{traitement}/details', [Traitement_Controller::class, 'ShowDetails'])->name('traitement.details');

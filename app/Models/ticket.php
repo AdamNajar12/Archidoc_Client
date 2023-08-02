@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class ticket extends Model
 {
     use HasFactory;
+    use SoftDeletes;
     protected $fillable = [
         'type_intervention', // Ajoutez ici les autres colonnes qui peuvent être attribuées en masse
         'statut',
@@ -42,5 +43,9 @@ public function client()
 public function applications()
 {
     return $this->belongsToMany(Application::class, 'ticket__applications', 'ticket_id', 'application_id');
+}
+public function traitement()
+{
+    return $this->hasOne(Traitement::class);
 }
 }

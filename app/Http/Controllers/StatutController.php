@@ -11,9 +11,7 @@ class StatutController extends Controller
     public function showStatuts()
     {
 
-           $Statuts = statut::join('users', 'statuts.user_id', '=', 'users.id')
-    ->select('statuts.*', 'users.prenom as user_name','users.nom as second_name')
-    ->get();
+           $Statuts = statut::withTrashed()->get();
         return view('statuts.index', compact('Statuts'));
     }
 
@@ -91,5 +89,12 @@ class StatutController extends Controller
         $statut->delete();
         return redirect()->route('statuts.index');
     }
+    public function restore($id)
+    {
+        // Restaurer l'élément supprimé
+        statut::withTrashed()->where('id', $id)->restore();
     
+        // Rediriger vers la page d'index des Applications
+        return redirect()->route('statuts.index')->with('success', 'statut restaurée avec succès !');
+    }
 }

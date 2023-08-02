@@ -12,9 +12,7 @@ class Type_interventions extends Controller
     public function showType_d_interventions()
     {
 
-           $type_interventions = type_intervention::join('users', 'type_interventions.user_id', '=', 'users.id')
-    ->select('type_interventions.*', 'users.prenom as user_name','users.nom as second_name')
-    ->get();
+           $type_interventions = type_intervention::withTrashed()->get();
         return view('type_intervention.index', compact('type_interventions'));
     }
     public function create()
@@ -92,6 +90,13 @@ class Type_interventions extends Controller
         $type_intervention->delete();
         return redirect()->route('type_intervention.index');
     }
+    public function restore($id)
+    {
+        // Restaurer l'élément supprimé
+        type_intervention::withTrashed()->where('id', $id)->restore();
     
+        // Rediriger vers la page d'index des Applications
+        return redirect()->route('type_intervention.index')->with('success', 'type d intervention restaurée avec succès !');
+    } 
 
 }
