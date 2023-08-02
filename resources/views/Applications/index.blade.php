@@ -55,6 +55,15 @@
                                                             
 																<td>
 																	<div class="d-flex justify-content-end flex-shrink-0">
+																			  @if($Application->trashed())
+    <form id="restore-form-{{ $Application->id }}" action="{{ route('Applications.restore', $Application->id) }}" method="POST" >
+        @csrf
+        @method('PUT') <!-- Change the method to PUT -->
+    </form>
+    <a href="#" onclick="event.preventDefault(); if(confirm('Êtes-vous sûr de vouloir restaurer cette Application ?')) document.getElementById('restore-form-{{ $Application->id }}').submit();"class="btn btn-sm btn-light btn-active-primary me-2">
+       Restaurer
+    </a>
+@else
 																			<a href="{{ route('Applications.details', $Application->id) }}" class="btn btn-sm btn-light btn-active-primary me-2">Details</a>
 																		<a href="{{ route('Applications.edit', $Application->id) }}" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
 																			<!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
@@ -66,6 +75,8 @@
 																			</span>
 																			<!--end::Svg Icon-->
 																		</a>
+																		  <!-- Bouton de restauration -->
+          
 																		<a href="#" onclick="event.preventDefault(); if(confirm('Êtes-vous sûr de vouloir supprimer cette Application ?')) document.getElementById('delete-form-{{ $Application->id }}').submit();"  class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
 																			<!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
 																			<form id="delete-form-{{ $Application->id }}" action="{{ route('Applications.destroy', $Application->id) }}" method="POST" style="display: none;">
@@ -81,6 +92,7 @@
 																			</span>
 																			<!--end::Svg Icon-->
 																		</a>
+																		@endif
 																	</div>
 																</td>
 															</tr>

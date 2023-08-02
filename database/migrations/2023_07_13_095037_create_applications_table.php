@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('libelle');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
-
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -26,6 +26,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('applications');
+        Schema::table('applications', function (Blueprint $table) {
+            $table->dropColumn('deleted_at');
+        });
     }
 };

@@ -40,6 +40,10 @@ Route::get('/Applications/{Application}/edit', [ApplicationController::class, 'e
 Route::put('/Applications/{Application}', [ApplicationController::class, 'update'])->name('Applications.update');
 Route::delete('/Applications/{Application}', [ApplicationController::class, 'destroy'])->name('Applications.destroy');
 Route::get('/Applications/{Application}/details', [ApplicationController::class, 'showDetails'])->name('Applications.details');
+Route::put('/Applications/{Application}/restore', [ApplicationController::class, 'restore'])->name('Applications.restore');
+
+
+
 
 Route::get('/tickets', [TicketController::class, 'showTickets'])->name('ticket.index');
 Route::get('/tickets/create', [TicketController::class, 'create'])->name('ticket.create');

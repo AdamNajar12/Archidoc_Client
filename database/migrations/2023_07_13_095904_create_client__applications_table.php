@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
             $table->foreign('application_id')->references('id')->on('applications')->onDelete('cascade');
             $table->timestamps();
+            $table->softDeletes();
 
         });
     }
@@ -28,6 +29,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('client__applications');
+        Schema::table('client__applications', function (Blueprint $table) {
+            $table->dropColumn('deleted_at');
+        });
     }
 };

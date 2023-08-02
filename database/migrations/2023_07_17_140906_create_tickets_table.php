@@ -24,6 +24,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('type_intervention')->references('id')->on('type_interventions')->onDelete('cascade');
             $table->foreign('statut')->references('id')->on('statuts')->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -33,6 +34,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tickets');
+        Schema::table('tickets', function (Blueprint $table) {
+            $table->dropColumn('deleted_at');
+        });
     }
 };

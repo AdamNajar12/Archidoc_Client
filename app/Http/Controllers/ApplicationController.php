@@ -10,10 +10,7 @@ class ApplicationController extends Controller
 {
     public function showApplications()
     {
-
-           $Applications = Application::join('users', 'Applications.user_id', '=', 'users.id')
-    ->select('Applications.*', 'users.prenom as user_name','users.nom as second_name')
-    ->get();
+        $Applications = Application::withTrashed()->get();
         return view('Applications.index', compact('Applications'));
     }
     public function create()
@@ -87,5 +84,12 @@ class ApplicationController extends Controller
         return redirect()->route('Applications.index');
     }
     
-
+    public function restore($id)
+    {
+        // Restaurer l'élément supprimé
+        Application::withTrashed()->where('id', $id)->restore();
+    
+        // Rediriger vers la page d'index des Applications
+        return redirect()->route('Applications.index')->with('success', 'Application restaurée avec succès !');
+    }
 }

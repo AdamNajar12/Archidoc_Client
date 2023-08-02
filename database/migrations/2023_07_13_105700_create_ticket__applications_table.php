@@ -18,6 +18,7 @@ return new class extends Migration
             
             $table->foreign('ticket_id')->references('id')->on('tickets')->onDelete('cascade');
             $table->foreign('application_id')->references('id')->on('applications')->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
 
         
@@ -33,6 +34,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ticket__applications');
+        Schema::table('ticket__applications', function (Blueprint $table) {
+            $table->dropColumn('deleted_at');
+        });
     }
 };

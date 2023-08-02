@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreign('ticket_id')->references('id')->on('tickets')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -26,7 +27,9 @@ return new class extends Migration
      * Reverse the migrations.
      */
     public function down(): void
-    {
-        Schema::dropIfExists('fichiers');
+    { 
+        Schema::table('fichiers', function (Blueprint $table) {
+        $table->dropColumn('deleted_at');
+    });
     }
 };
