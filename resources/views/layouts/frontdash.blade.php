@@ -64,12 +64,7 @@ License: For each use you must have a valid license purchased only from above li
 						<!--begin::Aside toggler-->
 						<div id="kt_aside_toggle" class="btn btn-icon w-auto px-0 btn-active-color-primary aside-toggle" data-kt-toggle="true" data-kt-toggle-state="active" data-kt-toggle-target="body" data-kt-toggle-name="aside-minimize">
 							<!--begin::Svg Icon | path: icons/duotune/arrows/arr079.svg-->
-							<span class="svg-icon svg-icon-1 rotate-180">
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-									<path opacity="0.5" d="M14.2657 11.4343L18.45 7.25C18.8642 6.83579 18.8642 6.16421 18.45 5.75C18.0358 5.33579 17.3642 5.33579 16.95 5.75L11.4071 11.2929C11.0166 11.6834 11.0166 12.3166 11.4071 12.7071L16.95 18.25C17.3642 18.6642 18.0358 18.6642 18.45 18.25C18.8642 17.8358 18.8642 17.1642 18.45 16.75L14.2657 12.5657C13.9533 12.2533 13.9533 11.7467 14.2657 11.4343Z" fill="black" />
-									<path d="M8.2657 11.4343L12.45 7.25C12.8642 6.83579 12.8642 6.16421 12.45 5.75C12.0358 5.33579 11.3642 5.33579 10.95 5.75L5.40712 11.2929C5.01659 11.6834 5.01659 12.3166 5.40712 12.7071L10.95 18.25C11.3642 18.6642 12.0358 18.6642 12.45 18.25C12.8642 17.8358 12.8642 17.1642 12.45 16.75L8.2657 12.5657C7.95328 12.2533 7.95328 11.7467 8.2657 11.4343Z" fill="black" />
-								</svg>
-							</span>
+							
 							<!--end::Svg Icon-->
 						</div>
 						<!--end::Aside toggler-->
@@ -167,18 +162,7 @@ License: For each use you must have a valid license purchased only from above li
 											<!--begin::Search-->
 											<div id="kt_header_search" class="d-flex align-items-stretch" data-kt-search-keypress="true" data-kt-search-min-length="2" data-kt-search-enter="enter" data-kt-search-layout="menu" data-kt-menu-trigger="auto" data-kt-menu-overflow="false" data-kt-menu-permanent="true" data-kt-menu-placement="bottom-end">
 												<!--begin::Search toggle-->
-												<div class="d-flex align-items-center" data-kt-search-element="toggle" id="kt_header_search_toggle">
-													<div class="btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px">
-														<!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
-														<span class="svg-icon svg-icon-1">
-															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																<rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2" rx="1" transform="rotate(45 17.0365 15.1223)" fill="black" />
-																<path d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z" fill="black" />
-															</svg>
-														</span>
-														<!--end::Svg Icon-->
-													</div>
-												</div>
+												
 												<!--end::Search toggle-->
 												<!--begin::Menu-->
 												<div data-kt-search-element="content" class="menu menu-sub menu-sub-dropdown p-7 w-325px w-md-375px">
@@ -188,56 +172,27 @@ License: For each use you must have a valid license purchased only from above li
 														<form data-kt-search-element="form" class="w-100 position-relative mb-3" autocomplete="off">
 															<!--begin::Icon-->
 															<!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
-															<span class="svg-icon svg-icon-2 svg-icon-lg-1 svg-icon-gray-500 position-absolute top-50 translate-middle-y ms-0">
-																<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																	<rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2" rx="1" transform="rotate(45 17.0365 15.1223)" fill="black" />
-																	<path d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z" fill="black" />
-																</svg>
-															</span>
+															
 															<!--end::Svg Icon-->
 															<!--end::Icon-->
 															<!--begin::Input-->
-															<input type="text" class="form-control form-control-flush ps-10" name="search" value="" placeholder="Search..." data-kt-search-element="input" />
-															<!--end::Input-->
-															<!--begin::Spinner-->
-															<span class="position-absolute top-50 end-0 translate-middle-y lh-0 d-none me-1" data-kt-search-element="spinner">
-																<span class="spinner-border h-15px w-15px align-middle text-gray-400"></span>
-															</span>
+															
 															<!--end::Spinner-->
 															<!--begin::Reset-->
-															<span class="btn btn-flush btn-active-color-primary position-absolute top-50 end-0 translate-middle-y lh-0 d-none" data-kt-search-element="clear">
-																<!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
-																<span class="svg-icon svg-icon-2 svg-icon-lg-1 me-0">
-																	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																		<rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black" />
-																		<rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black" />
-																	</svg>
-																</span>
-																<!--end::Svg Icon-->
-															</span>
+															
 															<!--end::Reset-->
 															<!--begin::Toolbar-->
 															<div class="position-absolute top-50 end-0 translate-middle-y" data-kt-search-element="toolbar">
 																<!--begin::Preferences toggle-->
 																<div data-kt-search-element="preferences-show" class="btn btn-icon w-20px btn-sm btn-active-color-primary me-1" data-bs-toggle="tooltip" title="Show search preferences">
-																	<!--begin::Svg Icon | path: icons/duotune/coding/cod001.svg-->
-																	<span class="svg-icon svg-icon-1">
-																		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																			<path opacity="0.3" d="M22.1 11.5V12.6C22.1 13.2 21.7 13.6 21.2 13.7L19.9 13.9C19.7 14.7 19.4 15.5 18.9 16.2L19.7 17.2999C20 17.6999 20 18.3999 19.6 18.7999L18.8 19.6C18.4 20 17.8 20 17.3 19.7L16.2 18.9C15.5 19.3 14.7 19.7 13.9 19.9L13.7 21.2C13.6 21.7 13.1 22.1 12.6 22.1H11.5C10.9 22.1 10.5 21.7 10.4 21.2L10.2 19.9C9.4 19.7 8.6 19.4 7.9 18.9L6.8 19.7C6.4 20 5.7 20 5.3 19.6L4.5 18.7999C4.1 18.3999 4.1 17.7999 4.4 17.2999L5.2 16.2C4.8 15.5 4.4 14.7 4.2 13.9L2.9 13.7C2.4 13.6 2 13.1 2 12.6V11.5C2 10.9 2.4 10.5 2.9 10.4L4.2 10.2C4.4 9.39995 4.7 8.60002 5.2 7.90002L4.4 6.79993C4.1 6.39993 4.1 5.69993 4.5 5.29993L5.3 4.5C5.7 4.1 6.3 4.10002 6.8 4.40002L7.9 5.19995C8.6 4.79995 9.4 4.39995 10.2 4.19995L10.4 2.90002C10.5 2.40002 11 2 11.5 2H12.6C13.2 2 13.6 2.40002 13.7 2.90002L13.9 4.19995C14.7 4.39995 15.5 4.69995 16.2 5.19995L17.3 4.40002C17.7 4.10002 18.4 4.1 18.8 4.5L19.6 5.29993C20 5.69993 20 6.29993 19.7 6.79993L18.9 7.90002C19.3 8.60002 19.7 9.39995 19.9 10.2L21.2 10.4C21.7 10.5 22.1 11 22.1 11.5ZM12.1 8.59998C10.2 8.59998 8.6 10.2 8.6 12.1C8.6 14 10.2 15.6 12.1 15.6C14 15.6 15.6 14 15.6 12.1C15.6 10.2 14 8.59998 12.1 8.59998Z" fill="black" />
-																			<path d="M17.1 12.1C17.1 14.9 14.9 17.1 12.1 17.1C9.30001 17.1 7.10001 14.9 7.10001 12.1C7.10001 9.29998 9.30001 7.09998 12.1 7.09998C14.9 7.09998 17.1 9.29998 17.1 12.1ZM12.1 10.1C11 10.1 10.1 11 10.1 12.1C10.1 13.2 11 14.1 12.1 14.1C13.2 14.1 14.1 13.2 14.1 12.1C14.1 11 13.2 10.1 12.1 10.1Z" fill="black" />
-																		</svg>
-																	</span>
+																	
 																	<!--end::Svg Icon-->
 																</div>
 																<!--end::Preferences toggle-->
 																<!--begin::Advanced search toggle-->
 																<div data-kt-search-element="advanced-options-form-show" class="btn btn-icon w-20px btn-sm btn-active-color-primary" data-bs-toggle="tooltip" title="Show more search options">
 																	<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-																	<span class="svg-icon svg-icon-2">
-																		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																			<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
-																		</svg>
-																	</span>
+																	
 																	<!--end::Svg Icon-->
 																</div>
 																<!--end::Advanced search toggle-->
@@ -253,248 +208,16 @@ License: For each use you must have a valid license purchased only from above li
 															<!--begin::Items-->
 															<div class="scroll-y mh-200px mh-lg-350px">
 																<!--begin::Category title-->
-																<h3 class="fs-5 text-muted m-0 pb-5" data-kt-search-element="category-title">Users</h3>
-																<!--end::Category title-->
-																<!--begin::Item-->
-																<a href="#" class="d-flex text-dark text-hover-primary align-items-center mb-5">
-																	<!--begin::Symbol-->
-																	<div class="symbol symbol-40px me-4">
-																		<img src="assets/media/avatars/150-1.jpg" alt="" />
-																	</div>
-																	<!--end::Symbol-->
-																	<!--begin::Title-->
-																	<div class="d-flex flex-column justify-content-start fw-bold">
-																		<span class="fs-6 fw-bold">Karina Clark</span>
-																		<span class="fs-7 fw-bold text-muted">Marketing Manager</span>
-																	</div>
-																	<!--end::Title-->
-																</a>
-																<!--end::Item-->
-																<!--begin::Item-->
-																<a href="#" class="d-flex text-dark text-hover-primary align-items-center mb-5">
-																	<!--begin::Symbol-->
-																	<div class="symbol symbol-40px me-4">
-																		<img src="assets/media/avatars/150-3.jpg" alt="" />
-																	</div>
-																	<!--end::Symbol-->
-																	<!--begin::Title-->
-																	<div class="d-flex flex-column justify-content-start fw-bold">
-																		<span class="fs-6 fw-bold">Olivia Bold</span>
-																		<span class="fs-7 fw-bold text-muted">Software Engineer</span>
-																	</div>
-																	<!--end::Title-->
-																</a>
-																<!--end::Item-->
-																<!--begin::Item-->
-																<a href="#" class="d-flex text-dark text-hover-primary align-items-center mb-5">
-																	<!--begin::Symbol-->
-																	<div class="symbol symbol-40px me-4">
-																		<img src="assets/media/avatars/150-8.jpg" alt="" />
-																	</div>
-																	<!--end::Symbol-->
-																	<!--begin::Title-->
-																	<div class="d-flex flex-column justify-content-start fw-bold">
-																		<span class="fs-6 fw-bold">Ana Clark</span>
-																		<span class="fs-7 fw-bold text-muted">UI/UX Designer</span>
-																	</div>
-																	<!--end::Title-->
-																</a>
-																<!--end::Item-->
-																<!--begin::Item-->
-																<a href="#" class="d-flex text-dark text-hover-primary align-items-center mb-5">
-																	<!--begin::Symbol-->
-																	<div class="symbol symbol-40px me-4">
-																		<img src="assets/media/avatars/150-11.jpg" alt="" />
-																	</div>
-																	<!--end::Symbol-->
-																	<!--begin::Title-->
-																	<div class="d-flex flex-column justify-content-start fw-bold">
-																		<span class="fs-6 fw-bold">Nick Pitola</span>
-																		<span class="fs-7 fw-bold text-muted">Art Director</span>
-																	</div>
-																	<!--end::Title-->
-																</a>
-																<!--end::Item-->
-																<!--begin::Item-->
-																<a href="#" class="d-flex text-dark text-hover-primary align-items-center mb-5">
-																	<!--begin::Symbol-->
-																	<div class="symbol symbol-40px me-4">
-																		<img src="assets/media/avatars/150-12.jpg" alt="" />
-																	</div>
-																	<!--end::Symbol-->
-																	<!--begin::Title-->
-																	<div class="d-flex flex-column justify-content-start fw-bold">
-																		<span class="fs-6 fw-bold">Edward Kulnic</span>
-																		<span class="fs-7 fw-bold text-muted">System Administrator</span>
-																	</div>
-																	<!--end::Title-->
-																</a>
+																
 																<!--end::Item-->
 																<!--begin::Category title-->
-																<h3 class="fs-5 text-muted m-0 pt-5 pb-5" data-kt-search-element="category-title">Customers</h3>
-																<!--end::Category title-->
-																<!--begin::Item-->
-																<a href="#" class="d-flex text-dark text-hover-primary align-items-center mb-5">
-																	<!--begin::Symbol-->
-																	<div class="symbol symbol-40px me-4">
-																		<span class="symbol-label bg-light">
-																			<img class="w-20px h-20px" src="assets/media/svg/brand-logos/volicity-9.svg" alt="" />
-																		</span>
-																	</div>
-																	<!--end::Symbol-->
-																	<!--begin::Title-->
-																	<div class="d-flex flex-column justify-content-start fw-bold">
-																		<span class="fs-6 fw-bold">Company Rbranding</span>
-																		<span class="fs-7 fw-bold text-muted">UI Design</span>
-																	</div>
-																	<!--end::Title-->
-																</a>
+															
 																<!--end::Item-->
 																<!--begin::Item-->
-																<a href="#" class="d-flex text-dark text-hover-primary align-items-center mb-5">
-																	<!--begin::Symbol-->
-																	<div class="symbol symbol-40px me-4">
-																		<span class="symbol-label bg-light">
-																			<img class="w-20px h-20px" src="assets/media/svg/brand-logos/tvit.svg" alt="" />
-																		</span>
-																	</div>
-																	<!--end::Symbol-->
-																	<!--begin::Title-->
-																	<div class="d-flex flex-column justify-content-start fw-bold">
-																		<span class="fs-6 fw-bold">Company Re-branding</span>
-																		<span class="fs-7 fw-bold text-muted">Web Development</span>
-																	</div>
-																	<!--end::Title-->
-																</a>
+																
 																<!--end::Item-->
 																<!--begin::Item-->
-																<a href="#" class="d-flex text-dark text-hover-primary align-items-center mb-5">
-																	<!--begin::Symbol-->
-																	<div class="symbol symbol-40px me-4">
-																		<span class="symbol-label bg-light">
-																			<img class="w-20px h-20px" src="assets/media/svg/misc/infography.svg" alt="" />
-																		</span>
-																	</div>
-																	<!--end::Symbol-->
-																	<!--begin::Title-->
-																	<div class="d-flex flex-column justify-content-start fw-bold">
-																		<span class="fs-6 fw-bold">Business Analytics App</span>
-																		<span class="fs-7 fw-bold text-muted">Administration</span>
-																	</div>
-																	<!--end::Title-->
-																</a>
-																<!--end::Item-->
-																<!--begin::Item-->
-																<a href="#" class="d-flex text-dark text-hover-primary align-items-center mb-5">
-																	<!--begin::Symbol-->
-																	<div class="symbol symbol-40px me-4">
-																		<span class="symbol-label bg-light">
-																			<img class="w-20px h-20px" src="assets/media/svg/brand-logos/leaf.svg" alt="" />
-																		</span>
-																	</div>
-																	<!--end::Symbol-->
-																	<!--begin::Title-->
-																	<div class="d-flex flex-column justify-content-start fw-bold">
-																		<span class="fs-6 fw-bold">EcoLeaf App Launch</span>
-																		<span class="fs-7 fw-bold text-muted">Marketing</span>
-																	</div>
-																	<!--end::Title-->
-																</a>
-																<!--end::Item-->
-																<!--begin::Item-->
-																<a href="#" class="d-flex text-dark text-hover-primary align-items-center mb-5">
-																	<!--begin::Symbol-->
-																	<div class="symbol symbol-40px me-4">
-																		<span class="symbol-label bg-light">
-																			<img class="w-20px h-20px" src="assets/media/svg/brand-logos/tower.svg" alt="" />
-																		</span>
-																	</div>
-																	<!--end::Symbol-->
-																	<!--begin::Title-->
-																	<div class="d-flex flex-column justify-content-start fw-bold">
-																		<span class="fs-6 fw-bold">Tower Group Website</span>
-																		<span class="fs-7 fw-bold text-muted">Google Adwords</span>
-																	</div>
-																	<!--end::Title-->
-																</a>
-																<!--end::Item-->
-																<!--begin::Category title-->
-																<h3 class="fs-5 text-muted m-0 pt-5 pb-5" data-kt-search-element="category-title">Projects</h3>
-																<!--end::Category title-->
-																<!--begin::Item-->
-																<a href="#" class="d-flex text-dark text-hover-primary align-items-center mb-5">
-																	<!--begin::Symbol-->
-																	<div class="symbol symbol-40px me-4">
-																		<span class="symbol-label bg-light">
-																			<!--begin::Svg Icon | path: icons/duotune/general/gen005.svg-->
-																			<span class="svg-icon svg-icon-2 svg-icon-primary">
-																				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																					<path opacity="0.3" d="M19 22H5C4.4 22 4 21.6 4 21V3C4 2.4 4.4 2 5 2H14L20 8V21C20 21.6 19.6 22 19 22ZM15 17C15 16.4 14.6 16 14 16H8C7.4 16 7 16.4 7 17C7 17.6 7.4 18 8 18H14C14.6 18 15 17.6 15 17ZM17 12C17 11.4 16.6 11 16 11H8C7.4 11 7 11.4 7 12C7 12.6 7.4 13 8 13H16C16.6 13 17 12.6 17 12ZM17 7C17 6.4 16.6 6 16 6H8C7.4 6 7 6.4 7 7C7 7.6 7.4 8 8 8H16C16.6 8 17 7.6 17 7Z" fill="black" />
-																					<path d="M15 8H20L14 2V7C14 7.6 14.4 8 15 8Z" fill="black" />
-																				</svg>
-																			</span>
-																			<!--end::Svg Icon-->
-																		</span>
-																	</div>
-																	<!--end::Symbol-->
-																	<!--begin::Title-->
-																	<div class="d-flex flex-column">
-																		<span class="fs-6 fw-bold">Si-Fi Project by AU Themes</span>
-																		<span class="fs-7 fw-bold text-muted">#45670</span>
-																	</div>
-																	<!--end::Title-->
-																</a>
-																<!--end::Item-->
-																<!--begin::Item-->
-																<a href="#" class="d-flex text-dark text-hover-primary align-items-center mb-5">
-																	<!--begin::Symbol-->
-																	<div class="symbol symbol-40px me-4">
-																		<span class="symbol-label bg-light">
-																			<!--begin::Svg Icon | path: icons/duotune/general/gen032.svg-->
-																			<span class="svg-icon svg-icon-2 svg-icon-primary">
-																				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																					<rect x="8" y="9" width="3" height="10" rx="1.5" fill="black" />
-																					<rect opacity="0.5" x="13" y="5" width="3" height="14" rx="1.5" fill="black" />
-																					<rect x="18" y="11" width="3" height="8" rx="1.5" fill="black" />
-																					<rect x="3" y="13" width="3" height="6" rx="1.5" fill="black" />
-																				</svg>
-																			</span>
-																			<!--end::Svg Icon-->
-																		</span>
-																	</div>
-																	<!--end::Symbol-->
-																	<!--begin::Title-->
-																	<div class="d-flex flex-column">
-																		<span class="fs-6 fw-bold">Shopix Mobile App Planning</span>
-																		<span class="fs-7 fw-bold text-muted">#45690</span>
-																	</div>
-																	<!--end::Title-->
-																</a>
-																<!--end::Item-->
-																<!--begin::Item-->
-																<a href="#" class="d-flex text-dark text-hover-primary align-items-center mb-5">
-																	<!--begin::Symbol-->
-																	<div class="symbol symbol-40px me-4">
-																		<span class="symbol-label bg-light">
-																			<!--begin::Svg Icon | path: icons/duotune/communication/com012.svg-->
-																			<span class="svg-icon svg-icon-2 svg-icon-primary">
-																				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																					<path opacity="0.3" d="M20 3H4C2.89543 3 2 3.89543 2 5V16C2 17.1046 2.89543 18 4 18H4.5C5.05228 18 5.5 18.4477 5.5 19V21.5052C5.5 22.1441 6.21212 22.5253 6.74376 22.1708L11.4885 19.0077C12.4741 18.3506 13.6321 18 14.8167 18H20C21.1046 18 22 17.1046 22 16V5C22 3.89543 21.1046 3 20 3Z" fill="black" />
-																					<rect x="6" y="12" width="7" height="2" rx="1" fill="black" />
-																					<rect x="6" y="7" width="12" height="2" rx="1" fill="black" />
-																				</svg>
-																			</span>
-																			<!--end::Svg Icon-->
-																		</span>
-																	</div>
-																	<!--end::Symbol-->
-																	<!--begin::Title-->
-																	<div class="d-flex flex-column">
-																		<span class="fs-6 fw-bold">Finance Monitoring SAAS Discussion</span>
-																		<span class="fs-7 fw-bold text-muted">#21090</span>
-																	</div>
-																	<!--end::Title-->
-																</a>
+																
 																<!--end::Item-->
 																<!--begin::Item-->
 																<a href="#" class="d-flex text-dark text-hover-primary align-items-center mb-5">
@@ -539,17 +262,7 @@ License: For each use you must have a valid license purchased only from above li
 																<div class="d-flex align-items-center mb-5">
 																	<!--begin::Symbol-->
 																	<div class="symbol symbol-40px me-4">
-																		<span class="symbol-label bg-light">
-																			<!--begin::Svg Icon | path: icons/duotune/electronics/elc004.svg-->
-																			<span class="svg-icon svg-icon-2 svg-icon-primary">
-																				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																					<path d="M2 16C2 16.6 2.4 17 3 17H21C21.6 17 22 16.6 22 16V15H2V16Z" fill="black" />
-																					<path opacity="0.3" d="M21 3H3C2.4 3 2 3.4 2 4V15H22V4C22 3.4 21.6 3 21 3Z" fill="black" />
-																					<path opacity="0.3" d="M15 17H9V20H15V17Z" fill="black" />
-																				</svg>
-																			</span>
-																			<!--end::Svg Icon-->
-																		</span>
+																		
 																	</div>
 																	<!--end::Symbol-->
 																	<!--begin::Title-->
@@ -897,38 +610,12 @@ License: For each use you must have a valid license purchased only from above li
 										</div>
 										<!--end::Search-->
 										<!--begin::Activities-->
-										<div class="d-flex align-items-center ms-1 ms-lg-3">
-											<!--begin::Drawer toggle-->
-											<div class="btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px" id="kt_activities_toggle">
-												<!--begin::Svg Icon | path: icons/duotune/general/gen032.svg-->
-												<span class="svg-icon svg-icon-1">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-														<rect x="8" y="9" width="3" height="10" rx="1.5" fill="black" />
-														<rect opacity="0.5" x="13" y="5" width="3" height="14" rx="1.5" fill="black" />
-														<rect x="18" y="11" width="3" height="8" rx="1.5" fill="black" />
-														<rect x="3" y="13" width="3" height="6" rx="1.5" fill="black" />
-													</svg>
-												</span>
-												<!--end::Svg Icon-->
-											</div>
-											<!--end::Drawer toggle-->
-										</div>
+										
 										<!--end::Activities-->
 										<!--begin::Notifications-->
 										<div class="d-flex align-items-center ms-1 ms-lg-3">
 											<!--begin::Menu- wrapper-->
-											<div class="btn btn-icon btn-active-light-primary position-relative w-30px h-30px w-md-40px h-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-												<!--begin::Svg Icon | path: icons/duotune/general/gen022.svg-->
-												<span class="svg-icon svg-icon-1">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-														<path d="M11.2929 2.70711C11.6834 2.31658 12.3166 2.31658 12.7071 2.70711L15.2929 5.29289C15.6834 5.68342 15.6834 6.31658 15.2929 6.70711L12.7071 9.29289C12.3166 9.68342 11.6834 9.68342 11.2929 9.29289L8.70711 6.70711C8.31658 6.31658 8.31658 5.68342 8.70711 5.29289L11.2929 2.70711Z" fill="black" />
-														<path d="M11.2929 14.7071C11.6834 14.3166 12.3166 14.3166 12.7071 14.7071L15.2929 17.2929C15.6834 17.6834 15.6834 18.3166 15.2929 18.7071L12.7071 21.2929C12.3166 21.6834 11.6834 21.6834 11.2929 21.2929L8.70711 18.7071C8.31658 18.3166 8.31658 17.6834 8.70711 17.2929L11.2929 14.7071Z" fill="black" />
-														<path opacity="0.3" d="M5.29289 8.70711C5.68342 8.31658 6.31658 8.31658 6.70711 8.70711L9.29289 11.2929C9.68342 11.6834 9.68342 12.3166 9.29289 12.7071L6.70711 15.2929C6.31658 15.6834 5.68342 15.6834 5.29289 15.2929L2.70711 12.7071C2.31658 12.3166 2.31658 11.6834 2.70711 11.2929L5.29289 8.70711Z" fill="black" />
-														<path opacity="0.3" d="M17.2929 8.70711C17.6834 8.31658 18.3166 8.31658 18.7071 8.70711L21.2929 11.2929C21.6834 11.6834 21.6834 12.3166 21.2929 12.7071L18.7071 15.2929C18.3166 15.6834 17.6834 15.6834 17.2929 15.2929L14.7071 12.7071C14.3166 12.3166 14.3166 11.6834 14.7071 11.2929L17.2929 8.70711Z" fill="black" />
-													</svg>
-												</span>
-												<!--end::Svg Icon-->
-											</div>
+											
 											<!--begin::Menu-->
 											<div class="menu menu-sub menu-sub-dropdown menu-column w-350px w-lg-375px" data-kt-menu="true">
 												<!--begin::Heading-->
@@ -1434,17 +1121,7 @@ License: For each use you must have a valid license purchased only from above li
 														</div>
 														<!--end::Items-->
 														<!--begin::View more-->
-														<div class="py-3 text-center border-top">
-															<a href="../../demo1/dist/pages/profile/activity.html" class="btn btn-color-gray-600 btn-active-color-primary">View All
-															<!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
-															<span class="svg-icon svg-icon-5">
-																<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																	<rect opacity="0.5" x="18" y="13" width="13" height="2" rx="1" transform="rotate(-180 18 13)" fill="black" />
-																	<path d="M15.4343 12.5657L11.25 16.75C10.8358 17.1642 10.8358 17.8358 11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25L18.2929 12.7071C18.6834 12.3166 18.6834 11.6834 18.2929 11.2929L12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75C10.8358 6.16421 10.8358 6.83579 11.25 7.25L15.4343 11.4343C15.7467 11.7467 15.7467 12.2533 15.4343 12.5657Z" fill="black" />
-																</svg>
-															</span>
-															<!--end::Svg Icon--></a>
-														</div>
+														
 														<!--end::View more-->
 													</div>
 													<!--end::Tab panel-->
@@ -1458,36 +1135,14 @@ License: For each use you must have a valid license purchased only from above li
 										<!--begin::Chat-->
 										<div class="d-flex align-items-center ms-1 ms-lg-3">
 											<!--begin::Menu wrapper-->
-											<div class="btn btn-icon btn-active-light-primary position-relative w-30px h-30px w-md-40px h-md-40px" id="kt_drawer_chat_toggle">
-												<!--begin::Svg Icon | path: icons/duotune/communication/com012.svg-->
-												<span class="svg-icon svg-icon-1">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-														<path opacity="0.3" d="M20 3H4C2.89543 3 2 3.89543 2 5V16C2 17.1046 2.89543 18 4 18H4.5C5.05228 18 5.5 18.4477 5.5 19V21.5052C5.5 22.1441 6.21212 22.5253 6.74376 22.1708L11.4885 19.0077C12.4741 18.3506 13.6321 18 14.8167 18H20C21.1046 18 22 17.1046 22 16V5C22 3.89543 21.1046 3 20 3Z" fill="black" />
-														<rect x="6" y="12" width="7" height="2" rx="1" fill="black" />
-														<rect x="6" y="7" width="12" height="2" rx="1" fill="black" />
-													</svg>
-												</span>
-												<!--end::Svg Icon-->
-												<span class="bullet bullet-dot bg-success h-6px w-6px position-absolute translate-middle top-0 start-50 animation-blink"></span>
-											</div>
+											
 											<!--end::Menu wrapper-->
 										</div>
 										<!--end::Chat-->
 										<!--begin::Quick links-->
 										<div class="d-flex align-items-center ms-1 ms-lg-3">
 											<!--begin::Menu wrapper-->
-											<div class="btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-												<!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
-												<span class="svg-icon svg-icon-1">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-														<rect x="2" y="2" width="9" height="9" rx="2" fill="black" />
-														<rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2" fill="black" />
-														<rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2" fill="black" />
-														<rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2" fill="black" />
-													</svg>
-												</span>
-												<!--end::Svg Icon-->
-											</div>
+											
 											<!--begin::Menu-->
 											<div class="menu menu-sub menu-sub-dropdown menu-column w-250px w-lg-325px" data-kt-menu="true">
 												<!--begin::Heading-->
@@ -1504,34 +1159,12 @@ License: For each use you must have a valid license purchased only from above li
 												<div class="row g-0">
 													<!--begin:Item-->
 													<div class="col-6">
-														<a href="../../demo1/dist/pages/projects/budget.html" class="d-flex flex-column flex-center h-100 p-6 bg-hover-light border-end border-bottom">
-															<!--begin::Svg Icon | path: icons/duotune/finance/fin009.svg-->
-															<span class="svg-icon svg-icon-3x svg-icon-primary mb-2">
-																<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																	<path opacity="0.3" d="M15.8 11.4H6C5.4 11.4 5 11 5 10.4C5 9.80002 5.4 9.40002 6 9.40002H15.8C16.4 9.40002 16.8 9.80002 16.8 10.4C16.8 11 16.3 11.4 15.8 11.4ZM15.7 13.7999C15.7 13.1999 15.3 12.7999 14.7 12.7999H6C5.4 12.7999 5 13.1999 5 13.7999C5 14.3999 5.4 14.7999 6 14.7999H14.8C15.3 14.7999 15.7 14.2999 15.7 13.7999Z" fill="black" />
-																	<path d="M18.8 15.5C18.9 15.7 19 15.9 19.1 16.1C19.2 16.7 18.7 17.2 18.4 17.6C17.9 18.1 17.3 18.4999 16.6 18.7999C15.9 19.0999 15 19.2999 14.1 19.2999C13.4 19.2999 12.7 19.2 12.1 19.1C11.5 19 11 18.7 10.5 18.5C10 18.2 9.60001 17.7999 9.20001 17.2999C8.80001 16.8999 8.49999 16.3999 8.29999 15.7999C8.09999 15.1999 7.80001 14.7 7.70001 14.1C7.60001 13.5 7.5 12.8 7.5 12.2C7.5 11.1 7.7 10.1 8 9.19995C8.3 8.29995 8.79999 7.60002 9.39999 6.90002C9.99999 6.30002 10.7 5.8 11.5 5.5C12.3 5.2 13.2 5 14.1 5C15.2 5 16.2 5.19995 17.1 5.69995C17.8 6.09995 18.7 6.6 18.8 7.5C18.8 7.9 18.6 8.29998 18.3 8.59998C18.2 8.69998 18.1 8.69993 18 8.79993C17.7 8.89993 17.4 8.79995 17.2 8.69995C16.7 8.49995 16.5 7.99995 16 7.69995C15.5 7.39995 14.9 7.19995 14.2 7.19995C13.1 7.19995 12.1 7.6 11.5 8.5C10.9 9.4 10.5 10.6 10.5 12.2C10.5 13.3 10.7 14.2 11 14.9C11.3 15.6 11.7 16.1 12.3 16.5C12.9 16.9 13.5 17 14.2 17C15 17 15.7 16.8 16.2 16.4C16.8 16 17.2 15.2 17.9 15.1C18 15 18.5 15.2 18.8 15.5Z" fill="black" />
-																</svg>
-															</span>
-															<!--end::Svg Icon-->
-															<span class="fs-5 fw-bold text-gray-800 mb-0">Accounting</span>
-															<span class="fs-7 text-gray-400">eCommerce</span>
-														</a>
+														
 													</div>
 													<!--end:Item-->
 													<!--begin:Item-->
 													<div class="col-6">
-														<a href="../../demo1/dist/pages/projects/settings.html" class="d-flex flex-column flex-center h-100 p-6 bg-hover-light border-bottom">
-															<!--begin::Svg Icon | path: icons/duotune/communication/com010.svg-->
-															<span class="svg-icon svg-icon-3x svg-icon-primary mb-2">
-																<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																	<path d="M6 8.725C6 8.125 6.4 7.725 7 7.725H14L18 11.725V12.925L22 9.725L12.6 2.225C12.2 1.925 11.7 1.925 11.4 2.225L2 9.725L6 12.925V8.725Z" fill="black" />
-																	<path opacity="0.3" d="M22 9.72498V20.725C22 21.325 21.6 21.725 21 21.725H3C2.4 21.725 2 21.325 2 20.725V9.72498L11.4 17.225C11.8 17.525 12.3 17.525 12.6 17.225L22 9.72498ZM15 11.725H18L14 7.72498V10.725C14 11.325 14.4 11.725 15 11.725Z" fill="black" />
-																</svg>
-															</span>
-															<!--end::Svg Icon-->
-															<span class="fs-5 fw-bold text-gray-800 mb-0">Administration</span>
-															<span class="fs-7 text-gray-400">Console</span>
-														</a>
+													
 													</div>
 													<!--end:Item-->
 													<!--begin:Item-->
@@ -1552,32 +1185,14 @@ License: For each use you must have a valid license purchased only from above li
 													<!--end:Item-->
 													<!--begin:Item-->
 													<div class="col-6">
-														<a href="../../demo1/dist/pages/projects/users.html" class="d-flex flex-column flex-center h-100 p-6 bg-hover-light">
-															<!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
-															<span class="svg-icon svg-icon-3x svg-icon-primary mb-2">
-																<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																	<path opacity="0.3" d="M20 15H4C2.9 15 2 14.1 2 13V7C2 6.4 2.4 6 3 6H21C21.6 6 22 6.4 22 7V13C22 14.1 21.1 15 20 15ZM13 12H11C10.5 12 10 12.4 10 13V16C10 16.5 10.4 17 11 17H13C13.6 17 14 16.6 14 16V13C14 12.4 13.6 12 13 12Z" fill="black" />
-																	<path d="M14 6V5H10V6H8V5C8 3.9 8.9 3 10 3H14C15.1 3 16 3.9 16 5V6H14ZM20 15H14V16C14 16.6 13.5 17 13 17H11C10.5 17 10 16.6 10 16V15H4C3.6 15 3.3 14.9 3 14.7V18C3 19.1 3.9 20 5 20H19C20.1 20 21 19.1 21 18V14.7C20.7 14.9 20.4 15 20 15Z" fill="black" />
-																</svg>
-															</span>
-															<!--end::Svg Icon-->
-															<span class="fs-5 fw-bold text-gray-800 mb-0">Customers</span>
-															<span class="fs-7 text-gray-400">Latest cases</span>
-														</a>
+														
 													</div>
 													<!--end:Item-->
 												</div>
 												<!--end:Nav-->
 												<!--begin::View more-->
 												<div class="py-2 text-center border-top">
-													<a href="../../demo1/dist/pages/profile/activity.html" class="btn btn-color-gray-600 btn-active-color-primary">View All
-													<!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
-													<span class="svg-icon svg-icon-5">
-														<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-															<rect opacity="0.5" x="18" y="13" width="13" height="2" rx="1" transform="rotate(-180 18 13)" fill="black" />
-															<path d="M15.4343 12.5657L11.25 16.75C10.8358 17.1642 10.8358 17.8358 11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25L18.2929 12.7071C18.6834 12.3166 18.6834 11.6834 18.2929 11.2929L12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75C10.8358 6.16421 10.8358 6.83579 11.25 7.25L15.4343 11.4343C15.7467 11.7467 15.7467 12.2533 15.4343 12.5657Z" fill="black" />
-														</svg>
-													</span>
+												
 													<!--end::Svg Icon--></a>
 												</div>
 												<!--end::View more-->
@@ -1633,116 +1248,19 @@ License: For each use you must have a valid license purchased only from above li
 												</div>
 												<!--end::Menu item-->
 												<!--begin::Menu item-->
-												<div class="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="left-start">
-													<a href="#" class="menu-link px-5">
-														<span class="menu-title">My Subscription</span>
-														<span class="menu-arrow"></span>
-													</a>
-													<!--begin::Menu sub-->
-													<div class="menu-sub menu-sub-dropdown w-175px py-4">
-														<!--begin::Menu item-->
-														<div class="menu-item px-3">
-															<a href="../../demo1/dist/account/referrals.html" class="menu-link px-5">Referrals</a>
-														</div>
-														<!--end::Menu item-->
-														<!--begin::Menu item-->
-														<div class="menu-item px-3">
-															<a href="../../demo1/dist/account/billing.html" class="menu-link px-5">Billing</a>
-														</div>
-														<!--end::Menu item-->
-														<!--begin::Menu item-->
-														<div class="menu-item px-3">
-															<a href="../../demo1/dist/account/statements.html" class="menu-link px-5">Payments</a>
-														</div>
-														<!--end::Menu item-->
-														<!--begin::Menu item-->
-														<div class="menu-item px-3">
-															<a href="../../demo1/dist/account/statements.html" class="menu-link d-flex flex-stack px-5">Statements
-															<i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="View your statements"></i></a>
-														</div>
-														<!--end::Menu item-->
-														<!--begin::Menu separator-->
-														<div class="separator my-2"></div>
-														<!--end::Menu separator-->
-														<!--begin::Menu item-->
-														<div class="menu-item px-3">
-															<div class="menu-content px-3">
-																<label class="form-check form-switch form-check-custom form-check-solid">
-																	<input class="form-check-input w-30px h-20px" type="checkbox" value="1" checked="checked" name="notifications" />
-																	<span class="form-check-label text-muted fs-7">Notifications</span>
-																</label>
-															</div>
-														</div>
-														<!--end::Menu item-->
-													</div>
-													<!--end::Menu sub-->
-												</div>
+												
 												<!--end::Menu item-->
 												<!--begin::Menu item-->
-												<div class="menu-item px-5">
-													<a href="../../demo1/dist/account/statements.html" class="menu-link px-5">My Statements</a>
-												</div>
+												
 												<!--end::Menu item-->
 												<!--begin::Menu separator-->
 												<div class="separator my-2"></div>
 												<!--end::Menu separator-->
 												<!--begin::Menu item-->
-												<div class="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="left-start">
-													<a href="#" class="menu-link px-5">
-														<span class="menu-title position-relative">Language
-														<span class="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0">English
-														<img class="w-15px h-15px rounded-1 ms-2" src="assets/media/flags/united-states.svg" alt="" /></span></span>
-													</a>
-													<!--begin::Menu sub-->
-													<div class="menu-sub menu-sub-dropdown w-175px py-4">
-														<!--begin::Menu item-->
-														<div class="menu-item px-3">
-															<a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5 active">
-															<span class="symbol symbol-20px me-4">
-																<img class="rounded-1" src="assets/media/flags/united-states.svg" alt="" />
-															</span>English</a>
-														</div>
-														<!--end::Menu item-->
-														<!--begin::Menu item-->
-														<div class="menu-item px-3">
-															<a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5">
-															<span class="symbol symbol-20px me-4">
-																<img class="rounded-1" src="assets/media/flags/spain.svg" alt="" />
-															</span>Spanish</a>
-														</div>
-														<!--end::Menu item-->
-														<!--begin::Menu item-->
-														<div class="menu-item px-3">
-															<a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5">
-															<span class="symbol symbol-20px me-4">
-																<img class="rounded-1" src="assets/media/flags/germany.svg" alt="" />
-															</span>German</a>
-														</div>
-														<!--end::Menu item-->
-														<!--begin::Menu item-->
-														<div class="menu-item px-3">
-															<a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5">
-															<span class="symbol symbol-20px me-4">
-																<img class="rounded-1" src="assets/media/flags/japan.svg" alt="" />
-															</span>Japanese</a>
-														</div>
-														<!--end::Menu item-->
-														<!--begin::Menu item-->
-														<div class="menu-item px-3">
-															<a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5">
-															<span class="symbol symbol-20px me-4">
-																<img class="rounded-1" src="assets/media/flags/france.svg" alt="" />
-															</span>French</a>
-														</div>
-														<!--end::Menu item-->
-													</div>
-													<!--end::Menu sub-->
-												</div>
+												
 												<!--end::Menu item-->
 												<!--begin::Menu item-->
-												<div class="menu-item px-5 my-1">
-													<a href="../../demo1/dist/account/settings.html" class="menu-link px-5">Account Settings</a>
-												</div>
+												
 												<!--end::Menu item-->
 												<!--begin::Menu item-->
 												<div class="menu-item px-5">
@@ -1757,15 +1275,7 @@ License: For each use you must have a valid license purchased only from above li
 												<div class="separator my-2"></div>
 												<!--end::Menu separator-->
 												<!--begin::Menu item-->
-												<div class="menu-item px-5">
-													<div class="menu-content px-5">
-														<label class="form-check form-switch form-check-custom form-check-solid pulse pulse-success" for="kt_user_menu_dark_mode_toggle">
-															<input class="form-check-input w-30px h-20px" type="checkbox" value="1" name="mode" id="kt_user_menu_dark_mode_toggle" data-kt-url="../../demo1/dist/index.html" />
-															<span class="pulse-ring ms-n1"></span>
-															<span class="form-check-label text-gray-600 fs-7">Dark Mode</span>
-														</label>
-													</div>
-												</div>
+												
 												<!--end::Menu item-->
 											</div>
 											<!--end::Menu-->
@@ -1773,18 +1283,7 @@ License: For each use you must have a valid license purchased only from above li
 										</div>
 										<!--end::User -->
 										<!--begin::Heaeder menu toggle-->
-										<div class="d-flex align-items-center d-lg-none ms-2 me-n3" title="Show header menu">
-											<div class="btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px" id="kt_header_menu_mobile_toggle">
-												<!--begin::Svg Icon | path: icons/duotune/text/txt001.svg-->
-												<span class="svg-icon svg-icon-1">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-														<path d="M13 11H3C2.4 11 2 10.6 2 10V9C2 8.4 2.4 8 3 8H13C13.6 8 14 8.4 14 9V10C14 10.6 13.6 11 13 11ZM22 5V4C22 3.4 21.6 3 21 3H3C2.4 3 2 3.4 2 4V5C2 5.6 2.4 6 3 6H21C21.6 6 22 5.6 22 5Z" fill="black" />
-														<path opacity="0.3" d="M21 16H3C2.4 16 2 15.6 2 15V14C2 13.4 2.4 13 3 13H21C21.6 13 22 13.4 22 14V15C22 15.6 21.6 16 21 16ZM14 20V19C14 18.4 13.6 18 13 18H3C2.4 18 2 18.4 2 19V20C2 20.6 2.4 21 3 21H13C13.6 21 14 20.6 14 20Z" fill="black" />
-													</svg>
-												</span>
-												<!--end::Svg Icon-->
-											</div>
-										</div>
+										
 										<!--end::Heaeder menu toggle-->
 									</div>
 									<!--end::Toolbar wrapper-->
@@ -1820,96 +1319,15 @@ License: For each use you must have a valid license purchased only from above li
 									<!--begin::Wrapper-->
 									<div class="me-4">
 										<!--begin::Menu-->
-										<a href="#" class="btn btn-sm btn-flex btn-light btn-active-primary fw-bolder" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-										<!--begin::Svg Icon | path: icons/duotune/general/gen031.svg-->
-										<span class="svg-icon svg-icon-5 svg-icon-gray-500 me-1">
-											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-												<path d="M19.0759 3H4.72777C3.95892 3 3.47768 3.83148 3.86067 4.49814L8.56967 12.6949C9.17923 13.7559 9.5 14.9582 9.5 16.1819V19.5072C9.5 20.2189 10.2223 20.7028 10.8805 20.432L13.8805 19.1977C14.2553 19.0435 14.5 18.6783 14.5 18.273V13.8372C14.5 12.8089 14.8171 11.8056 15.408 10.964L19.8943 4.57465C20.3596 3.912 19.8856 3 19.0759 3Z" fill="black" />
-											</svg>
-										</span>
-										<!--end::Svg Icon-->Filter</a>
+										
 										<!--begin::Menu 1-->
-										<div class="menu menu-sub menu-sub-dropdown w-250px w-md-300px" data-kt-menu="true" id="kt_menu_61484bf44d957">
-											<!--begin::Header-->
-											<div class="px-7 py-5">
-												<div class="fs-5 text-dark fw-bolder">Filter Options</div>
-											</div>
-											<!--end::Header-->
-											<!--begin::Menu separator-->
-											<div class="separator border-gray-200"></div>
-											<!--end::Menu separator-->
-											<!--begin::Form-->
-											<div class="px-7 py-5">
-												<!--begin::Input group-->
-												<div class="mb-10">
-													<!--begin::Label-->
-													<label class="form-label fw-bold">Status:</label>
-													<!--end::Label-->
-													<!--begin::Input-->
-													<div>
-														<select class="form-select form-select-solid" data-kt-select2="true" data-placeholder="Select option" data-dropdown-parent="#kt_menu_61484bf44d957" data-allow-clear="true">
-															<option></option>
-															<option value="1">Approved</option>
-															<option value="2">Pending</option>
-															<option value="2">In Process</option>
-															<option value="2">Rejected</option>
-														</select>
-													</div>
-													<!--end::Input-->
-												</div>
-												<!--end::Input group-->
-												<!--begin::Input group-->
-												<div class="mb-10">
-													<!--begin::Label-->
-													<label class="form-label fw-bold">Member Type:</label>
-													<!--end::Label-->
-													<!--begin::Options-->
-													<div class="d-flex">
-														<!--begin::Options-->
-														<label class="form-check form-check-sm form-check-custom form-check-solid me-5">
-															<input class="form-check-input" type="checkbox" value="1" />
-															<span class="form-check-label">Author</span>
-														</label>
-														<!--end::Options-->
-														<!--begin::Options-->
-														<label class="form-check form-check-sm form-check-custom form-check-solid">
-															<input class="form-check-input" type="checkbox" value="2" checked="checked" />
-															<span class="form-check-label">Customer</span>
-														</label>
-														<!--end::Options-->
-													</div>
-													<!--end::Options-->
-												</div>
-												<!--end::Input group-->
-												<!--begin::Input group-->
-												<div class="mb-10">
-													<!--begin::Label-->
-													<label class="form-label fw-bold">Notifications:</label>
-													<!--end::Label-->
-													<!--begin::Switch-->
-													<div class="form-check form-switch form-switch-sm form-check-custom form-check-solid">
-														<input class="form-check-input" type="checkbox" value="" name="notifications" checked="checked" />
-														<label class="form-check-label">Enabled</label>
-													</div>
-													<!--end::Switch-->
-												</div>
-												<!--end::Input group-->
-												<!--begin::Actions-->
-												<div class="d-flex justify-content-end">
-													<button type="reset" class="btn btn-sm btn-light btn-active-light-primary me-2" data-kt-menu-dismiss="true">Reset</button>
-													<button type="submit" class="btn btn-sm btn-primary" data-kt-menu-dismiss="true">Apply</button>
-												</div>
-												<!--end::Actions-->
-											</div>
-											<!--end::Form-->
-										</div>
+										
 										<!--end::Menu 1-->
 										<!--end::Menu-->
 									</div>
 									<!--end::Wrapper-->
 									<!--begin::Button-->
-									<a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app" id="kt_toolbar_primary_button">Create</a>
-									<!--end::Button-->
+									
 								</div>
 								<!--end::Actions-->
 							</div>

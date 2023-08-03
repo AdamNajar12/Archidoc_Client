@@ -67,7 +67,11 @@
 															<label class="fs-6 fw-bold mb-2">role </label>
 															<!--end::Label-->
 															<!--begin::Input-->
-															<input type="tel" class="form-control form-control-solid" placeholder="" name="role" id="role" value="{{ $user->role }}" />
+															  <select class="form-control form-control-solid" name="role" id="role" required="required">
+        <option value="admin" {{ $user->role === 'admin' ? 'selected' : '' }}>Admin</option>
+        <option value="intervenant" {{ $user->role === 'intervenant' ? 'selected' : '' }}>Intervenant</option>
+        <option value="super admin" {{ $user->role === 'super admin' ? 'selected' : '' }}>Super Admin</option>
+    </select>
 															<!--end::Input-->
 														</div>
                                                         <div class="fv-row mb-15">

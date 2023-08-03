@@ -68,7 +68,12 @@
 															<label class="fs-6 fw-bold mb-2">role</label>
 															<!--end::Label-->
 															<!--begin::Input-->
-															<input type="text" class="form-control form-control-solid" placeholder="" name="role" id="role" required="required" />
+															<select  class="form-control form-control-solid" placeholder="" name="role" id="role" required="required" >
+															<option value="admin">Admin</option>
+															<option value="intervenant">Intervenant</option>
+															<option value="super admin"> Super Admin</option>
+															
+															</select>
 															<!--end::Input-->
 														</div>
                                                         <div class="fv-row mb-15">

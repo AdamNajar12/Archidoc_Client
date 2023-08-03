@@ -18,6 +18,50 @@
 											<div class="row mb-8">
 												<!--begin::Col-->
 												<div class="col-xl-3">
+													<div class="fs-6 fw-bold mt-2 mb-3"> code Client</div>
+												</div>
+												<!--end::Col-->
+												<!--begin::Col-->
+												<div class="col-xl-9">
+													<!--begin::Progress-->
+													<div class="d-flex flex-column">
+														<div class="d-flex justify-content-between w-100 fs-4 fw-bolder mb-3">
+															<span>{{$client->code_client}}</span>
+															
+														</div>
+														
+														
+													</div>
+													<!--end::Progress-->
+												</div>
+												<!--end::Col-->
+											</div>
+											<div class="row mb-8">
+												<!--begin::Col-->
+												<div class="col-xl-3">
+													<div class="fs-6 fw-bold mt-2 mb-3"> Application</div>
+												</div>
+												<!--end::Col-->
+												<!--begin::Col-->
+												<div class="col-xl-9">
+													<!--begin::Progress-->
+													<div class="d-flex flex-column">
+														<div class="d-flex justify-content-between w-100 fs-4 fw-bolder mb-3">
+																	@foreach ($applications as $application)
+    <span>{{ $application->libelle }}</span>
+@endforeach
+															
+														</div>
+														
+														
+													</div>
+													<!--end::Progress-->
+												</div>
+												<!--end::Col-->
+											</div>
+											<div class="row mb-8">
+												<!--begin::Col-->
+												<div class="col-xl-3">
 													<div class="fs-6 fw-bold mt-2 mb-3">Type d' intervention </div>
 												</div>
 												<!--end::Col-->
@@ -101,7 +145,7 @@
 													<!--begin::Progress-->
 													<div class="d-flex flex-column">
 														<div class="d-flex justify-content-between w-100 fs-4 fw-bolder mb-3">
-													<input type="text" class="form-control form-control-solid" placeholder="" name="description" id="description" value="{{ $ticket->description }}" />
+													<textarea type="text" class="form-control form-control-solid" placeholder="" name="description" id="description"  >{{ $ticket->description }}</textarea>
 															
 														</div>
 														
@@ -132,27 +176,7 @@
 												</div>
 												<!--end::Col-->
 											</div>
-											 <div class="row mb-8">
-												<!--begin::Col-->
-												<div class="col-xl-3">
-													<div class="fs-6 fw-bold mt-2 mb-3"> code Client</div>
-												</div>
-												<!--end::Col-->
-												<!--begin::Col-->
-												<div class="col-xl-9">
-													<!--begin::Progress-->
-													<div class="d-flex flex-column">
-														<div class="d-flex justify-content-between w-100 fs-4 fw-bolder mb-3">
-															<span>{{$client->code_client}}</span>
-															
-														</div>
-														
-														
-													</div>
-													<!--end::Progress-->
-												</div>
-												<!--end::Col-->
-											</div>
+											 
                                             
                                             <div class="row mb-8">
 												<!--begin::Col-->
@@ -165,7 +189,7 @@
 													<!--begin::Progress-->
 													<div class="d-flex flex-column">
 														<div class="d-flex justify-content-between w-100 fs-4 fw-bolder mb-3">
-															<textarea type="text" class="form-control form-control-solid" placeholder="" name="Observation" id="Observation"  ></textarea>
+															<textarea type="text" class="form-control form-control-solid" placeholder="" name="Observation" id="Observation"  >{{ $ticket->traitement->Observation }}</textarea>
 															
 														</div>
 														

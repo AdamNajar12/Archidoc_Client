@@ -150,7 +150,22 @@
 												
 															</div>
 													     </div>
+												<div class="fv-row mb-7">
+															<!--begin::Label-->
+															<label class="fs-6 fw-bold mb-2">
+																<span class="required">Ajouter un autre Utilisateur Pour cette Ticket  </span>
+																<i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Observation"></i>
+															</label>
+															<!--end::Label-->
+															<!--begin::Input-->
+															<select name="users[]" class="form-select form-select-solid fw-bolder" multiple>
+                @foreach ($users as $user)
+                    <option value="{{ $user->id }}">{{ $user->prenom }}</option>
+                @endforeach
+            </select>
 												
+															</div>
+													     </div>
 															</div>
 														<!--end::Input group-->
 														<!--begin::Billing toggle-->

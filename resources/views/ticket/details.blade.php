@@ -16,6 +16,50 @@
 											<div class="row mb-8">
 												<!--begin::Col-->
 												<div class="col-xl-3">
+													<div class="fs-6 fw-bold mt-2 mb-3"> code Client</div>
+												</div>
+												<!--end::Col-->
+												<!--begin::Col-->
+												<div class="col-xl-9">
+													<!--begin::Progress-->
+													<div class="d-flex flex-column">
+														<div class="d-flex justify-content-between w-100 fs-4 fw-bolder mb-3">
+															<span>{{$client->code_client}}</span>
+															
+														</div>
+														
+														
+													</div>
+													<!--end::Progress-->
+												</div>
+												<!--end::Col-->
+											</div>
+											<div class="row mb-8">
+												<!--begin::Col-->
+												<div class="col-xl-3">
+													<div class="fs-6 fw-bold mt-2 mb-3"> Application</div>
+												</div>
+												<!--end::Col-->
+												<!--begin::Col-->
+												<div class="col-xl-9">
+													<!--begin::Progress-->
+													<div class="d-flex flex-column">
+														<div class="d-flex justify-content-between w-100 fs-4 fw-bolder mb-3">
+																					@foreach ($applications as $application)
+    <span>{{ $application->libelle }}</span>
+@endforeach
+															
+														</div>
+														
+														
+													</div>
+													<!--end::Progress-->
+												</div>
+												<!--end::Col-->
+											</div>
+											<div class="row mb-8">
+												<!--begin::Col-->
+												<div class="col-xl-3">
 													<div class="fs-6 fw-bold mt-2 mb-3">Type d' intervention </div>
 												</div>
 												<!--end::Col-->
@@ -118,32 +162,36 @@
 												</div>
 												<!--end::Col-->
 											</div>
-											 <div class="row mb-8">
+											<div class="row mb-8">
 												<!--begin::Col-->
 												<div class="col-xl-3">
-													<div class="fs-6 fw-bold mt-2 mb-3"> code Client</div>
+													<div class="fs-6 fw-bold mt-2 mb-3">les utilisateurs assignnés </div>
 												</div>
 												<!--end::Col-->
 												<!--begin::Col-->
 												<div class="col-xl-9">
 													<!--begin::Progress-->
 													<div class="d-flex flex-column">
-														<div class="d-flex justify-content-between w-100 fs-4 fw-bolder mb-3">
-															<span>{{$client->code_client}}</span>
-															
-														</div>
-														
-														
-													</div>
+                                                     <div class="d-flex justify-content-between w-100 fs-4 fw-bolder mb-3">
+        <!-- Ici, vous pouvez ajouter tout contenu que vous souhaitez afficher avant la liste des utilisateurs -->
+                                                       </div>
+    
+    <!-- Boucle pour afficher chaque utilisateur -->
+                                                       @foreach ($utilisateursAffectes as $userAssigné)
+                                                       <div class="mb-2">
+                                                          <span class="d-flex justify-content-between w-100 fs-4 fw-bolder mb-3" >{{ $userAssigné->prenom }} {{ $userAssigné->nom }}</span>
+                                                          </div>
+                                                          @endforeach
+                                                          </div>
 													<!--end::Progress-->
-												</div>
+											    </div>
 												<!--end::Col-->
 											</div>
                                             
                                             <div class="row mb-8">
 												<!--begin::Col-->
 												<div class="col-xl-3">
-													<div class="fs-6 fw-bold mt-2 mb-3">Modificateur </div>
+													<div class="fs-6 fw-bold mt-2 mb-3">dernier Modificateur </div>
 												</div>
 												<!--end::Col-->
 												<!--begin::Col-->
@@ -151,8 +199,8 @@
 													<!--begin::Progress-->
 													<div class="d-flex flex-column">
 														<div class="d-flex justify-content-between w-100 fs-4 fw-bolder mb-3">
-															<span>{{ $user->user_prenom }} {{ $user->user_nom }} </span>
-															
+														
+																<span>{{ $user->user_prenom }} {{ $user->user_nom }} </span>
 														</div>
 														
 														

@@ -14,6 +14,26 @@
 													<!--begin::Input group-->
 													<div class="row mb-5">
 														<!--begin::Col-->
+														<div class="col-md-6 fv-row">
+															<!--end::Label-->
+															<label class="fs-5 fw-bold mb-2">Code Client </label>
+					<select name="client_id" id="client_id" class="form-select form-select-solid fw-bolder">
+																  @foreach ($clients as $client)
+            <option value="{{ $client->id }}">{{ $client->code_client }}</option>
+        @endforeach	
+                                                            </select>
+               
+														</div>
+                                                        <div class="col-md-6 fv-row">
+															<!--end::Label-->
+															<label class="fs-5 fw-bold mb-2">Application     </label>
+					<select name="application_id"id="application_id" class="form-select form-select-solid fw-bolder">
+																  @foreach ($applications as $application)
+            <option value="{{ $application->id }}">{{ $application->libelle }}</option>
+        @endforeach	
+                                                            </select>
+               
+														</div>
 													 <div class="col-md-6 fv-row">
 															<!--begin::Label-->
 															<label class="fs-5 fw-bold mb-2">Type d intervention</label>
@@ -56,26 +76,7 @@
 														<label class="fs-6 fw-bold mb-2">vis à vis </label>
 														<textarea class="form-control form-control-solid" rows="6" name="vis_a_vis" id="vis_a_vis" placeholder=""></textarea>
 													</div>
-													<div class="col-md-6 fv-row">
-															<!--end::Label-->
-															<label class="fs-5 fw-bold mb-2">Code Client </label>
-					<select name="client_id" id="client_id" class="form-select form-select-solid fw-bolder">
-																  @foreach ($clients as $client)
-            <option value="{{ $client->id }}">{{ $client->code_client }}</option>
-        @endforeach	
-                                                            </select>
-               
-														</div>
-                                                        <div class="col-md-6 fv-row">
-															<!--end::Label-->
-															<label class="fs-5 fw-bold mb-2">Application     </label>
-					<select name="application_id"id="application_id" class="form-select form-select-solid fw-bolder">
-																  @foreach ($applications as $application)
-            <option value="{{ $application->id }}">{{ $application->libelle }}</option>
-        @endforeach	
-                                                            </select>
-               
-														</div>
+													
                                                         <br>
                                                           <div class="col-md-6 fv-row">
                                                          <label class="fs-5 fw-bold mb-2">Fichier    </label>
@@ -194,30 +195,39 @@
                                     </div>
 								
                                 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <script>
     $(document).ready(function () {
-        // Écouteur d'événement pour le changement de sélection du client
-        $('select[name="client_id"]').on('change', function () {
-            var clientId = $(this).val();
-            // Effectuer une requête AJAX pour récupérer les applications associées au client sélectionné
+        // Function to load applications for the selected client
+        function loadApplicationsForClient(clientId) {
             $.ajax({
-                url: '/get-applications/' + clientId, // Remplacez cette URL par celle qui pointe vers la route qui récupère les applications
+                url: '/get-applications/' + clientId, // Replace this URL with the one that points to the route fetching applications
                 method: 'GET',
                 success: function (data) {
-                    // Supprimer toutes les options actuelles du select des applications
+                    // Clear the current options in the select for applications
                     $('select[name="application_id"]').empty();
 
-                    // Ajouter les nouvelles options récupérées depuis la réponse AJAX
+                    // Add the new options retrieved from the AJAX response
                     data.forEach(function (application) {
                         $('select[name="application_id"]').append('<option value="' + application.id + '">' + application.libelle + '</option>');
                     });
                 },
                 error: function (error) {
-                    // En cas d'erreur, afficher un message d'erreur ou gérer l'erreur comme vous le souhaitez
+                    // Handle errors if needed
                     console.error(error);
                 }
             });
+        }
+
+        // On page load, get the first client ID and load applications for it
+        var initialClientId = $('select[name="client_id"] option:first-child').val();
+        loadApplicationsForClient(initialClientId);
+
+        // Event listener for the change of client selection
+        $('select[name="client_id"]').on('change', function () {
+            var clientId = $(this).val();
+            loadApplicationsForClient(clientId);
         });
     });
 </script>

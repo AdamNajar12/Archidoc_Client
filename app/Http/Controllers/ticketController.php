@@ -54,7 +54,9 @@ class ticketController extends Controller
         ->where('tickets.id',$id)
         ->select('fichiers.nom_fichier as nomFichier')
         ->first();
-        return view('ticket.details', compact('statut','type_intervention','ticket','user','client','fichier'));
+        $applications = $ticket->applications;
+        $utilisateursAffectes = $ticket->users;
+        return view('ticket.details', compact('utilisateursAffectes','statut','type_intervention','ticket','user','client','fichier','applications'));
 
 
 
@@ -148,6 +150,7 @@ public function edit($id)
        
         
         $ticket = Ticket::with('traitement')->findOrFail($id);
+
         $type_intervention=type_intervention::pluck('libelle','id');
         $statut=statut::pluck('libelle','id');
         $client=client::join('tickets','clients.id','=','tickets.client_id')
@@ -155,7 +158,8 @@ public function edit($id)
         ->select('clients.code_client as code_client')
         ->first();
         $applications = $ticket->applications;
-        return view('ticket.edit', compact('statut','type_intervention','ticket','applications','client'));
+        $users=User::all();
+        return view('ticket.edit', compact('users','statut','type_intervention','ticket','applications','client'));
     }
     
 
@@ -199,7 +203,17 @@ public function edit($id)
                 ]);
             }
         }
+        $ticketUsers=[];
+        $usersIds=$request->input('users');
+        foreach($usersIds as $userId){
+            $ticketUsers[]=[
+        'ticket_id'=>$ticket->id,
+        'user_id' =>$userId,
     
+       ];
+     
+    }
+    Ticket_Utilisateur::insert($ticketUsers);
         return redirect()->route('ticket.index');
     }
     
@@ -383,7 +397,7 @@ public function TraiterTicketFront(Request $request, $id)
 }
 public function TraiterFront($id)
 {
-    $ticket = ticket::findOrFail($id);
+    $ticket = Ticket::with('traitement')->findOrFail($id);
       
     $type_intervention=type_intervention::pluck('libelle','id');
     $statut=statut::pluck('libelle','id');

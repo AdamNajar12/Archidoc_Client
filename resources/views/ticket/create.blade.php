@@ -30,6 +30,30 @@
 													<!--begin::Scroll-->
 													<div class="scroll-y me-n7 pe-7" id="kt_modal_add_customer_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_customer_header" data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
 														<!--begin::Input group-->
+														<div class="d-flex flex-column mb-7 fv-row">
+																<!--begin::Label-->
+																<label class="fs-6 fw-bold mb-2">
+																	<span class="required">code client</span>
+																	<i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Application utilisée"></i>
+																</label>
+                                                          	<select name="client_id" id="client_id" class="form-select form-select-solid fw-bolder">
+																  @foreach ($clients as $client)
+            <option value="{{ $client->id }}">{{ $client->code_client }}</option>
+        @endforeach	
+                                                            </select>
+                                                             </div>
+														<div class="d-flex flex-column mb-7 fv-row">
+																<!--begin::Label-->
+																<label class="fs-6 fw-bold mb-2">
+																	<span class="required">Application</span>
+																	<i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Application utilisée"></i>
+																</label>
+                                                          	<select name="application_id"id="application_id" class="form-select form-select-solid fw-bolder">
+																  @foreach ($applications as $application)
+            <option value="{{ $application->id }}">{{ $application->libelle }}</option>
+        @endforeach	
+                                                            </select>
+                                                             </div>  
 														<div class="fv-row mb-7">
 															<!--begin::Label-->
 															<label class="required fs-6 fw-bold mb-2">Type d intervention </label>
@@ -88,18 +112,7 @@
 															<input type="text" class="form-control form-control-solid" placeholder="" name="vis_a_vis" id="vis_a_vis" required="required"/>
 															<!--end::Input-->
 														</div>
-                                                        	<div class="d-flex flex-column mb-7 fv-row">
-																<!--begin::Label-->
-																<label class="fs-6 fw-bold mb-2">
-																	<span class="required">code client</span>
-																	<i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Application utilisée"></i>
-																</label>
-                                                          	<select name="client_id" id="client_id" class="form-select form-select-solid fw-bolder">
-																  @foreach ($clients as $client)
-            <option value="{{ $client->id }}">{{ $client->code_client }}</option>
-        @endforeach	
-                                                            </select>
-                                                             </div>
+                                                        	
 															
 															  <div class="d-flex flex-column mb-7 fv-row">
             <label class="fs-6 fw-bold mb-2">
@@ -113,18 +126,7 @@
             </select>
 			
 
-        </div>  <div class="d-flex flex-column mb-7 fv-row">
-																<!--begin::Label-->
-																<label class="fs-6 fw-bold mb-2">
-																	<span class="required">Application</span>
-																	<i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Application utilisée"></i>
-																</label>
-                                                          	<select name="application_id"id="application_id" class="form-select form-select-solid fw-bolder">
-																  @foreach ($applications as $application)
-            <option value="{{ $application->id }}">{{ $application->libelle }}</option>
-        @endforeach	
-                                                            </select>
-                                                             </div>  
+        </div>  
 															    </div>  <div class="d-flex flex-column mb-7 fv-row">
 																<!--begin::Label-->
 																<label class="fs-6 fw-bold mb-2">
