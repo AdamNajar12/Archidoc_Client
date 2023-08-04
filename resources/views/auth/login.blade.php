@@ -69,11 +69,11 @@ License: For each use you must have a valid license purchased only from above li
 							<!--begin::Input group-->
 							<div class="fv-row mb-10">
 								<!--begin::Label-->
-								<label class="form-label fs-6 fw-bolder text-dark">Email</label>
+								<label class="form-label fs-6 fw-bolder text-dark">Email or Username </label>
 								<!--end::Label-->
 								<!--begin::Input-->
-								<input class="form-control form-control-lg form-control-solid" id="email"  type="email" name="email" :value="old('email')"  required autofocus autocomplete="username" />
-							    <x-input-error :messages="$errors->get('email')" class="mt-2" />
+								<input class="form-control form-control-lg form-control-solid" id="login"  type="text" name="login" :value="old('email')"  required autofocus autocomplete="username" />
+							    <x-input-error :messages="$errors->get('login')" class="mt-2" />
 							</div>
 							<!--end::Input group-->
 							<!--begin::Input group-->

@@ -39,13 +39,13 @@ class AuthenticatedSessionController extends Controller
             return redirect('/tickets/AddFront');
         } elseif ($user->role === 'admin') {
             return redirect('/clients');
-        } elseif ($user->role === 'super_admin') {
+        } elseif ($user->role === 'super admin') {
             // Vous pouvez personnaliser la redirection pour les super administrateurs
-            return redirect('/front-page');
+            return redirect('/clients');
         }
     
         // Redirection par défaut si le rôle n'est pas reconnu
-        return redirect('/');
+        return redirect('/login');
     }
 
     /**
