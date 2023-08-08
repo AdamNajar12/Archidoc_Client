@@ -10,7 +10,7 @@ Dribbble: www.dribbble.com/keenthemes
 Like: www.facebook.com/keenthemes
 License: For each use you must have a valid license purchased only from above link in order to legally use the theme for your project.
 -->
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 	<!--begin::Head-->
 	<head><base href="">
 		<title>Archidoc Client</title>
@@ -31,6 +31,7 @@ License: For each use you must have a valid license purchased only from above li
 		<!--begin::Page Vendor Stylesheets(used by this page)-->
 		<link href="{{asset('frontend/plugins/custom/fullcalendar/fullcalendar.bundle.css')}}" rel="stylesheet" type="text/css" />
 		<!--end::Page Vendor Stylesheets-->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 		<!--begin::Global Stylesheets Bundle(used by all pages)-->
 		<link href="{{asset('frontend/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
 		<link href="{{asset('frontend/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
@@ -1073,6 +1074,7 @@ License: For each use you must have a valid license purchased only from above li
 		<script src="{{asset('frontend/js/custom/apps/chat/chat.js')}}"></script>
 		<script src="{{asset('frontend/js/custom/modals/create-app.js')}}"></script>
 		<script src="{{asset('frontend/js/custom/modals/upgrade-plan.js')}}"></script>
+		 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 		<!--end::Page Custom Javascript-->
 		<!--end::Javascript-->
 	</body>

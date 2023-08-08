@@ -101,6 +101,25 @@
 														<!--end::Table body-->
 													</table>
 													<!--end::Table-->
+														     			<ul class="pagination">
+    <li class="page-item previous">
+        <a href="{{ $Applications->previousPageUrl() }}" class="page-link">
+            <i class="previous"></i>
+        </a>
+    </li>
+
+    @for ($i = 1; $i <= $Applications->lastPage(); $i++)
+        <li class="page-item {{ $i == $$Applications->currentPage() ? 'active' : '' }}">
+            <a href="{{ $Applications->url($i) }}" class="page-link">{{ $i }}</a>
+        </li>
+    @endfor
+
+    <li class="page-item next">
+        <a href="{{$Applications->nextPageUrl() }}" class="page-link">
+            <i class="next"></i>
+        </a>
+    </li>
+</ul>
 												</div>
 												<!--end::Table container-->
 											</div>

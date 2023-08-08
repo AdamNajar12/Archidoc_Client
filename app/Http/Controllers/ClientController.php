@@ -10,13 +10,15 @@ use App\Models\Application;
 use App\Models\Client_Application;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Pagination\Paginator;
 
 class ClientController extends Controller
 {
     public function showClients()
     {
 
-           $clients = Client::withTrashed()->get();
+        $clients = Client::withTrashed()->paginate(5);
+
         return view('clients.index', compact('clients'));
     }
     public function showDetails($id)

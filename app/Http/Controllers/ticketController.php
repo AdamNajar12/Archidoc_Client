@@ -15,6 +15,7 @@ use App\Models\User;
 use App\Models\Traitement;
 use App\Models\fichier;
 use App\Models\Ticket_Utilisateur;
+use Illuminate\Pagination\Paginator;
 class ticketController extends Controller
 {
     public function showTickets()
@@ -26,7 +27,7 @@ class ticketController extends Controller
         ->join('statuts','tickets.statut','=','statuts.id')
         ->select('tickets.*', 'users.prenom as user_name', 'clients.code_client','users.nom as second_name','type_interventions.libelle as type_intervention','statuts.libelle as statut')
         ->withTrashed()
-        ->get();
+        ->paginate(5);
     
         return view('ticket.index', compact('tickets'));
     }

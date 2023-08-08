@@ -6,12 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\statut;
 use App\Models\User;
+use Illuminate\Pagination\Paginator;
 class StatutController extends Controller
 {
     public function showStatuts()
     {
 
-           $Statuts = statut::withTrashed()->get();
+           $Statuts = statut::withTrashed()->paginate(5);
         return view('statuts.index', compact('Statuts'));
     }
 

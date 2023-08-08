@@ -99,6 +99,25 @@
 														</tbody>
 														<!--end::Table body-->
 													</table>
+															<ul class="pagination">
+    <li class="page-item previous">
+        <a href="{{ $Statuts->previousPageUrl() }}" class="page-link">
+            <i class="previous"></i>
+        </a>
+    </li>
+
+    @for ($i = 1; $i <= $Statuts->lastPage(); $i++)
+        <li class="page-item {{ $i ==$Statuts->currentPage() ? 'active' : '' }}">
+            <a href="{{ $Statuts->url($i) }}" class="page-link">{{ $i }}</a>
+        </li>
+    @endfor
+
+    <li class="page-item next">
+        <a href="{{$Statuts->nextPageUrl() }}" class="page-link">
+            <i class="next"></i>
+        </a>
+    </li>
+</ul>
 													<!--end::Table-->
 												</div>
 												<!--end::Table container-->

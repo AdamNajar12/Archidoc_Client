@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\type_intervention;
+use Illuminate\Pagination\Paginator;
 use App\Models\User;
 
 class Type_interventions extends Controller
@@ -12,7 +13,7 @@ class Type_interventions extends Controller
     public function showType_d_interventions()
     {
 
-           $type_interventions = type_intervention::withTrashed()->get();
+           $type_interventions = type_intervention::withTrashed()->paginate(5);
         return view('type_intervention.index', compact('type_interventions'));
     }
     public function create()

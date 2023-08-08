@@ -9,13 +9,14 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Validation\Rules;
+use Illuminate\Pagination\Paginator;
 class UtilisateurController extends Controller
 {
 
     public function showUsers()
     {
 
-           $users = User::withTrashed()->get();
+           $users = User::withTrashed()->paginate(5);
         return view('users.index', compact('users'));
     }
     public function showDetails($id)

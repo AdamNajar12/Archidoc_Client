@@ -6,11 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Application;
 use App\Models\User;
+use Illuminate\Pagination\Paginator;
 class ApplicationController extends Controller
 {
     public function showApplications()
     {
-        $Applications = Application::withTrashed()->get();
+        $Applications = Application::withTrashed()->paginate(5);
         return view('Applications.index', compact('Applications'));
     }
     public function create()

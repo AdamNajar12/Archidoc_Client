@@ -128,6 +128,25 @@
 														</tbody>
 														<!--end::Table body-->
 													</table>
+														<ul class="pagination">
+    <li class="page-item previous">
+        <a href="{{ $tickets->previousPageUrl() }}" class="page-link">
+            <i class="previous"></i>
+        </a>
+    </li>
+
+    @for ($i = 1; $i <= $tickets->lastPage(); $i++)
+        <li class="page-item {{ $i ==$tickets->currentPage() ? 'active' : '' }}">
+            <a href="{{ $tickets->url($i) }}" class="page-link">{{ $i }}</a>
+        </li>
+    @endfor
+
+    <li class="page-item next">
+        <a href="{{$tickets->nextPageUrl() }}" class="page-link">
+            <i class="next"></i>
+        </a>
+    </li>
+</ul>
 													<!--end::Table-->
 												</div>
 												<!--end::Table container-->

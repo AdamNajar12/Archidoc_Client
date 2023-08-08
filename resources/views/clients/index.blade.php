@@ -119,8 +119,28 @@
                                                              @endforeach
 														</tbody>
 														<!--end::Table body-->
+											
 													</table>
 													<!--end::Table-->
+											     			<ul class="pagination">
+    <li class="page-item previous">
+        <a href="{{ $clients->previousPageUrl() }}" class="page-link">
+            <i class="previous"></i>
+        </a>
+    </li>
+
+    @for ($i = 1; $i <= $clients->lastPage(); $i++)
+        <li class="page-item {{ $i == $clients->currentPage() ? 'active' : '' }}">
+            <a href="{{ $clients->url($i) }}" class="page-link">{{ $i }}</a>
+        </li>
+    @endfor
+
+    <li class="page-item next">
+        <a href="{{ $clients->nextPageUrl() }}" class="page-link">
+            <i class="next"></i>
+        </a>
+    </li>
+</ul>
 												</div>
 												<!--end::Table container-->
 											</div>
@@ -130,4 +150,5 @@
 									</div>
 									<!--end::Col-->
 								</div>
+					
                                 @endsection

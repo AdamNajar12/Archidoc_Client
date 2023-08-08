@@ -98,6 +98,25 @@
 														</tbody>
 														<!--end::Table body-->
 													</table>
+														<ul class="pagination">
+    <li class="page-item previous">
+        <a href="{{ $type_interventions->previousPageUrl() }}" class="page-link">
+            <i class="previous"></i>
+        </a>
+    </li>
+
+    @for ($i = 1; $i <= $type_interventions->lastPage(); $i++)
+        <li class="page-item {{ $i ==$type_interventions->currentPage() ? 'active' : '' }}">
+            <a href="{{ $type_interventions->url($i) }}" class="page-link">{{ $i }}</a>
+        </li>
+    @endfor
+
+    <li class="page-item next">
+        <a href="{{$type_interventions->nextPageUrl() }}" class="page-link">
+            <i class="next"></i>
+        </a>
+    </li>
+</ul>
 													<!--end::Table-->
 												</div>
 												<!--end::Table container-->
