@@ -61,6 +61,9 @@ Route::get('/tickets/indexFront', [TicketController::class, 'showFrontTicket'])-
 Route::put('/tickets/traiterTicket/{ticket}', [TicketController::class, 'TraiterTicketFront'])->name('ticket.traiterFront');
 Route::get('/tickets/{ticket}/traiter', [TicketController::class, 'TraiterFront'])->name('ticket.traiter');
 Route::put('/tickets/{ticket}/restore', [TicketController::class, 'restore'])->name('ticket.restore');
+Route::get('/tickets/PDF', [TicketController::class, 'PDF_Tickets'])->name('ticket.pdf');
+
+
 
 Route::get('/statuts', [StatutController::class, 'showStatuts'])->name('statuts.index');
 Route::get('/statuts/create', [StatutController::class, 'create'])->name('statuts.create');

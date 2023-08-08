@@ -16,6 +16,7 @@ use App\Models\Traitement;
 use App\Models\fichier;
 use App\Models\Ticket_Utilisateur;
 use Illuminate\Pagination\Paginator;
+use Barryvdh\DomPDF\Facade\Pdf;
 class ticketController extends Controller
 {
     public function showTickets()
@@ -422,5 +423,34 @@ public function restore($id)
 
     // Rediriger vers la page d'index des Applications
     return redirect()->route('ticket.index')->with('success', 'ticket restaurée avec succès !');
+}
+public function PDF_Tickets()
+{
+    $user = auth()->user();
+
+    // Récupérer les tickets associés à l'utilisateur authentifié via la table "ticket_utilisateurs"
+    $ticketsFromTicketUtilisateurs = Ticket::whereHas('users', function ($query) use ($user) {
+            $query->where('ticket__utilisateurs.user_id', $user->id); // Spécifier la table ticket_utilisateurs pour la colonne user_id
+        })
+        ->join('clients', 'tickets.client_id', '=', 'clients.id')
+        ->join('type_interventions', 'tickets.type_intervention', '=', 'type_interventions.id')
+        ->join('statuts', 'tickets.statut', '=', 'statuts.id')
+        ->select('tickets.*', 'clients.code_client', 'type_interventions.libelle as type_intervention', 'statuts.libelle as statut');
+
+    // Récupérer les tickets que l'utilisateur authentifié a créés via la clé étrangère "user_id" dans la table "tickets"
+    $ticketsFromUser = Ticket::where('tickets.user_id', $user->id) // Spécifier la table tickets pour la colonne user_id
+        ->join('clients', 'tickets.client_id', '=', 'clients.id')
+        ->join('type_interventions', 'tickets.type_intervention', '=', 'type_interventions.id')
+        ->join('statuts', 'tickets.statut', '=', 'statuts.id')
+        ->select('tickets.*', 'clients.code_client', 'type_interventions.libelle as type_intervention', 'statuts.libelle as statut');
+
+    // Combiner les deux requêtes avec union
+    $tickets = $ticketsFromTicketUtilisateurs->union($ticketsFromUser)->get();
+
+
+    $pdf = Pdf::loadView('ticket.PDF', ['tickets' => $tickets]);
+    return $pdf->stream('tickets.pdf');
+
+
 }
 }

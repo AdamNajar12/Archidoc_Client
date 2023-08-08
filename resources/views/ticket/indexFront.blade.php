@@ -8,7 +8,8 @@
 													
 												</h3>
 												<div class="card-toolbar"  title="Click to add a user">
-													<a href="/tickets/AddFront" class="btn btn-sm btn-light btn-active-primary" >Ajouter  ticket </a>
+													<a href="/tickets/AddFront" class="btn btn-sm btn-light btn-active-primary me-2" >Ajouter  ticket </a>
+												   <a href="/tickets/PDF" class="btn btn-sm btn-light btn-active-primary me-1" >PDF</a>
 												</div>
 											</div>
 											<!--end::Header-->
@@ -17,6 +18,7 @@
 												<!--begin::Table container-->
 												<div class="table-responsive">
 													<!--begin::Table-->
+													
 													<table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
 														<!--begin::Table head-->
 														<thead>
