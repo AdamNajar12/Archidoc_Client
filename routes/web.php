@@ -62,7 +62,7 @@ Route::put('/tickets/traiterTicket/{ticket}', [TicketController::class, 'Traiter
 Route::get('/tickets/{ticket}/traiter', [TicketController::class, 'TraiterFront'])->name('ticket.traiter');
 Route::put('/tickets/{ticket}/restore', [TicketController::class, 'restore'])->name('ticket.restore');
 Route::get('/tickets/PDF', [TicketController::class, 'PDF_Tickets'])->name('ticket.pdf');
-
+Route::get('/tickets/export-tickets', [TicketController::class, 'exportTickets'])->name('ticket.export');
 
 
 Route::get('/statuts', [StatutController::class, 'showStatuts'])->name('statuts.index');

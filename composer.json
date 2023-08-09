@@ -12,8 +12,10 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
-        "maatwebsite/excel": "^1.1",
-        "nesbot/carbon": "^2.68"
+        "maatwebsite/excel": "1.1",
+        "nesbot/carbon": "^2.68",
+        "phpoffice/phpexcel": "^1.8",
+        "phpoffice/phpspreadsheet": "^1.29"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

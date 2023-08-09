@@ -10,6 +10,7 @@
 												<div class="card-toolbar"  title="Click to add a user">
 													<a href="/tickets/AddFront" class="btn btn-sm btn-light btn-active-primary me-2" >Ajouter  ticket </a>
 												   <a href="/tickets/PDF" class="btn btn-sm btn-light btn-active-primary me-1" >PDF</a>
+												    <a href="/tickets/export-tickets" class="btn btn-sm btn-light btn-active-primary me-1" >export csv </a>
 												</div>
 											</div>
 											<!--end::Header-->

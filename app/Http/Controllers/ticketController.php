@@ -17,6 +17,11 @@ use App\Models\fichier;
 use App\Models\Ticket_Utilisateur;
 use Illuminate\Pagination\Paginator;
 use Barryvdh\DomPDF\Facade\Pdf;
+use App\Exports\TicketsExport;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Csv;
+
+
 class ticketController extends Controller
 {
     public function showTickets()
@@ -453,4 +458,56 @@ public function PDF_Tickets()
 
 
 }
+public function exportTickets()
+    {
+        $user = auth()->user();
+
+        $ticketsFromTicketUtilisateurs = Ticket::whereHas('users', function ($query) use ($user) {
+             $query->where('ticket__utilisateurs.user_id', $user->id);
+         })
+         ->join('clients', 'tickets.client_id', '=', 'clients.id')
+         ->join('type_interventions', 'tickets.type_intervention', '=', 'type_interventions.id')
+         ->join('statuts', 'tickets.statut', '=', 'statuts.id')
+         ->select('tickets.*', 'clients.code_client', 'type_interventions.libelle as type_intervention', 'statuts.libelle as statut');
+    
+         $ticketsFromUser = Ticket::where('tickets.user_id', $user->id)
+             ->join('clients', 'tickets.client_id', '=', 'clients.id')
+             ->join('type_interventions', 'tickets.type_intervention', '=', 'type_interventions.id')
+             ->join('statuts', 'tickets.statut', '=', 'statuts.id')
+             ->select('tickets.*', 'clients.code_client', 'type_interventions.libelle as type_intervention', 'statuts.libelle as statut');
+    
+         $tickets = $ticketsFromTicketUtilisateurs->union($ticketsFromUser)->get();
+    
+         // Créer une instance de la classe Spreadsheet
+         $spreadsheet = new Spreadsheet();
+         $sheet = $spreadsheet->getActiveSheet();
+    
+         // Ajouter les en-têtes des colonnes
+         $sheet->setCellValue('A1', 'Type d\'intervention');
+         $sheet->setCellValue('B1', 'Statut');
+         $sheet->setCellValue('C1', 'Date demandée');
+         $sheet->setCellValue('D1', 'Code client');
+    
+         // Remplir les données des tickets
+         $row = 2;
+         foreach ($tickets as $ticket) {
+             $sheet->setCellValue('A' . $row, $ticket->type_intervention);
+             $sheet->setCellValue('B' . $row, $ticket->statut);
+             $sheet->setCellValue('C' . $row, $ticket->date_demande);
+             $sheet->setCellValue('D' . $row, $ticket->code_client);
+             $row++;
+         }
+    
+         // Créer un objet Csv Writer
+         $writer = new Csv($spreadsheet);
+    
+         
+        $filePath = storage_path('app/tickets.csv');
+
+       
+        
+        $writer->save($filePath);
+
+return response()->download($filePath, 'tickets.csv');
+    }
 }
