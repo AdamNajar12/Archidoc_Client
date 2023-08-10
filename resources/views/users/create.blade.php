@@ -59,8 +59,10 @@
 															<label class="fs-6 fw-bold mb-2"> Nom Utilisateur</label>
 															<!--end::Label-->
 															<!--begin::Input-->
-															        <input id="username" class="form-control form-control-solid" type="text" name="username" :value="old('username')" required autocomplete="username" />
-															 
+															        <input id="user_name" class="form-control form-control-solid" type="text" name="user_name" :value="old('user_name')" required autocomplete="user_name" />
+															  @if ($errors->has('user_name'))
+                                                              {{ $errors->first('user_name') }}
+															  @endif
 														</div>
                                               
                                                         <div class="fv-row mb-15">

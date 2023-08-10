@@ -39,13 +39,17 @@ class UtilisateurController extends Controller
 {
     $request->validate([
         'nom' => ['required', 'string', 'max:255'],
+        'prenom'=> ['required', 'string', 'max:255'],
+        'user_name'=> 'required|unique:users',
         'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
         'password' => ['required', 'confirmed', Rules\Password::defaults()],
+    ], [
+        'user_name.unique' => 'Le nom d\'utilisateur est déjà pris.', // Message d'erreur personnalisé
     ]);
     $user = User::create([
         'nom' => $request->nom,
         'prenom' => $request->prenom,
-        'user_name' => $request->username,
+        'user_name' => $request->user_name,
         'role' => $request->role,
         'email' => $request->email,
         'password' => Hash::make($request->password),
@@ -75,7 +79,7 @@ class UtilisateurController extends Controller
         $validatedData = $request->validate([
             'nom' => 'required',
             'prenom' => 'required',
-            'user_name' => 'required',
+            'user_name' => 'required|unique:clients',
             'role' => 'required',
             'email' => 'required'
         ]);
