@@ -1036,7 +1036,11 @@ License: For each use you must have a valid license purchased only from above li
 										<!--begin::Menu-->
 										
 										<!--begin::Menu 1-->
-										
+										@auth
+        @if(auth()->user()->role == 'super admin')
+            <a href="/tickets/AddFront" class="btn btn-sm btn-primary">Coté Client</a>
+        @endif
+    @endauth
 										<!--end::Menu 1-->
 										<!--end::Menu-->
 									</div>

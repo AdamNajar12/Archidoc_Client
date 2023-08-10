@@ -78,6 +78,21 @@
 															<input type="tel" class="form-control form-control-solid" placeholder="" name="localisation" id="localisation" value="{{ $client ->localisation }}"/>
 															<!--end::Input-->
 														</div>
+														     	  <div id="applications-container">
+        <div class="d-flex flex-column mb-7 fv-row">
+            <label class="fs-6 fw-bold mb-2">
+                <span class="required">Application</span>
+                <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Application utilisée"></i>
+            </label>
+            <select name="applications[]" class="form-select form-select-solid fw-bolder" multiple>
+                @foreach ($Applications as $Application)
+                    <option value="{{ $Application->id }}">{{ $Application->libelle }}</option>
+                @endforeach
+            </select>
+			
+
+        </div>
+    </div>
 														<!--end::Input group-->
 														<!--begin::Billing toggle-->
 																										<!--end::Button-->

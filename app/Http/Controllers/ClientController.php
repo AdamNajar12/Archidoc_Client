@@ -124,10 +124,10 @@ class ClientController extends Controller
     {
        
         $client = client::findOrFail($id);
-  
+        $Applications = Application::all();
         
         
-        return view('clients.edit', compact('client'));
+        return view('clients.edit', compact('client','Applications'));
     }
     
     public function update(Request $request,  $id)
@@ -146,7 +146,18 @@ class ClientController extends Controller
         $data['user_id'] = auth()->user()->id;
     
         $client->update($data);
-    
+        $applicationIds = $request->input('applications');
+
+        // Créer les enregistrements dans la table client_Application avec l'ID du client nouvellement créé
+        $clientApplications = [];
+        foreach ($applicationIds as $applicationId) {
+            $clientApplications[] = [
+                'client_id' => $client->id,
+                'application_id' => $applicationId,
+            ];
+        }
+        Client_Application::insert($clientApplications);
+
         return redirect()->route('clients.index');
     }
     

@@ -1319,7 +1319,11 @@ License: For each use you must have a valid license purchased only from above li
 									<!--begin::Wrapper-->
 									<div class="me-4">
 										<!--begin::Menu-->
-										
+											@auth
+        @if(auth()->user()->role == 'super admin') 
+            <a href="/tickets" class="btn btn-sm btn-primary">Admin</a>
+        @endif
+    @endauth
 										<!--begin::Menu 1-->
 										
 										<!--end::Menu 1-->
