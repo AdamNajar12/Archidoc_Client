@@ -26,6 +26,7 @@
 																		<input class="form-check-input" type="checkbox" value="1" data-kt-check="true" data-kt-check-target=".widget-9-check" />
 																	</div>
 																</th>
+																<th class="min-w-150px">Image</th>
 																<th class="min-w-150px">Nom</th>
 																<th class="min-w-140px">Prenom</th>
 																<th class="min-w-120px">Nom Utilisateur </th>
@@ -47,6 +48,22 @@
 																		<input class="form-check-input widget-9-check" type="checkbox" value="1" />
 																	</div>
 																</td>
+																<td class="d-flex align-items-center">
+														<!--begin:: Avatar -->
+														<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
+															<a href="">
+																<div class="symbol-label">
+																	 @if($user->image)
+															<img alt="Logo" class="w-100" src="{{ asset('storage/user_image/' . $user->image->nom_image) }}" />
+													      @else
+                                                       <img alt="Logo" class="w-100" src="{{ asset('frontend/media/avatars/blank.png') }}" />
+                                                          @endif
+																</div>
+															</a>
+														</div>
+														
+														<!--begin::User details-->
+													</td>
 																<td>
 																	<div class="d-flex align-items-center">
 																

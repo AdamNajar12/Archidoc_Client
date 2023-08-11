@@ -90,17 +90,34 @@ class UtilisateurController extends Controller
         $validatedData = $request->validate([
             'nom' => 'required',
             'prenom' => 'required',
-            'user_name' => 'required|unique:clients',
+            'user_name' => 'required', // Retirer la validation unique ici
             'role' => 'required',
             'email' => 'required'
         ]);
-    
+        
         $data = $request->only(['nom', 'prenom', 'user_name', 'role', 'email']);
         
-    
+        // Vérification pour le nom d'utilisateur unique
+        if ($user->user_name !== $data['user_name'] && User::where('user_name', $data['user_name'])->exists()) {
+            return redirect()->back()->withErrors(['user_name' => 'Le nom d\'utilisateur est déjà pris.']);
+        }
+        
         $user->update($data);
-    
+        
+        if ($request->hasFile('nom_image')) {
+            $file = $request->file('nom_image');
+            
+            $fileName = $file->getClientOriginalName();
+            $file->storeAs('public/user_image', $fileName);
+        
+            image::create([
+                'nom_image' => $fileName,
+                'user_id' => $user->id,
+            ]);
+        }
+        
         return redirect()->route('users.index');
+        
     }
     
     

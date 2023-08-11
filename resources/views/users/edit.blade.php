@@ -4,7 +4,7 @@
 										<!--begin::Modal content-->
 										<div class="modal-content">
 											<!--begin::Form-->
-											<form class="form" action="{{ route('users.update', $user->id) }}" method="POST"  >
+											<form class="form" action="{{ route('users.update', $user->id) }}" method="POST" enctype="multipart/form-data"  >
 												    @csrf
                                                    @method('PUT')
                                                 <!--begin::Modal header-->
@@ -29,7 +29,41 @@
 												<!--begin::Modal body-->
 												<div class="modal-body py-10 px-lg-17">
 													<!--begin::Scroll-->
-													<div class="scroll-y me-n7 pe-7" id="kt_modal_add_customer_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_customer_header" data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
+													<div class="scroll-y me-n7 pe-7" >
+													<div class="fv-row mb-7">
+																		<!--begin::Label-->
+																		<label class="d-block fw-bold fs-6 mb-5">Image</label>
+																		<!--end::Label-->
+																		<!--begin::Image input-->
+																		<div class="image-input image-input-outline" data-kt-image-input="true" style="background-image: url({{asset('frontend/media/avatars/blank.png')}}">
+																			<!--begin::Preview existing avatar-->
+																			<div class="image-input-wrapper w-125px h-125px" style="background-image: url(asset/media/avatars/150-1.jpg);"></div>
+																			<!--end::Preview existing avatar-->
+																			<!--begin::Label-->
+																			<label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="" data-bs-original-title="Change avatar">
+																				<i class="bi bi-pencil-fill fs-7"></i>
+																				<!--begin::Inputs-->
+																				<input type="file"  name="nom_image" id="nom_image" accept=".png, .jpg, .jpeg">
+																				<input type="hidden" name="avatar_remove">
+																				<!--end::Inputs-->
+																			</label>
+																			<!--end::Label-->
+																			<!--begin::Cancel-->
+																			<span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="" data-bs-original-title="Cancel avatar">
+																				<i class="bi bi-x fs-2"></i>
+																			</span>
+																			<!--end::Cancel-->
+																			<!--begin::Remove-->
+																			<span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="" data-bs-original-title="Remove avatar">
+																				<i class="bi bi-x fs-2"></i>
+																			</span>
+																			<!--end::Remove-->
+																		</div>
+																		<!--end::Image input-->
+																		<!--begin::Hint-->
+																		<div class="form-text">Allowed file types: png, jpg, jpeg.</div>
+																		<!--end::Hint-->
+																	</div>
 														<!--begin::Input group-->
 														<div class="fv-row mb-7">
 															<!--begin::Label-->
@@ -60,6 +94,9 @@
 															<!--end::Label-->
 															<!--begin::Input-->
 															<input type="tel" class="form-control form-control-solid" placeholder="" name="user_name" id="user_name" value="{{ $user->user_name }}"/>
+															 @if ($errors->has('user_name'))
+                                                              {{ $errors->first('user_name') }}
+															  @endif
 															<!--end::Input-->
 														</div>
                                                         <div class="fv-row mb-15">
