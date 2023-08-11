@@ -909,7 +909,15 @@ License: For each use you must have a valid license purchased only from above li
 										<div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
 											<!--begin::Menu wrapper-->
 											<div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-												<img src="assets/media/avatars/150-26.jpg" alt="user" />
+												
+													
+												 @if(auth()->user()->image)
+        <img src="{{ asset('storage/user_image/' . auth()->user()->image->nom_image) }}" alt="user" />
+    @else
+        <!-- Afficher une image par défaut ou un message s'il n'y a pas d'image -->
+        <img src="{{ asset('frontend/media/avatars/blank.png') }}" alt="user" />
+    @endif
+                                               									
 											</div>
 											<!--begin::Menu-->
 											<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-primary fw-bold py-4 fs-6 w-275px" data-kt-menu="true">
@@ -918,8 +926,13 @@ License: For each use you must have a valid license purchased only from above li
 													<div class="menu-content d-flex align-items-center px-3">
 														<!--begin::Avatar-->
 														<div class="symbol symbol-50px me-5">
-															<img alt="Logo" src="assets/media/avatars/150-26.jpg" />
-														</div>
+														 @if(auth()->user()->image)
+															<img alt="Logo" src="{{ asset('storage/user_image/' . auth()->user()->image->nom_image) }}" />
+													      @else
+                                                       <img src="{{ asset('frontend/media/avatars/blank.png') }}" alt="user" />
+                                                          @endif
+
+													</div>
 														<!--end::Avatar-->
 														<!--begin::Username-->
 														  @auth

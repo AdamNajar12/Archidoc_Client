@@ -109,7 +109,7 @@
     </li>
 
     @for ($i = 1; $i <= $Applications->lastPage(); $i++)
-        <li class="page-item {{ $i == $$Applications->currentPage() ? 'active' : '' }}">
+        <li class="page-item {{ $i == $Applications->currentPage() ? 'active' : '' }}">
             <a href="{{ $Applications->url($i) }}" class="page-link">{{ $i }}</a>
         </li>
     @endfor

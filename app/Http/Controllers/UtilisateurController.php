@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Validation\Rules;
+use App\Models\image;
 use Illuminate\Pagination\Paginator;
 class UtilisateurController extends Controller
 {
@@ -54,11 +55,21 @@ class UtilisateurController extends Controller
         'email' => $request->email,
         'password' => Hash::make($request->password),
     ]);
+    if ($request->hasFile('nom_image')) {
+        $file = $request->file('nom_image');
+        
+        $fileName = $file->getClientOriginalName();
+        $file->storeAs('public/user_image', $fileName);
     
+        image::create([
+            'nom_image' => $fileName,
+            'user_id' => $user->id,
+        ]);
+    }
 
     event(new Registered($user));
 
-    Auth::login($user);
+    
     return redirect()->route('users.index');
 }
     

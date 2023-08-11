@@ -58,4 +58,8 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Ticket::class, 'ticket__utilisateurs', 'user_id', 'ticket_id');
     }
+    public function image()
+    {
+        return $this->hasOne(Image::class);
+    }
 }
