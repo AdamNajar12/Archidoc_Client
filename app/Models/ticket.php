@@ -24,13 +24,13 @@ class ticket extends Model
 }
     public function typeIntervention()
     {
-        return $this->belongsTo(type_intervention::class, 'type_interventions');
+        return $this->belongsTo(type_intervention::class, 'type_intervention');
     }
 
     // Define the relationship with Statut
     public function statut()
     {
-        return $this->belongsTo(Statut::class, 'statuts');
+        return $this->belongsTo(Statut::class,'statut');
     }
     public function fichiers()
 {

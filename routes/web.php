@@ -63,7 +63,7 @@ Route::get('/tickets/{ticket}/traiter', [TicketController::class, 'TraiterFront'
 Route::put('/tickets/{ticket}/restore', [TicketController::class, 'restore'])->name('ticket.restore');
 Route::get('/tickets/PDF', [TicketController::class, 'PDF_Tickets'])->name('ticket.pdf');
 Route::get('/tickets/export-tickets', [TicketController::class, 'exportTickets'])->name('ticket.export');
-
+Route::get('/tickets/Tableau_bord', [TicketController::class, 'enCoursTickets'])->name('ticket.tableau_bord');
 
 Route::get('/statuts', [StatutController::class, 'showStatuts'])->name('statuts.index');
 Route::get('/statuts/create', [StatutController::class, 'create'])->name('statuts.create');
@@ -114,6 +114,9 @@ Route::get('/Admin', function () {
 });
 Route::get('/front', function () {
     return view('layouts.frontdash');
+});
+Route::get('/test', function () {
+    return view('ticket.Tableaus_Tickets');
 });
 
 require __DIR__.'/auth.php';

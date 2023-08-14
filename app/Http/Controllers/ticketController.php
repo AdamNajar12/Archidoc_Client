@@ -510,4 +510,23 @@ public function exportTickets()
 
 return response()->download($filePath, 'tickets.csv');
     }
+    public function enCoursTickets()
+{
+    $enCoursTickets = Ticket::whereHas('statut', function ($query) {
+        $query->where('libelle', 'en cours');
+    })->with('client', 'applications','typeIntervention')->get();
+    
+    $enattenteTickets= Ticket::whereHas('statut', function ($query) {
+        $query->where('libelle', 'en attente');
+    })->with('client', 'applications','typeIntervention')->get();
+    $ticketsTraités= Ticket::whereHas('statut', function ($query) {
+        $query->where('libelle', 'traités');
+    })->with('client', 'applications','typeIntervention')->get();
+    $ticketsFermés= Ticket::whereHas('statut', function ($query) {
+        $query->where('libelle', 'fermés');
+    })->with('client', 'applications','typeIntervention')->get();
+    
+    
+    return view('ticket.Tableaus_Tickets', compact('enCoursTickets','enattenteTickets','ticketsTraités','ticketsFermés'));
+}
 }

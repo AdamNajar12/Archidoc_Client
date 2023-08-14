@@ -1071,6 +1071,9 @@ License: For each use you must have a valid license purchased only from above li
 					<main>
                    @yield('main')
                     </main>
+					<div>
+                    @yield('content')
+					</div>
 										<!--begin::Tables Widget 9-->
 										
 								<!--end::Row-->

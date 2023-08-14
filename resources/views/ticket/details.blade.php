@@ -209,6 +209,27 @@
 											    </div>
 												<!--end::Col-->
 											</div>
+												<div class="row mb-8">
+												<!--begin::Col-->
+												<div class="col-xl-3">
+													<div class="fs-6 fw-bold mt-2 mb-3"> derniére Observation</div>
+												</div>
+												<!--end::Col-->
+												<!--begin::Col-->
+												<div class="col-xl-9">
+													<!--begin::Progress-->
+													<div class="d-flex flex-column">
+														<div class="d-flex justify-content-between w-100 fs-4 fw-bolder mb-3">
+															<span>{{ $ticket->traitement->Observation }}</span>
+															
+														</div>
+														
+														
+													</div>
+													<!--end::Progress-->
+												</div>
+												<!--end::Col-->
+											</div>
                                    <div class="row mb-8">
     <!--begin::Col-->
     <div class="col-xl-3">
@@ -272,7 +293,27 @@
 												</div>
 												<!--end::Col-->
 											</div>
-											
+											<div class="row mb-8">
+												<!--begin::Col-->
+												<div class="col-xl-3">
+													<div class="fs-6 fw-bold mt-2 mb-3"> derniére date de traitement</div>
+												</div>
+												<!--end::Col-->
+												<!--begin::Col-->
+												<div class="col-xl-9">
+													<!--begin::Progress-->
+													<div class="d-flex flex-column">
+														<div class="d-flex justify-content-between w-100 fs-4 fw-bolder mb-3">
+															<span>{{ $ticket->traitement->date_traitement }}</span>
+															
+														</div>
+														
+														
+													</div>
+													<!--end::Progress-->
+												</div>
+												<!--end::Col-->
+											</div>
 										</div>
 										<!--end::Card body-->
 										<!--begin::Card footer-->
