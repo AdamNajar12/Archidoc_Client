@@ -64,6 +64,9 @@ Route::put('/tickets/{ticket}/restore', [TicketController::class, 'restore'])->n
 Route::get('/tickets/PDF', [TicketController::class, 'PDF_Tickets'])->name('ticket.pdf');
 Route::get('/tickets/export-tickets', [TicketController::class, 'exportTickets'])->name('ticket.export');
 Route::get('/tickets/Tableau_bord', [TicketController::class, 'enCoursTickets'])->name('ticket.tableau_bord');
+Route::get('/tickets/charts', [TicketController::class, 'chartsTickets'])->name('ticket.charts');
+Route::get('/tickets/satitistiquesFront', [TicketController::class, 'chartsTicketsFront'])->name('ticket.chartsFront');
+
 
 Route::get('/statuts', [StatutController::class, 'showStatuts'])->name('statuts.index');
 Route::get('/statuts/create', [StatutController::class, 'create'])->name('statuts.create');

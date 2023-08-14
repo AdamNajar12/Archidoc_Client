@@ -20,6 +20,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use App\Exports\TicketsExport;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Csv;
+use Illuminate\Support\Facades\DB;
 
 
 class ticketController extends Controller
@@ -529,4 +530,70 @@ return response()->download($filePath, 'tickets.csv');
     
     return view('ticket.Tableaus_Tickets', compact('enCoursTickets','enattenteTickets','ticketsTraités','ticketsFermés'));
 }
+       public function chartsTickets()
+{
+    $enCoursTickets = Ticket::whereHas('statut', function ($query) {
+        $query->where('libelle', 'en cours');
+    })->count();
+
+    $clientsCount = Client::count();
+    $ticketCounts = Ticket::select(DB::raw('YEAR(date_demande) as year'), DB::raw('count(*) as count'))
+    ->groupBy('year')
+    ->orderBy('year')
+    ->pluck('count', 'year');
+
+$years = $ticketCounts->keys()->all();
+$ticketCounts = $ticketCounts->values()->all();
+
+$traitesCount = Ticket::whereHas('statut', function ($query) {
+    $query->where('libelle', 'traités');
+})->count();
+
+$fermesCount = Ticket::whereHas('statut', function ($query) {
+    $query->where('libelle', 'fermés');
+})->count();
+
+$enAttenteCount = Ticket::whereHas('statut', function ($query) {
+    $query->where('libelle', 'en attente');
+})->count();
+
+$enCoursCount = Ticket::whereHas('statut', function ($query) {
+    $query->where('libelle', 'en cours');
+})->count();
+
+    return view('ticket.statistique', compact('enCoursTickets', 'clientsCount','years', 'ticketCounts','traitesCount','fermesCount','enAttenteCount','enCoursCount'));
+} 
+public function chartsTicketsFront()
+{
+    $enCoursTickets = Ticket::whereHas('statut', function ($query) {
+        $query->where('libelle', 'en cours');
+    })->count();
+
+    $clientsCount = Client::count();
+    $ticketCounts = Ticket::select(DB::raw('YEAR(date_demande) as year'), DB::raw('count(*) as count'))
+    ->groupBy('year')
+    ->orderBy('year')
+    ->pluck('count', 'year');
+
+$years = $ticketCounts->keys()->all();
+$ticketCounts = $ticketCounts->values()->all();
+
+$traitesCount = Ticket::whereHas('statut', function ($query) {
+    $query->where('libelle', 'traités');
+})->count();
+
+$fermesCount = Ticket::whereHas('statut', function ($query) {
+    $query->where('libelle', 'fermés');
+})->count();
+
+$enAttenteCount = Ticket::whereHas('statut', function ($query) {
+    $query->where('libelle', 'en attente');
+})->count();
+
+$enCoursCount = Ticket::whereHas('statut', function ($query) {
+    $query->where('libelle', 'en cours');
+})->count();
+
+    return view('ticket.statistiqueFront', compact('enCoursTickets', 'clientsCount','years', 'ticketCounts','traitesCount','fermesCount','enAttenteCount','enCoursCount'));
+} 
 }
