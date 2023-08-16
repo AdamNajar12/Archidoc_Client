@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Validation\Rules;
 use App\Models\image;
+use App\Models\message;
 use Illuminate\Pagination\Paginator;
 class UtilisateurController extends Controller
 {
@@ -135,6 +136,71 @@ class UtilisateurController extends Controller
         // Rediriger vers la page d'index des Applications
         return redirect()->route('users.index')->with('success', 'user restaurée avec succès !');
     }
+    public function showUserList()
+    {
+        
+        $users = User::where('id', '!=', auth()->id())->get();
+      
+        return view('users.chat', compact('users'));
+    }
+    public function chat($receiverId = null)
+    {
+        $users = User::where('id', '!=', auth()->id())->get();
+    $receiver = null;
+    $messages = [];
+
+    if ($receiverId) {
+        $receiver = User::findOrFail($receiverId);
+        $messages = Message::where(function ($query) use ($receiverId) {
+            $query->where('sender_id', auth()->id())->where('receiver_id', $receiverId);
+        })->orWhere(function ($query) use ($receiverId) {
+            $query->where('sender_id', $receiverId)->where('receiver_id', auth()->id());
+        })->orderBy('created_at', 'asc')->get();
+    }   
+
+        return view('users.chat', compact('receiver', 'messages','users'));
+    }
+    public function sendMessage(Request $request)
+{
+    $message = new Message([
+        'sender_id' => auth()->id(),
+        'receiver_id' => $request->receiver_id,
+        'content' => $request->content
+    ]);
+    $message->save();
+
+    return redirect()->back();
+}
+
+
+public function chatBack($receiverId = null)
+    {
+        $users = User::where('id', '!=', auth()->id())->get();
+    $receiver = null;
+    $messages = [];
+
+    if ($receiverId) {
+        $receiver = User::findOrFail($receiverId);
+        $messages = Message::where(function ($query) use ($receiverId) {
+            $query->where('sender_id', auth()->id())->where('receiver_id', $receiverId);
+        })->orWhere(function ($query) use ($receiverId) {
+            $query->where('sender_id', $receiverId)->where('receiver_id', auth()->id());
+        })->orderBy('created_at', 'asc')->get();
+    }   
+        return view('users.chatBack', compact('receiver', 'messages','users'));
+    }
+    public function sendMessageBack(Request $request)
+{
+    $message = new Message([
+        'sender_id' => auth()->id(),
+        'receiver_id' => $request->receiver_id,
+        'content' => $request->content
+    ]);
+    $message->save();
+
+    return redirect()->back();
+}
+
 
 
 

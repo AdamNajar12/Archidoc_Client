@@ -97,6 +97,14 @@ Route::delete('/users/{user}', [UtilisateurController::class, 'destroy'])->name(
 Route::get('/users/{user}/details', [UtilisateurController::class, 'showDetails'])->name('users.details');
 Route::put('/users/{user}/restore', [UtilisateurController::class, 'restore'])->name('users.restore');
 
+// routes/web.php
+
+Route::get('/chat/{receiverId?}', [UtilisateurController::class, 'chat'])->name('users.chat');
+Route::post('/chat/send', [UtilisateurController::class, 'sendMessage'])->name('users.send');
+Route::get('/chatBack/{receiverId?}', [UtilisateurController::class, 'chatBack'])->name('users.chatBack');
+Route::post('/chatBack/send', [UtilisateurController::class, 'sendMessageBack'])->name('users.sendBack');
+Route::get('/chat/get-new-messages/{lastId}', [UtilisateurController::class, 'getNewMessages'])->name('chat.get-new-messages');
+
 
 Route::get('/traitements', [Traitement_Controller::class, 'ShowListTraitements'])->name('traitement.index');
 Route::get('/traitements/{traitement}/details', [Traitement_Controller::class, 'ShowDetails'])->name('traitement.details');
@@ -119,7 +127,7 @@ Route::get('/front', function () {
     return view('layouts.frontdash');
 });
 Route::get('/test', function () {
-    return view('ticket.Tableaus_Tickets');
+    return view('users.chat');
 });
 
 require __DIR__.'/auth.php';
