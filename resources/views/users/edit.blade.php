@@ -30,7 +30,7 @@
 												<div class="modal-body py-10 px-lg-17">
 													<!--begin::Scroll-->
 													<div class="scroll-y me-n7 pe-7" >
-													<div class="fv-row mb-7">
+													               <div class="fv-row mb-7">
 																		<!--begin::Label-->
 																		<label class="d-block fw-bold fs-6 mb-5">Image</label>
 																		<!--end::Label-->

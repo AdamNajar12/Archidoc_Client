@@ -96,7 +96,7 @@ Route::put('/users/{user}', [UtilisateurController::class, 'update'])->name('use
 Route::delete('/users/{user}', [UtilisateurController::class, 'destroy'])->name('users.destroy');
 Route::get('/users/{user}/details', [UtilisateurController::class, 'showDetails'])->name('users.details');
 Route::put('/users/{user}/restore', [UtilisateurController::class, 'restore'])->name('users.restore');
-
+Route::put('/updateProfil', [UtilisateurController::class, 'UpdateProfil'])->name('users.updateProfil');
 // routes/web.php
 
 Route::get('/chat/{receiverId?}', [UtilisateurController::class, 'chat'])->name('users.chat');
@@ -120,14 +120,14 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-Route::get('/Admin', function () {
-    return view('layouts.dashboard_Admin');
+Route::get('/editProfil', function () {
+    return view('users.editProfil');
 });
 Route::get('/front', function () {
     return view('layouts.frontdash');
 });
-Route::get('/test', function () {
-    return view('users.chat');
-});
+Route::get('/profilBackCheck', function () {
+    return view('users.ConsulterProfil');
+})->name('consulterProfilAdmin');
 
 require __DIR__.'/auth.php';

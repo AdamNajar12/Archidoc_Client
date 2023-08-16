@@ -105,17 +105,31 @@ class UtilisateurController extends Controller
         
         $user->update($data);
         
-        if ($request->hasFile('nom_image')) {
-            $file = $request->file('nom_image');
-            
-            $fileName = $file->getClientOriginalName();
-            $file->storeAs('public/user_image', $fileName);
-        
-            image::create([
-                'nom_image' => $fileName,
-                'user_id' => $user->id,
-            ]);
-        }
+       
+
+if ($request->hasFile('nom_image')) {
+    $file = $request->file('nom_image');
+    
+    $fileName = $file->getClientOriginalName();
+    $file->storeAs('public/user_image', $fileName);
+
+    // Recherche de l'image associée à l'utilisateur
+    $image = Image::where('user_id', $user->id)->first();
+
+    // Si une image est trouvée, mettez à jour le nom de l'image
+    if ($image) {
+        $image->update([
+            'nom_image' => $fileName,
+        ]);
+    } else {
+        // Si aucune image n'est trouvée, créez une nouvelle entrée dans la table des images
+        Image::create([
+            'nom_image' => $fileName,
+            'user_id' => $user->id,
+        ]);
+    }
+}
+
         
         return redirect()->route('users.index');
         
@@ -200,8 +214,62 @@ public function chatBack($receiverId = null)
 
     return redirect()->back();
 }
+    public function UpdateProfil(Request $request)
+  {
+    $validatedData = $request->validate([
+        'nom' => 'required',
+        'prenom' => 'required',
+        'user_name' => 'required', // Retirer la validation unique ici
+        'role' => 'required',
+        'email' => 'required'
+    ]);
+    
+    $data = $request->only(['nom', 'prenom', 'user_name', 'role', 'email']);
+    
+    // Vérification pour le nom d'utilisateur unique
+    if (auth()->user()->user_name !== $data['user_name'] && User::where('user_name', $data['user_name'])->exists()) {
+        return redirect()->back()->withErrors(['user_name' => 'Le nom d\'utilisateur est déjà pris.']);
+    }
+    
+    auth()->user()->update($data);
+    $user = auth()->user();
+
+if ($request->hasFile('nom_image')) {
+    $file = $request->file('nom_image');
+    
+    $fileName = $file->getClientOriginalName();
+    $file->storeAs('public/user_image', $fileName);
+
+    // Recherche de l'image associée à l'utilisateur
+    $image = Image::where('user_id', $user->id)->first();
+
+    // Si une image est trouvée, mettez à jour le nom de l'image
+    if ($image) {
+        $image->update([
+            'nom_image' => $fileName,
+        ]);
+    } else {
+        // Si aucune image n'est trouvée, créez une nouvelle entrée dans la table des images
+        Image::create([
+            'nom_image' => $fileName,
+            'user_id' => $user->id,
+        ]);
+    }
+}
+
+    
+    return redirect()->route('consulterProfilAdmin');
 
 
+
+
+
+
+
+
+
+  }
+ 
 
 
 
