@@ -11,6 +11,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Validation\Rules;
 use App\Models\image;
 use App\Models\message;
+use App\Models\Ticket;
 use Illuminate\Pagination\Paginator;
 class UtilisateurController extends Controller
 {
@@ -93,7 +94,7 @@ class UtilisateurController extends Controller
             'prenom' => 'required',
             'user_name' => 'required', // Retirer la validation unique ici
             'role' => 'required',
-            'email' => 'required'
+            'email' => ['required', 'string', 'email', 'max:255']
         ]);
         
         $data = $request->only(['nom', 'prenom', 'user_name', 'role', 'email']);
@@ -102,7 +103,9 @@ class UtilisateurController extends Controller
         if ($user->user_name !== $data['user_name'] && User::where('user_name', $data['user_name'])->exists()) {
             return redirect()->back()->withErrors(['user_name' => 'Le nom d\'utilisateur est déjà pris.']);
         }
-        
+        if ($user->email !== $data['email'] && User::where('email', $data['email'])->exists()) {
+            return redirect()->back()->withErrors(['email' => 'L email est déjà pris.']);
+        }
         $user->update($data);
         
        
@@ -220,17 +223,21 @@ public function chatBack($receiverId = null)
         'nom' => 'required',
         'prenom' => 'required',
         'user_name' => 'required', // Retirer la validation unique ici
-        'role' => 'required',
-        'email' => 'required'
+        
+        'email' => ['required', 'string', 'email', 'max:255']
     ]);
     
-    $data = $request->only(['nom', 'prenom', 'user_name', 'role', 'email']);
+    $data = $request->only(['nom', 'prenom', 'user_name',  'email']);
     
     // Vérification pour le nom d'utilisateur unique
     if (auth()->user()->user_name !== $data['user_name'] && User::where('user_name', $data['user_name'])->exists()) {
         return redirect()->back()->withErrors(['user_name' => 'Le nom d\'utilisateur est déjà pris.']);
     }
     
+    if (auth()->user()->email !== $data['email'] && User::where('email', $data['email'])->exists()) {
+        return redirect()->back()->withErrors(['email' => 'L email est déjà pris.']);
+    }
+
     auth()->user()->update($data);
     $user = auth()->user();
 
@@ -270,8 +277,152 @@ if ($request->hasFile('nom_image')) {
 
   }
  
+public function ConsulterProfilFront()
+{
+
+    $user = auth()->user();
+
+    // Récupérer les tickets associés à l'utilisateur authentifié via la table "ticket_utilisateurs"
+    $ticketsFromTicketUtilisateurs = Ticket::whereHas('users', function ($query) use ($user) {
+            $query->where('ticket__utilisateurs.user_id', $user->id); // Spécifier la table ticket_utilisateurs pour la colonne user_id
+        });
+    
+    // Récupérer les tickets que l'utilisateur authentifié a créés via la clé étrangère "user_id" dans la table "tickets"
+    $ticketsFromUser = Ticket::where('tickets.user_id', $user->id); // Spécifier la table tickets pour la colonne user_id
+    
+    // Combiner les deux requêtes avec union
+    $tickets = $ticketsFromTicketUtilisateurs->union($ticketsFromUser)->get();
+    
+    // Obtenir le nombre total de tickets
+    $totalTickets = $tickets->count();
 
 
+
+    $ticketsFromTicketUtilisateursTraités = Ticket::whereHas('users', function ($query) use ($user) {
+        $query->where('ticket__utilisateurs.user_id', $user->id);
+    })
+    ->where('statut', 'traité'); // Filtrer par statut "traité"
+
+// Récupérer les tickets que l'utilisateur authentifié a créés avec le statut "traité"
+    $ticketsTraitésFromUser = Ticket::where('tickets.user_id', $user->id)
+    ->where('statut', 'traité'); // Filtrer par statut "traité"
+
+// Combiner les deux requêtes avec union
+    $ticketsTraités = $ticketsFromTicketUtilisateursTraités->union($ticketsTraitésFromUser)->get();
+
+// Obtenir le nombre total de tickets avec le statut "traité"
+    $totalTicketsTraites = $ticketsTraités->count();
+
+    $pourcentageTraites = ($totalTickets > 0) ? ($totalTicketsTraites / $totalTickets) * 100 : 0;
+
+
+return view('users.ConsulterProfilFront',compact('totalTickets','totalTicketsTraites','pourcentageTraites'));    
+
+
+
+
+
+
+
+
+
+
+}
+public function UpdateProfilFront(Request $request)
+  {
+    $validatedData = $request->validate([
+        'nom' => 'required',
+        'prenom' => 'required',
+        'user_name' => 'required', // Retirer la validation unique ici
+        'role' => 'required',
+        'email' => ['required', 'string', 'email', 'max:255']
+    ]);
+    
+    $data = $request->only(['nom', 'prenom', 'user_name', 'role', 'email']);
+    
+    // Vérification pour le nom d'utilisateur unique
+    if (auth()->user()->user_name !== $data['user_name'] && User::where('user_name', $data['user_name'])->exists()) {
+        return redirect()->back()->withErrors(['user_name' => 'Le nom d\'utilisateur est déjà pris.']);
+    }
+    if (auth()->user()->email !== $data['email'] && User::where('email', $data['email'])->exists()) {
+        return redirect()->back()->withErrors(['email' => 'L email est déjà pris.']);
+    }
+    auth()->user()->update($data);
+    $user = auth()->user();
+
+if ($request->hasFile('nom_image')) {
+    $file = $request->file('nom_image');
+    
+    $fileName = $file->getClientOriginalName();
+    $file->storeAs('public/user_image', $fileName);
+
+    // Recherche de l'image associée à l'utilisateur
+    $image = Image::where('user_id', $user->id)->first();
+
+    // Si une image est trouvée, mettez à jour le nom de l'image
+    if ($image) {
+        $image->update([
+            'nom_image' => $fileName,
+        ]);
+    } else {
+        // Si aucune image n'est trouvée, créez une nouvelle entrée dans la table des images
+        Image::create([
+            'nom_image' => $fileName,
+            'user_id' => $user->id,
+        ]);
+    }
+}
+
+    
+    return redirect()->route('consulterProfilFront');
+
+}
+public function editProfilFront()
+{
+    $user = auth()->user();
+
+    // Récupérer les tickets associés à l'utilisateur authentifié via la table "ticket_utilisateurs"
+    $ticketsFromTicketUtilisateurs = Ticket::whereHas('users', function ($query) use ($user) {
+            $query->where('ticket__utilisateurs.user_id', $user->id); // Spécifier la table ticket_utilisateurs pour la colonne user_id
+        });
+    
+    // Récupérer les tickets que l'utilisateur authentifié a créés via la clé étrangère "user_id" dans la table "tickets"
+    $ticketsFromUser = Ticket::where('tickets.user_id', $user->id); // Spécifier la table tickets pour la colonne user_id
+    
+    // Combiner les deux requêtes avec union
+    $tickets = $ticketsFromTicketUtilisateurs->union($ticketsFromUser)->get();
+    
+    // Obtenir le nombre total de tickets
+    $totalTickets = $tickets->count();
+
+
+
+    $ticketsFromTicketUtilisateursTraités = Ticket::whereHas('users', function ($query) use ($user) {
+        $query->where('ticket__utilisateurs.user_id', $user->id);
+    })
+    ->where('statut', 'traité'); // Filtrer par statut "traité"
+
+// Récupérer les tickets que l'utilisateur authentifié a créés avec le statut "traité"
+    $ticketsTraitésFromUser = Ticket::where('tickets.user_id', $user->id)
+    ->where('statut', 'traité'); // Filtrer par statut "traité"
+
+// Combiner les deux requêtes avec union
+    $ticketsTraités = $ticketsFromTicketUtilisateursTraités->union($ticketsTraitésFromUser)->get();
+
+// Obtenir le nombre total de tickets avec le statut "traité"
+    $totalTicketsTraites = $ticketsTraités->count();
+
+    $pourcentageTraites = ($totalTickets > 0) ? ($totalTicketsTraites / $totalTickets) * 100 : 0;
+
+
+return view('users.editProfilFront',compact('totalTickets','totalTicketsTraites','pourcentageTraites')); 
+
+
+
+
+
+
+} 
 
 
 

@@ -124,7 +124,10 @@ class ClientController extends Controller
     {
        
         $client = client::findOrFail($id);
-        $Applications = Application::all();
+        $clientApplicationIds = $client->applications->pluck('id')->toArray();
+
+        // Récupérer les applications en excluant celles déjà associées au client
+        $Applications = Application::whereNotIn('id', $clientApplicationIds)->get();
         
         
         return view('clients.edit', compact('client','Applications'));

@@ -97,6 +97,9 @@ Route::delete('/users/{user}', [UtilisateurController::class, 'destroy'])->name(
 Route::get('/users/{user}/details', [UtilisateurController::class, 'showDetails'])->name('users.details');
 Route::put('/users/{user}/restore', [UtilisateurController::class, 'restore'])->name('users.restore');
 Route::put('/updateProfil', [UtilisateurController::class, 'UpdateProfil'])->name('users.updateProfil');
+Route::get('/profilBackCheckFront',  [UtilisateurController::class, 'ConsulterProfilFront'])->name('consulterProfilFront');
+Route::put('/updateProfilFront',  [UtilisateurController::class, 'UpdateProfilFront'])->name('users.updateProfilFront');
+Route::get('/editProfilFront',  [UtilisateurController::class, 'editProfilFront'])->name('users.editProfilFront');
 // routes/web.php
 
 Route::get('/chat/{receiverId?}', [UtilisateurController::class, 'chat'])->name('users.chat');

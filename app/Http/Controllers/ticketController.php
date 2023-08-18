@@ -166,7 +166,10 @@ public function edit($id)
         ->select('clients.code_client as code_client')
         ->first();
         $applications = $ticket->applications;
-        $users=User::all();
+         $usersticketIds = $ticket->users->pluck('id')->toArray();
+
+        // Récupérer les applications en excluant celles déjà associées au client
+        $users =User::whereNotIn('id',  $usersticketIds)->get();
         return view('ticket.edit', compact('users','statut','type_intervention','ticket','applications','client'));
     }
     
@@ -364,8 +367,9 @@ public function TraiterTicketFront(Request $request, $id)
         'date_demande' => 'required|date',
         'description' => 'required',
         'vis_a_vis' => 'required',
+        
     ]);
-
+    $validatedData['user_id'] = auth()->user()->id;
     $ticket->update($validatedData);
 
     $dateTraitement = Carbon::now();

@@ -1284,18 +1284,11 @@ License: For each use you must have a valid license purchased only from above li
 												<!--end::Menu separator-->
 												<!--begin::Menu item-->
 												<div class="menu-item px-5">
-													<a href="../../demo1/dist/account/overview.html" class="menu-link px-5">My Profile</a>
+													<a href="/profilBackCheckFront" class="menu-link px-5">My Profile</a>
 												</div>
 												<!--end::Menu item-->
 												<!--begin::Menu item-->
-												<div class="menu-item px-5">
-													<a href="../../demo1/dist/pages/projects/list.html" class="menu-link px-5">
-														<span class="menu-text">My Projects</span>
-														<span class="menu-badge">
-															<span class="badge badge-light-danger badge-circle fw-bolder fs-7">3</span>
-														</span>
-													</a>
-												</div>
+												
 												<!--end::Menu item-->
 												<!--begin::Menu item-->
 												
